@@ -1,16 +1,17 @@
 <template>
-  <!-- <section class="vue-container"> -->
+  <section class="container">
     <div>
+      <logo/>
       <h1 class="title">
         ubrand
       </h1>
       <h2 class="subtitle">
-        index
+        數據專題
       </h2>
-      <Carousel class="hidden-mobile"></Carousel>
-      <Slider class="hidden-pc"></Slider>
-      <div class="links" style="display: block;">
-        <ul>          
+      <div class="links">
+        <!-- <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a> -->
+        <!-- <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a> -->
+        <ul>
           <li><nuxt-link to="/multimedia">多媒體報導</nuxt-link></li>
           <li><nuxt-link to="/data">數據專題</nuxt-link></li>
           <li><nuxt-link to="/interactive">互動新聞</nuxt-link></li>
@@ -19,28 +20,22 @@
           <li><nuxt-link to="/research">研究報告</nuxt-link></li>
         </ul>
       </div>
-
-      <!-- <section>
-      </section> -->
-
     </div>
-  <!-- </section> -->
+  </section>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
-import Carousel from '~/Components/Carousel.vue'
-import Slider from '~/Components/Slider.vue'
+import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
-    Carousel, Slider
+    Logo
   }
 }
 </script>
 
 <style>
-.vue-container {
+.container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -64,19 +59,6 @@ export default {
   word-spacing: 5px;
   padding-bottom: 15px;
 }
-
-@media screen and (max-width: 1199px){
-  .hidden-mobile{
-    display: none;
-  } 
-}
-
-@media screen and (min-width: 1200px){
-  .hidden-pc{
-    display: none;
-  } 
-}
-
 
 .links {
   padding-top: 15px;
