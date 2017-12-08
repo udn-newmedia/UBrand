@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "hammerjs": "^2.0.8",
     "nuxt": "^1.0.0-rc11",
     "udn-newmedia-vue-components": "^1.0.6"
   },

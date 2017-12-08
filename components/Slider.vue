@@ -7,7 +7,7 @@
         <div class="slider-wrapper">
             <div class="sliders clearfix" ref="sliders" 
                   :style="{
-                    'transition' : 'all ' + transitionDuration/1000 + 's' 
+                    'transition' : 'none' 
                   }">
                 <div v-for="img in list" :key="img.name" class="slider">
                     <a>
@@ -16,8 +16,8 @@
                 </div>
             </div>
             <ul class="slider-nav">
-                <li v-for="n in list.length-2" :key="n.id">
-                    <span class="circle" :class="{'active': n === current + 1}"></span>
+                <li v-for="n in list.length-3" :key="n.id">
+                    <span class="circle" :class="{'active': n === current}"></span>
                 </li>
             </ul>
         </div>
@@ -27,8 +27,13 @@
 </template>
 
 <script>
+// import * as Hammer from 'Hammerjs'
 import Container from 'udn-newmedia-vue-components/components/Content.vue'
 import pic1 from '~/assets/mobile/bg-1.jpg'
+
+if (process.browser) {
+  var Hammer = require('Hammerjs')
+}
 
 export default {
   name: 'Slider',
@@ -36,8 +41,10 @@ export default {
   data: function () {
     return {
       pic1: pic1,
-      current: 0,
+      current: 1,
       transitionDuration: 500,
+      transitionWidth: 340 + 9,
+      panOnce: false,
       list: [
         {
           name: 'project1',
@@ -61,15 +68,40 @@ export default {
   mounted: function () {
     this.list.push(this.list[0])
     this.list.push(this.list[1])
+    this.list.unshift(this.list[this.list.length - 3])
 
     let $sliders = this.$refs.sliders
     $sliders.style.width = (this.list.length * 100) + '%'
+    $sliders.style.transform = 'translateX(-' + this.current * (this.transitionWidth) + 'px)'
     // 自動輪播
     if (this.interval) {
       setInterval(() => {
         this.gotoNext('next')
       }, this.interval)
     }
+
+    let hammer = new Hammer($sliders)
+
+    hammer.on('panleft', function (ev) {
+      // console.log(this.panOnce)
+      if (!this.panOnce) {
+        this.gotoNext('next')
+        this.panOnce = true
+        setTimeout(() => {
+          this.panOnce = false
+        }, 500)
+      }
+    }.bind(this))
+
+    hammer.on('panright', function (ev) {
+      if (!this.panOnce) {
+        this.gotoNext('prev')
+        this.panOnce = true
+        setTimeout(() => {
+          this.panOnce = false
+        }, 500)
+      }
+    }.bind(this))
   },
 
   methods: {
@@ -88,17 +120,25 @@ export default {
       }
 
       that.current = (that.current) % that.list.length
-      // $sliders.style.marginLeft = '-' + (that.current * 100) + '%'
       if (that.current === that.list.length - 2) {
-        $sliders.style.transform = 'translateX(-' + that.current * (340 + 9) + 'px)'
-        that.current = 0
+        $sliders.style.transition = 'all ' + this.transitionDuration / 1000 + 's'
+        $sliders.style.transform = 'translateX(-' + that.current * (this.transitionWidth) + 'px)'
+        that.current = 1
         setTimeout(() => {
           $sliders.style.transition = 'none'
-          $sliders.style.transform = 'translateX(0)'
+          $sliders.style.transform = 'translateX(-' + that.current * (this.transitionWidth) + 'px)'
+        }, this.transitionDuration)
+      } else if (that.current === 0) {
+        $sliders.style.transition = 'all ' + this.transitionDuration / 1000 + 's'
+        $sliders.style.transform = 'translateX(-' + that.current * (this.transitionWidth) + 'px)'
+        that.current = that.list.length - 3
+        setTimeout(() => {
+          $sliders.style.transition = 'none'
+          $sliders.style.transform = 'translateX(-' + that.current * (this.transitionWidth) + 'px)'
         }, this.transitionDuration)
       } else {
         $sliders.style.transition = 'all ' + this.transitionDuration / 1000 + 's'
-        $sliders.style.transform = 'translateX(-' + that.current * (340 + 9) + 'px)'
+        $sliders.style.transform = 'translateX(-' + that.current * (this.transitionWidth) + 'px)'
       }
     }
   }
