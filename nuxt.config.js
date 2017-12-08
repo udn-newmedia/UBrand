@@ -10,7 +10,10 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'ubrand site' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'https://udn.com/upf/newmedia/image/udn-icon.ico' },
+      { rel: 'stylesheet', href: 'https://udn.com/upf/newmedia/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: 'https://udn.com/upf/newmedia/css/font-awesome.min.css' }
+
     ]
   },
   /*

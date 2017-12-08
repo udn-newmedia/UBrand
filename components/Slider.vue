@@ -1,34 +1,26 @@
 <template>
-  <!-- <Container background-color="#ECEAEA"> -->
-      <div class="Slider">
-
-        <button @click="change">換！</button>
-
-        <div class="slider-wrapper">
-            <div class="sliders clearfix" ref="sliders" 
-                  :style="{
-                    'transition' : 'none' 
-                  }">
-                <div v-for="img in list" :key="img.name" class="slider">
-                    <a>
-                        <img :src="img.pic">
-                    </a>
-                </div>
+  <div class="Slider">
+    <div class="slider-wrapper">
+        <div class="sliders clearfix" ref="sliders" 
+              :style="{
+                'transition' : 'none' 
+              }">
+            <div v-for="img in list" :key="img.name" class="slider">
+                <a>
+                    <img :src="img.pic">
+                </a>
             </div>
-            <ul class="slider-nav">
-                <li v-for="n in list.length-3" :key="n.id">
-                    <span class="circle" :class="{'active': n === current}"></span>
-                </li>
-            </ul>
         </div>
-        
-      </div>
-  <!-- </Container> -->
+        <ul class="slider-nav">
+            <li v-for="n in list.length-3" :key="n.id">
+                <span class="circle" :class="{'active': n === current}"></span>
+            </li>
+        </ul>
+    </div>
+  </div>
 </template>
 
 <script>
-// import * as Hammer from 'Hammerjs'
-import Container from 'udn-newmedia-vue-components/components/Content.vue'
 import pic1 from '~/assets/mobile/bg-1.jpg'
 
 if (process.browser) {
@@ -63,7 +55,6 @@ export default {
     }
   },
   components: {
-    Container
   },
   mounted: function () {
     this.list.push(this.list[0])
@@ -105,9 +96,6 @@ export default {
   },
 
   methods: {
-    change: function () {
-      this.gotoNext('next')
-    },
     gotoNext: function (index) {
       let that = this
       let $sliders = this.$refs.sliders
@@ -145,7 +133,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 img{
     width: 340px;
     height: 280px;
