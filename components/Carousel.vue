@@ -1,41 +1,45 @@
 <template>
   <div class="Carousel">
-    <transition name="fade" class="carousel-left">
+    <!-- <transition name="fade" class="carousel-left"> -->
+    <div class="carousel-left">
       <div class="carousel-wrapper" v-if='show' key="1">
         <img :src='imgSrc1'>
         <div class="projects">
-            <!-- <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p> -->
-            <p class="date">1</p>
+            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+            <p class="date">{{date1}}</p>
+            <!-- <p class="date">1</p> -->
         </div>
       </div>
-      <div class="carousel-wrapper" v-else key="2">
+      <div class="carousel-wrapper" v-if='show' key="2">
         <img :src='imgSrc2'>
         <div class="projects">
-            <!-- <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p> -->
-            <p class="date">2</p>
+            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+            <p class="date">{{date1}}</p>
+            <!-- <p class="date">2</p> -->
         </div>
       </div>
-    </transition>
-    <transition name="fade" class="carousel-right">
+    </div>
+    <!-- </transition> -->
+    <!-- <transition name="fade" class="carousel-right"> -->
+    <div class="carousel-right">
       <div class="carousel-wrapper" v-if='show' key="3">
         <img :src='imgSrc2'>
         <div class="projects">
-            <!-- <h4 class="text">{{title2}}<br>{{subtitle2}}</h4>
-            <p class="date">{{date2}}</p> -->
-            <p class="date">3</p>
+            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+            <p class="date">{{date1}}</p>
+            <!-- <p class="date">3</p> -->
         </div>
       </div>
-      <div class="carousel-wrapper" v-else key="4">
+      <div class="carousel-wrapper" v-if='show' key="4">
         <img :src='imgSrc1'>
         <div class="projects">
-            <!-- <h4 class="text">{{title2}}<br>{{subtitle2}}</h4>
-            <p class="date">{{date2}}</p> -->
-            <p class="date">4</p>
+            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+            <p class="date">{{date1}}</p>
+            <!-- <p class="date">4</p> -->
         </div>
       </div>
-    </transition>
+    </div>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -51,6 +55,9 @@ export default {
       show: true,
       imgSrc1: pic1,
       imgSrc2: pic2,
+      title1: '好好說再見1',
+      subtitle1: '插畫記林杰樑走後1500天',
+      date1: '2017.11.23',
       list: [
         {
           name: 'project1',
@@ -73,7 +80,7 @@ export default {
   mounted: function () {
     setInterval(() => {
       // this.change()
-      this.show = !this.show
+      // this.show = !this.show
     }, this.interval)
   },
   methods: {
@@ -94,25 +101,16 @@ export default {
 
 @media screen and (min-width: 1025px){
   .Carousel{
-    /* display: flex; */
-    /* justify-content: center; */
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
-.carousel-left{
-  display: block;
-  float: left;
-}
-
-.carousel-right{
-  display: block;
-  float: right;
-}
-
 .carousel-wrapper{
-  display: flex;
-  align-items: center;
+  position: absolute;
+  display: block;
+  /* align-items: center; */
   width: 50%;
 }
 
@@ -133,8 +131,11 @@ img{
   opacity: 0
 }
 
-.carousel-coat {
-  position: relative;
+.carousel-left {
+  float: left;
 }
 
+.carousel-right {
+  float: right;
+}
 </style>
