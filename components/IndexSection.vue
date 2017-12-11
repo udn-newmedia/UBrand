@@ -49,5 +49,9 @@ export default {
     .introContent {
         width: 50%;
     }    
+    .introContent.left, .introContent.right{
+        border: solid 1px black;
+        height: 0;
+    }
 }
 </style>

@@ -18,12 +18,21 @@
     </ContentWrapper>
     
     <section>
-      <slideshow class="hidden-mobile slideshow ie11" :interval="5000" style="position:absolute; right: 0;"></slideshow>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" style="right: 0;"></slideshow>
       <ContentWrapper>
         <IndexSection background-color="#fff" position="left"></IndexSection>
       </ContentWrapper>
       <Slider class="hidden-pc" background-color="#fff"></Slider>
     </section>
+
+    <section>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" style="left: 0;"></slideshow>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="right"></IndexSection>
+      </ContentWrapper>
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
+
 
     <!-- <section>
       <ContentWrapper>
@@ -137,13 +146,14 @@ ul {
   }
 
   section {
+    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-/*For ie11 and up*/
-  _:-ms-fullscreen, :root .slideshow.ie11 { top: 0!important; }
+/* For ie11 and up */
+  /* _:-ms-fullscreen, :root .slideshow.ie11 { top: 0!important; } */
 }
 </style>

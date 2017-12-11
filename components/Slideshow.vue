@@ -2,15 +2,19 @@
   <div class="Slideshow">
     <transition name="fade">
         <div class="slide-wrapper" v-if='show' key="1">
-          <img :src='imgSrc1'>
-          <div class="projects">
-              <h4 class="text">{{title1}} {{subtitle1}}</h4>
+          <div class="relative">
+            <img :src='imgSrc1'>
+            <div class="projects">
+                <h4 class="text">{{title1}} {{subtitle1}}</h4>
+            </div>
           </div>
         </div>
         <div class="slide-wrapper" v-else key="2">
-          <img :src='imgSrc2'>
-          <div class="projects">
-              <h4 class="text">{{title1}} {{subtitle1}}</h4>
+          <div class="relative">
+            <img :src='imgSrc2'>
+            <div class="projects">
+                <h4 class="text">{{title1}} {{subtitle1}}</h4>
+            </div>
           </div>
         </div>
     </transition>
@@ -65,11 +69,11 @@ export default {
 } */
 
 .Slideshow {
-  position: relative;
-  display: flex;
-  align-items: center;
+  position:absolute; 
   width: 50%;
   height: 100%;
+  top: 50%; 
+  transform: translateY(-25%);
 }
 
 .slide-wrapper {
@@ -87,11 +91,12 @@ img {
 }
 
 .projects {
+  border: solid 2px yellow;
   background: white;
   position: absolute;
-  margin-left: 5px;
-  margin-right: 5px;
   bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
   width: 80%;
   text-align: center;
 }
@@ -104,4 +109,10 @@ img {
   opacity: 0
 }
 
+.relative{
+  border: solid 3px red;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 </style>
