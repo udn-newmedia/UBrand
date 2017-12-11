@@ -1,45 +1,45 @@
 <template>
   <div class="Carousel">
-    <!-- <transition name="fade" class="carousel-left"> -->
-    <div class="carousel-left">
-      <div class="carousel-wrapper" v-if='show' key="1">
-        <img :src='imgSrc1'>
-        <div class="projects">
-            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p>
-            <!-- <p class="date">1</p> -->
-        </div>
+      <div class="carousel-left">
+        <transition name="fade">
+            <div class="carousel-wrapper" v-if='show' key="1">
+              <img :src='imgSrc1'>
+              <div class="projects">
+                  <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                  <!-- <p class="date">{{date1}}</p> -->
+                  <p class="date">1</p>
+              </div>
+            </div>
+            <div class="carousel-wrapper" v-else key="2">
+              <img :src='imgSrc2'>
+              <div class="projects">
+                  <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                  <!-- <p class="date">{{date1}}</p> -->
+                  <p class="date">2</p>
+              </div>
+            </div>
+        </transition>
       </div>
-      <div class="carousel-wrapper" v-if='show' key="2">
-        <img :src='imgSrc2'>
-        <div class="projects">
-            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p>
-            <!-- <p class="date">2</p> -->
-        </div>
+      <div class="carousel-right">
+        <transition name="fade">
+          <div class="carousel-wrapper" v-if='show' key="3">
+            <img :src='imgSrc2'>
+            <div class="projects">
+                <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                <!-- <p class="date">{{date1}}</p> -->
+                <p class="date">3</p>
+            </div>
+          </div>
+          <div class="carousel-wrapper" v-else key="4">
+            <img :src='imgSrc1'>
+            <div class="projects">
+                <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                <!-- <p class="date">{{date1}}</p> -->
+                <p class="date">4</p>
+            </div>
+          </div>
+        </transition>
       </div>
-    </div>
-    <!-- </transition> -->
-    <!-- <transition name="fade" class="carousel-right"> -->
-    <div class="carousel-right">
-      <div class="carousel-wrapper" v-if='show' key="3">
-        <img :src='imgSrc2'>
-        <div class="projects">
-            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p>
-            <!-- <p class="date">3</p> -->
-        </div>
-      </div>
-      <div class="carousel-wrapper" v-if='show' key="4">
-        <img :src='imgSrc1'>
-        <div class="projects">
-            <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-            <p class="date">{{date1}}</p>
-            <!-- <p class="date">4</p> -->
-        </div>
-      </div>
-    </div>
-    <!-- </transition> -->
   </div>
 </template>
 
@@ -55,20 +55,20 @@ export default {
       show: true,
       imgSrc1: pic1,
       imgSrc2: pic2,
-      title1: '好好說再見1',
+      title1: '好好說再見',
       subtitle1: '插畫記林杰樑走後1500天',
       date1: '2017.11.23',
       list: [
         {
           name: 'project1',
           pic: pic1,
-          title: '好好說再見1',
+          title: '好好說再見',
           subtitle: '插畫記林杰樑走後1500天',
           date: '2017.11.23'
         }, {
           name: 'project2',
           pic: pic2,
-          title: '好好說再見2',
+          title: '好好說再見',
           subtitle: '插畫記林杰樑走後1500天',
           date: '2017.11.23'
         }
@@ -79,48 +79,56 @@ export default {
   },
   mounted: function () {
     setInterval(() => {
-      // this.change()
-      // this.show = !this.show
+      this.show = !this.show
     }, this.interval)
-  },
-  methods: {
-    change: function () {
-      if (this.imgSrc1 === this.list[0].pic) {
-        this.imgSrc1 = this.list[1].pic
-        this.imgSrc2 = this.list[0].pic
-      } else {
-        this.imgSrc1 = this.list[0].pic
-        this.imgSrc2 = this.list[1].pic
-      }
-    }
   }
 }
 </script>
 
 <style scoped>
+/* * {
+  border: solid 1px black;
+} */
 
-@media screen and (min-width: 1025px){
-  .Carousel{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
+.Carousel {
+  position: relative;
+  width: 100%;
+  height: 126px;
 }
 
-.carousel-wrapper{
+.carousel-left, .carousel-right {
   position: absolute;
-  display: block;
-  /* align-items: center; */
-  width: 50%;
+  width: calc(50%-10px);
+  height: 100%;
 }
 
-.projects{
-  text-align: left;
+.carousel-left {
+  left: 0;
+  top: 0;
 }
 
-img{
+.carousel-right {
+  right: 0;
+  top: 0;
+}
+
+.carousel-wrapper {
+  background: white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+img {
   width: 220px;
   height: 126px;
+}
+
+.projects {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -131,11 +139,4 @@ img{
   opacity: 0
 }
 
-.carousel-left {
-  float: left;
-}
-
-.carousel-right {
-  float: right;
-}
 </style>

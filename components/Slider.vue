@@ -1,5 +1,5 @@
 <template>
-  <div class="Slider">
+  <div class="Slider" :style="{backgroundColor: backgroundColor}">
     <div class="slider-wrapper">
         <div class="sliders clearfix" ref="sliders" 
               :style="{
@@ -7,7 +7,12 @@
               }">
             <div v-for="img in list" :key="img.name" class="slider">
                 <a>
-                    <img :src="img.pic">
+                    <div class="projects">
+                      <img :src="img.pic">
+                      <div class="texts">
+                        <h2>{{img.name}}</h2>
+                      </div>
+                    </div>
                 </a>
             </div>
         </div>
@@ -29,7 +34,7 @@ if (process.browser) {
 
 export default {
   name: 'Slider',
-  props: ['interval'],
+  props: ['interval', 'background-color'],
   data: function () {
     return {
       pic1: pic1,
@@ -134,6 +139,7 @@ export default {
 </script>
 
 <style scoped>
+
 img{
     width: 340px;
     height: 280px;
@@ -156,10 +162,11 @@ img{
 }
 
 ul.slider-nav{
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+    display: flex;
+    justify-content: center;
     list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
 }
 
 ul.slider-nav li{
@@ -177,7 +184,58 @@ ul.slider-nav li .circle{
 }
 
 ul.slider-nav li .circle.active{
-    background: #fb83ac;
-    border-color: #fb83ac;
+    background: #bfbfbf;
+    border-color: #bfbfbf;
+}
+
+.projects .texts{
+  background: white;
+  height: 50px;
+  margin-right: 9px;
+  padding: 0 10px;
+}
+
+
+h2{
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+}
+
+p{
+  font-size: 21px;
+  margin: 0;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 767px){
+  h2{
+      font-size: 26px;
+  }
+
+  p{
+      font-size: 18px;
+      line-height: 32px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  h2{
+      font-size: 30px;
+  }
+  p{
+      font-size: 20px;
+      line-height: 32px;
+  }
+}
+@media screen and (min-width: 1025px){
+  p>br{
+      line-height: 50px;
+  }
 }
 </style>

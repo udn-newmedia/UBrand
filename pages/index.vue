@@ -1,16 +1,55 @@
 <template>
   <div id="index">
-    <Container background-color="#ECEAEA">
-      <h1 class="title">
+    <HeadBar></HeadBar>
+    <ContentWrapper background-color="#f7f7f7">
+      <!-- <h1 class="title">
         ubrand
-      </h1>
-      <h2 class="subtitle">
+      </h1> -->
+      <!-- <h2 class="subtitle">
         index
-      </h2>
+      </h2> -->
+      <div class="padding-for-headbar"></div>
       <Carousel class="hidden-mobile" :interval="5000"></Carousel>
-      <Slider class="hidden-pc"></Slider>
-    </Container>  
-    <Container background-color="#ECEAEA">
+    </ContentWrapper>  
+    <Slider class="hidden-pc" background-color="#f7f7f7"></Slider>
+    <ContentWrapper background-color="#f7f7f7">
+      <p><br></p>
+      <Bookmarks></Bookmarks>
+    </ContentWrapper>
+    
+    <section>
+      <slideshow class="hidden-mobile slideshow ie11" :interval="5000" style="position:absolute; right: 0;"></slideshow>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="left"></IndexSection>
+      </ContentWrapper>
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
+
+    <!-- <section>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="right"></IndexSection>
+      </ContentWrapper>
+        <Slider class="hidden-pc" background-color="#fff"></Slider>
+        <slideshow class="hidden-mobile" :interval="5000" style="position:absolute; left: 0;"></slideshow>
+    </section> -->
+
+    <!-- 
+    <IndexSection></IndexSection>
+    <Slider class="hidden-pc" background-color="#fff"></Slider>
+
+    <IndexSection></IndexSection>
+    <Slider class="hidden-pc" background-color="#fff"></Slider>
+
+    <IndexSection></IndexSection>
+    <Slider class="hidden-pc" background-color="#fff"></Slider>
+
+    <IndexSection></IndexSection>
+    <Slider class="hidden-pc" background-color="#fff"></Slider>
+
+    <IndexSection></IndexSection>
+    <Slider class="hidden-pc" background-color="#fff"></Slider>-->
+
+    <!-- <ContentWrapper background-color="#f7f7f7">
       <div class="links" style="display: block;">
         <ul>          
           <li><nuxt-link to="/multimedia">多媒體報導</nuxt-link></li>
@@ -21,18 +60,23 @@
           <li><nuxt-link to="/research">研究報告</nuxt-link></li>
         </ul>
       </div>
-    </Container>    
+    </ContentWrapper>     -->
   </div>
 </template>
 
 <script>
-import Container from 'udn-newmedia-vue-components/components/Content.vue'
+// import Container from 'udn-newmedia-vue-components/components/Content.vue'
+import ContentWrapper from '~/Components/Content.vue'
 import Carousel from '~/Components/Carousel.vue'
 import Slider from '~/Components/Slider.vue'
+import HeadBar from '~/Components/HeadBar.vue'
+import Bookmarks from '~/Components/Bookmarks.vue'
+import IndexSection from '~/Components/IndexSection.vue'
+import Slideshow from '~/Components/Slideshow.vue'
 
 export default {
   components: {
-    Carousel, Slider, Container
+    Carousel, Slider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow
   }
 }
 </script>
@@ -64,13 +108,13 @@ export default {
 
 @media screen and (max-width: 1199px){
   .hidden-mobile{
-    display: none;
+    display: none!important;
   } 
 }
 
 @media screen and (min-width: 1200px){
   .hidden-pc{
-    display: none;
+    display: none!important;
   } 
 }
 
@@ -81,5 +125,25 @@ export default {
 
 ul {
   list-style: none;
+}
+
+.padding-for-headbar {
+  padding-top: 46px;
+}
+
+@media screen and (min-width: 1200px){
+  .padding-for-headbar {
+    padding-top: 50px;
+  }
+
+  section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+/*For ie11 and up*/
+  _:-ms-fullscreen, :root .slideshow.ie11 { top: 0!important; }
 }
 </style>
