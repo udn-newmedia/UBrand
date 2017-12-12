@@ -75,7 +75,7 @@ export default {
     }
     @media screen and (min-width: 1025px){
         .container{
-            width: 880px;
+            width: 955px;
         }
         p>br{
             line-height: 50px;

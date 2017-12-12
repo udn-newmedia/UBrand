@@ -1,22 +1,22 @@
 <template>
-  <div class="Slideshow">
+  <div class="Slideshow" :class="{'right': position === 'right','left': position === 'left'}">
     <transition name="fade">
-        <div class="slide-wrapper" v-if='show' key="1">
-          <div class="relative">
-            <img :src='imgSrc1'>
-            <div class="projects">
-                <h4 class="text">{{title1}} {{subtitle1}}</h4>
-            </div>
+      <div class="slide-wrapper" v-if='show' key="1">
+        <div class="relative">
+          <img :src='imgSrc1'>
+          <div class="projects">
+              <h4 class="text">{{title1}} {{subtitle1}}</h4>
           </div>
         </div>
-        <div class="slide-wrapper" v-else key="2">
-          <div class="relative">
-            <img :src='imgSrc2'>
-            <div class="projects">
-                <h4 class="text">{{title1}} {{subtitle1}}</h4>
-            </div>
+      </div>
+      <div class="slide-wrapper" v-else key="2">
+        <div class="relative">
+          <img :src='imgSrc2'>
+          <div class="projects">
+              <h4 class="text">{{title1}} {{subtitle1}}</h4>
           </div>
         </div>
+      </div>
     </transition>
   </div>
 </template>
@@ -27,7 +27,7 @@ import pic2 from '~/assets/pc/bg-3.jpg'
 
 export default {
   name: 'Slideshow',
-  props: ['interval'],
+  props: ['interval', 'position'],
   data: function () {
     return {
       show: true,
@@ -57,7 +57,7 @@ export default {
   },
   mounted: function () {
     setInterval(() => {
-      // this.show = !this.show
+      this.show = !this.show
     }, this.interval)
   }
 }
@@ -76,6 +76,14 @@ export default {
   transform: translateY(-25%);
 }
 
+.Slideshow.right {
+  right: 0;
+}
+
+.Slideshow.left {
+  left: 0;
+}
+
 .slide-wrapper {
   background: white;
   position: absolute;
@@ -91,7 +99,6 @@ img {
 }
 
 .projects {
-  border: solid 2px yellow;
   background: white;
   position: absolute;
   bottom: 0;
@@ -110,7 +117,6 @@ img {
 }
 
 .relative{
-  border: solid 3px red;
   position: relative;
   width: 100%;
   height: 100%;

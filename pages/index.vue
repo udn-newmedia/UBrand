@@ -2,13 +2,10 @@
   <div id="index">
     <HeadBar></HeadBar>
     <ContentWrapper background-color="#f7f7f7">
-      <!-- <h1 class="title">
-        ubrand
-      </h1> -->
-      <!-- <h2 class="subtitle">
-        index
-      </h2> -->
       <div class="padding-for-headbar"></div>
+      <p class="hidden-mobile"><br></p>
+      <IndexCover class="hidden-mobile" :srcCover="coverImage" :coverTitle="coverTitle" :description="coverDescription" :date="coverDate" :label="coverLabel"></IndexCover>
+      <p class="hidden-mobile"><br></p>
       <Carousel class="hidden-mobile" :interval="5000"></Carousel>
     </ContentWrapper>  
     <Slider class="hidden-pc" background-color="#f7f7f7"></Slider>
@@ -18,58 +15,89 @@
     </ContentWrapper>
     
     <section>
-      <slideshow class="hidden-mobile slideshow" :interval="5000" style="right: 0;"></slideshow>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
       <ContentWrapper>
-        <IndexSection background-color="#fff" position="left"></IndexSection>
+        <IndexSection background-color="#fff" position="left">
+          <div slot="intro">
+            <h2>多媒體報導</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/multimedia">看更多...</nuxt-link></button>
+        </IndexSection>
       </ContentWrapper>
       <Slider class="hidden-pc" background-color="#fff"></Slider>
     </section>
 
     <section>
-      <slideshow class="hidden-mobile slideshow" :interval="5000" style="left: 0;"></slideshow>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
       <ContentWrapper>
-        <IndexSection background-color="#fff" position="right"></IndexSection>
+        <IndexSection background-color="#fff" position="right">
+          <div slot="intro">
+            <h2>數據專題</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/data">看更多...</nuxt-link></button>
+        </IndexSection>
       </ContentWrapper>
       <Slider class="hidden-pc" background-color="#fff"></Slider>
     </section>
 
-
-    <!-- <section>
+    <section>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
       <ContentWrapper>
-        <IndexSection background-color="#fff" position="right"></IndexSection>
+        <IndexSection background-color="#fff" position="left">
+          <div slot="intro">
+            <h2>互動新聞</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/interactive">看更多...</nuxt-link></button>
+        </IndexSection>
       </ContentWrapper>
-        <Slider class="hidden-pc" background-color="#fff"></Slider>
-        <slideshow class="hidden-mobile" :interval="5000" style="position:absolute; left: 0;"></slideshow>
-    </section> -->
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
 
-    <!-- 
-    <IndexSection></IndexSection>
-    <Slider class="hidden-pc" background-color="#fff"></Slider>
+    <section>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="right">
+          <div slot="intro">
+            <h2>解釋影音</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/explan">看更多...</nuxt-link></button>
+        </IndexSection>
+      </ContentWrapper>
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
 
-    <IndexSection></IndexSection>
-    <Slider class="hidden-pc" background-color="#fff"></Slider>
+    <section>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="left">
+          <div slot="intro">
+            <h2>原生廣告</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/native">看更多...</nuxt-link></button>
+        </IndexSection>
+      </ContentWrapper>
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
 
-    <IndexSection></IndexSection>
-    <Slider class="hidden-pc" background-color="#fff"></Slider>
-
-    <IndexSection></IndexSection>
-    <Slider class="hidden-pc" background-color="#fff"></Slider>
-
-    <IndexSection></IndexSection>
-    <Slider class="hidden-pc" background-color="#fff"></Slider>-->
-
-    <!-- <ContentWrapper background-color="#f7f7f7">
-      <div class="links" style="display: block;">
-        <ul>          
-          <li><nuxt-link to="/multimedia">多媒體報導</nuxt-link></li>
-          <li><nuxt-link to="/data">數據專題</nuxt-link></li>
-          <li><nuxt-link to="/interactive">互動新聞</nuxt-link></li>
-          <li><nuxt-link to="/explan">解釋影音</nuxt-link></li>
-          <li><nuxt-link to="/native">原生廣告</nuxt-link></li>
-          <li><nuxt-link to="/research">研究報告</nuxt-link></li>
-        </ul>
-      </div>
-    </ContentWrapper>     -->
+    <section>
+      <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
+      <ContentWrapper>
+        <IndexSection background-color="#fff" position="right">
+          <div slot="intro">
+            <h2>研究報告</h2>
+            <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
+          </div>
+          <button><nuxt-link to="/research">看更多...</nuxt-link></button>
+        </IndexSection>
+      </ContentWrapper>
+      <Slider class="hidden-pc" background-color="#fff"></Slider>
+    </section>
+    
   </div>
 </template>
 
@@ -82,10 +110,22 @@ import HeadBar from '~/Components/HeadBar.vue'
 import Bookmarks from '~/Components/Bookmarks.vue'
 import IndexSection from '~/Components/IndexSection.vue'
 import Slideshow from '~/Components/Slideshow.vue'
+import IndexCover from '~/Components/IndexCover.vue'
+
+import coverSrc from '~/assets/pc/bg-1.jpg'
 
 export default {
   components: {
-    Carousel, Slider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow
+    Carousel, Slider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover
+  },
+  data: function () {
+    return {
+      coverImage: coverSrc,
+      coverTitle: '好好說再見 插畫記林杰樑走後1500天',
+      coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
+      coverDate: '2017.11.23',
+      coverLabel: '多媒體報導'
+    }
   }
 }
 </script>
@@ -96,23 +136,6 @@ export default {
   font-family: Arial, "微軟正黑體","Microsoft JhengHei", sans-serif;
   word-wrap: break-word;
   text-align: justify;  
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
 }
 
 @media screen and (max-width: 1199px){

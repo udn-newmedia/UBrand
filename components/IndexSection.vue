@@ -4,12 +4,9 @@
         </div>
         <div class="introContent">
             <div class="anim">bodymovin</div>
-            <div class="intro">
-                <h2>多媒體報導</h2>
-                <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
-            </div>
+            <slot name="intro" class="intro"></slot>
             <div class="more">
-                <button>看更多...</button>
+                <slot></slot>
             </div>
         </div>
         <div class="introContent" :class="{'left': position === 'left'}" v-if="position==='left'">
@@ -50,7 +47,6 @@ export default {
         width: 50%;
     }    
     .introContent.left, .introContent.right{
-        border: solid 1px black;
         height: 0;
     }
 }
