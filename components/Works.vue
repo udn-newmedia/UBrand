@@ -7,7 +7,7 @@
                     <img :src="work.pcPic" alt="">
                 </picture>
                 <div class="work-label">
-                    <div class="graphic">動畫</div>
+                    <img :src="bullet1" alt="" class="graphic">
                     <div class="article">
                         <h4>{{work.title}}<br>{{work.subtitle}}</h4>
                         <p class="description hidden-mobile">{{work.description}}</p>
@@ -17,7 +17,7 @@
             </div>
             <div class="research" :class="{'hidden-mobile': !work.research}">
                 <div class='research-wrapper' :class="{'opacityZero': !work.research}">
-                    <div class="graphic">動畫</div>
+                    <img :src="bullet2" alt="" class="graphic2">                    
                     <div class="article">
                         <h4>研究報告：</h4>
                         <p>{{work.research || fillinblank}}</p>
@@ -33,6 +33,8 @@
 import ContentWrapper from './Content'
 import mobPic1 from '~/assets/mobile/a-1.jpg'
 import pcPic1 from '~/assets/pc/a-1.jpg'
+import bullet1 from '~/assets/a-7.svg'
+import bullet2 from '~/assets/a-8.svg'
 
 export default {
   name: 'Work',
@@ -62,6 +64,8 @@ export default {
     return {
       mobPic1: mobPic1,
       pcPic1: pcPic1,
+      bullet1: bullet1,
+      bullet2: bullet2,
       fillinblank: '把3D模型擺進新聞 學到的3件事',
       datalist: [
         {
@@ -197,12 +201,14 @@ p{
     display: flex;
     flex-direction: row;
 }
-.graphic{
-    border: solid 1px black;
+img.graphic{
     width: 10%;
-    height: 100%;
+    height: 50px;
 }
-
+img.graphic2{
+    width: 10%;
+    height: 30px;
+}
 .article{
     width: 80%;
     padding-left: 10px;
