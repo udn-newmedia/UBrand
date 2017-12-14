@@ -1,9 +1,12 @@
 <template>
-    <div id="bookmarks">
-        <ul>
-            <slot></slot>
-        </ul>
-    </div>
+  <div id="bookmarks">
+    <ContentWrapper :background-color="backgroundColor">
+      <slot name="padding"></slot>
+      <ul>
+          <slot></slot>
+      </ul>
+    </ContentWrapper>
+  </div>
 </template>
 
 <script>
@@ -12,7 +15,7 @@ import ContentWrapper from './Content'
 
 export default {
   name: 'Bookmarks',
-  props: ['color', 'buttonColor'],
+  props: ['color', 'buttonColor', 'backgroundColor'],
   components: {ContentWrapper},
   data: function () {
     return {

@@ -1,5 +1,5 @@
 <template>
-  <div class="Carousel">
+  <div class="Carousel" style="margin-bottom: 40px;">
       <div class="carousel-left">
         <transition name="fade">
             <div class="carousel-wrapper" v-if='show' key="1">

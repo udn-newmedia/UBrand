@@ -3,7 +3,7 @@
         <div class="introContent" :class="{'right': position === 'right'}" v-if="position==='right'">
         </div>
         <div class="introContent">
-            <div class="anim">bodymovin</div>
+            <slot name="anim" class="anim"></slot>
             <slot name="intro" class="intro"></slot>
             <div class="more">
                 <slot></slot>
@@ -37,6 +37,7 @@ export default {
 }
 .indexSection {
     display: flex;
+    margin: 20px 0;
 }
 .introContent {
     height: 100%;

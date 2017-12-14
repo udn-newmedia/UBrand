@@ -1,6 +1,14 @@
 <template>
   <div id="index">
-    <HeadBar></HeadBar>
+    <HeadBar :bookmarkDisplay="stickyAnchors">
+      <Bookmarks class="anchors">
+        <li><a href="." class="hidden-pc"><p>多媒體</p></a><a href="." class="hidden-mobile"><p>多媒體報導</p></a></li>
+        <li><a href="." class="hidden-pc"><p>數據</p></a><a href="." class="hidden-mobile"><p>數據報導</p></a></li>
+        <li><a href="." class="hidden-pc"><p>互動</p></a><a href="." class="hidden-mobile"><p>互動新聞</p></a></li>
+        <li><a href="." class="hidden-pc"><p>影音</p></a><a href="." class="hidden-mobile"><p>解釋影音</p></a></li>
+        <li><a href="." class="hidden-pc"><p>原生廣告</p></a><a href="." class="hidden-mobile"><p>原生廣告</p></a></li>
+      </Bookmarks>
+    </HeadBar>
     <ContentWrapper background-color="#f7f7f7">
       <div class="padding-for-headbar"></div>
       <p class="hidden-mobile"><br></p>
@@ -8,21 +16,22 @@
       <p class="hidden-mobile"><br></p>
       <Carousel class="hidden-mobile" :interval="5000"></Carousel>
     </ContentWrapper>  
-    <Slider class="hidden-pc" background-color="#f7f7f7"></Slider>
-    <ContentWrapper background-color="#fff">
-      <p><br></p>
-      <Bookmarks>
-        <li><a href="." class="hidden-pc">多媒體</a><a href="." class="hidden-mobile">多媒體報導</a></li>
-        <li><a href="." class="hidden-pc">數據</a><a href="." class="hidden-mobile">數據報導</a></li>
-        <li><a href="." class="hidden-pc">互動</a><a href="." class="hidden-mobile">互動新聞</a></li>
-        <li><a href="." class="hidden-pc">影音</a><a href="." class="hidden-mobile">解釋影音</a></li>
-        <li><a href="." class="hidden-pc">原生廣告</a><a href="." class="hidden-mobile">原生廣告</a></li>
-      </Bookmarks>
-    </ContentWrapper>    
+    <CoverSlider class="hidden-pc" background-color="#f7f7f7"></CoverSlider>
+    
+    <Bookmarks id="floatingAnchor" class="anchors">
+      <p slot="padding"><br></p>
+      <li><a href="." class="hidden-pc"><p>多媒體</p></a><a href="." class="hidden-mobile"><p>多媒體報導</p></a></li>
+      <li><a href="." class="hidden-pc"><p>數據</p></a><a href="." class="hidden-mobile"><p>數據報導</p></a></li>
+      <li><a href="." class="hidden-pc"><p>互動</p></a><a href="." class="hidden-mobile"><p>互動新聞</p></a></li>
+      <li><a href="." class="hidden-pc"><p>影音</p></a><a href="." class="hidden-mobile"><p>解釋影音</p></a></li>
+      <li><a href="." class="hidden-pc"><p>原生廣告</p></a><a href="." class="hidden-mobile"><p>原生廣告</p></a></li>
+    </Bookmarks>
+
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="left">
+          <Bodymovin slot="anim" :jsonfile="animMultimedia"></Bodymovin>
           <div slot="intro">
             <h2>多媒體報導</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -30,13 +39,14 @@
           <button><nuxt-link to="/multimedia">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
 
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="right">
+          <Bodymovin slot="anim" :jsonfile="animData"></Bodymovin>
           <div slot="intro">
             <h2>數據專題</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -44,13 +54,14 @@
           <button><nuxt-link to="/data">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
 
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="left">
+          <Bodymovin slot="anim" :jsonfile="animInteractive"></Bodymovin>          
           <div slot="intro">
             <h2>互動新聞</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -58,13 +69,14 @@
           <button><nuxt-link to="/interactive">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
 
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="right">
+          <Bodymovin slot="anim" :jsonfile="animInteractive"></Bodymovin>          
           <div slot="intro">
             <h2>解釋影音</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -72,13 +84,14 @@
           <button><nuxt-link to="/explan">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
 
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="right"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="left">
+          <Bodymovin slot="anim" :jsonfile="animNative"></Bodymovin>          
           <div slot="intro">
             <h2>原生廣告</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -86,13 +99,14 @@
           <button><nuxt-link to="/native">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
 
     <section>
       <slideshow class="hidden-mobile slideshow" :interval="5000" position="left"></slideshow>
       <ContentWrapper background-color="#fff">
         <IndexSection background-color="#fff" position="right">
+          <Bodymovin slot="anim" :jsonfile="animResearch"></Bodymovin>                    
           <div slot="intro">
             <h2>研究報告</h2>
             <p>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</p>
@@ -100,7 +114,7 @@
           <button><nuxt-link to="/research">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
-      <Slider class="hidden-pc" background-color="#fff"></Slider>
+      <ContentSlider class="hidden-pc" background-color="#fff"></ContentSlider>
     </section>
     
     <ContentWrapper background-color="#f7f7f7">
@@ -161,7 +175,8 @@
 // import Container from 'udn-newmedia-vue-components/components/Content.vue'
 import ContentWrapper from '~/Components/Content.vue'
 import Carousel from '~/Components/Carousel.vue'
-import Slider from '~/Components/Slider.vue'
+import CoverSlider from '~/Components/CoverSlider.vue'
+import ContentSlider from '~/Components/ContentSlider.vue'
 import HeadBar from '~/Components/HeadBar.vue'
 import Bookmarks from '~/Components/Bookmarks.vue'
 import IndexSection from '~/Components/IndexSection.vue'
@@ -170,18 +185,30 @@ import IndexCover from '~/Components/IndexCover.vue'
 import EmbededVideo from '~/Components/EmbededVideo.vue'
 import Contact from '~/Components/Contact.vue'
 import Logo from '~/Components/Logo.vue'
+import Bodymovin from '~/Components/Bodymovin.vue'
 
+// pics
 import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
 import introVideo from '~/assets/cover-video0.mp4'
 
+// bodymovin
+// import animMultimedia from '~/static/bodymovin/multimedia/data.json'
+
 export default {
   components: {
-    Carousel, Slider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo
+    Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin
   },
   data: function () {
     return {
+      stickyAnchors: false,
       fbLogo: fbLogo,
+      animMultimedia: 'bodymovin/multimedia/data.json',
+      animData: 'bodymovin/data/data.json',
+      animResearch: 'bodymovin/research/data.json',
+      animInteractive: 'bodymovin/interactive/data.json',
+      animExplan: 'bodymovin/explan/data.json',
+      animNative: 'bodymovin/native/data.json',
       introVideo: introVideo,
       coverImage: coverSrc,
       coverTitle: '好好說再見 插畫記林杰樑走後1500天',
@@ -189,7 +216,31 @@ export default {
       coverDate: '2017.11.23',
       coverLabel: '多媒體報導'
     }
+  },
+  beforeMount: function () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroyed: function () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll: function () {
+      let anchors = document.getElementById('floatingAnchor')
+      let anchorOffsetY = anchors.getBoundingClientRect().top
+      if (anchorOffsetY > 0) {
+        if (this.stickyAnchors) {
+          this.stickyAnchors = false
+          anchors.style.opacity = '1'
+        }
+      } else {
+        if (!this.stickyAnchors) {
+          this.stickyAnchors = true
+          anchors.style.opacity = '0'
+        }
+      }
+    }
   }
+
 }
 </script>
 
@@ -266,6 +317,10 @@ ul {
   transform: translateX(15%);
 }
 
+.anchors {
+  background-color: #fff;
+}
+
 @media screen and (max-width: 768px){
   .fb .fbgroup {
     font-size: 15px;
@@ -288,6 +343,7 @@ ul {
 }
 
 @media screen and (min-width: 1200px){
+
   .padding-for-headbar {
     padding-top: 50px;
   }
@@ -327,5 +383,21 @@ ul {
 
 .nmd p {
   color: #fff;
+}
+
+a{
+  color: #717071;
+  margin: 0;
+  border-bottom: 4px solid transparent;
+}
+
+.anchors a:active, .anchors a:hover{
+  color: #717071;
+  text-decoration: none;
+  border-bottom: 4px solid #e73828;
+}
+
+.anchors a:active, .anchors a:hover p{
+  border-bottom: 4px solid #e73828;
 }
 </style>

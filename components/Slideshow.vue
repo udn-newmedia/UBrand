@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import pic1 from '~/assets/pc/bg-2.jpg'
-import pic2 from '~/assets/pc/bg-3.jpg'
+import pic1 from '~/assets/pc/a1-web.jpg'
+import pic2 from '~/assets/pc/a2-web.jpg'
 
 export default {
   name: 'Slideshow',

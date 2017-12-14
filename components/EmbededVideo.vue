@@ -3,14 +3,14 @@
         <div class="video-contain" :style="{backgroundColor: backgroundColor}">
             <video preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline></video>
             <div class="video-control">
-                <div class="progress hidden-md hidden-lg">
-					<div id="progress-bar" class="progress-bar progress-bar-striped"></div>
-				</div>
-                <!-- <i class="fa fa-play video-play hidden-md hidden-lg"></i> -->
-                <div class="img-say-out volume-text hidden-lg" @click="volumeClick">點按開聲音</div>
-                <i class="fa fa-spinner fa-pulse video-wait"></i>            
-                <i class="fa fa-volume-off volume hidden-lg" @click="volumeClick"></i>
-                <i class="fa fa-repeat replay hidden-lg" @click="replay"></i>
+              <div class="progress hidden-md hidden-lg">
+                <div id="progress-bar" class="progress-bar progress-bar-striped"></div>
+              </div>
+              <!-- <i class="fa fa-play video-play hidden-md hidden-lg"></i> -->
+              <div class="img-say-out volume-text hidden-lg" @click="volumeClick">點按開聲音</div>
+              <i class="fa fa-spinner fa-pulse video-wait"></i>            
+              <i class="fa fa-volume-off volume hidden-lg" @click="volumeClick"></i>
+              <i class="fa fa-repeat replay hidden-lg" @click="replay"></i>
             </div>
         </div>
     </div>
@@ -74,24 +74,26 @@ export default {
   mounted: function () {
     let video = document.querySelector('VIDEO')
     let spinner = document.querySelector('.video-wait')
-    video.onwaiting = function () {
-    //   console.log('wait')
-      spinner.style.opacity = '1'
-    }
-    video.oncanplay = function () {
-    //   console.log('canPlay')
-      spinner.style.opacity = '0'
-    }
-    video.onplay = this.getPlayingProgress()
-    video.onpause = function () {
-    //   console.log('pause')
-      if (this.getProgressTimer) {
-        clearInterval(this.getProgressTimer)
-        this.getProgressTimer = null
+    if (video) {
+      video.onwaiting = function () {
+      //   console.log('wait')
+        spinner.style.opacity = '1'
       }
-    }
-    video.onended = function () {
-      document.getElementById('progress-bar').style.width = 0
+      video.oncanplay = function () {
+      //   console.log('canPlay')
+        spinner.style.opacity = '0'
+      }
+      video.onplay = this.getPlayingProgress()
+      video.onpause = function () {
+      //   console.log('pause')
+        if (this.getProgressTimer) {
+          clearInterval(this.getProgressTimer)
+          this.getProgressTimer = null
+        }
+      }
+      video.onended = function () {
+        document.getElementById('progress-bar').style.width = 0
+      }
     }
   },
   methods: {

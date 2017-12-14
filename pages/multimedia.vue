@@ -1,53 +1,50 @@
 <template>
   <div id="multimedia">
-    <HeadBar>
-      <ContentWrapper background-color="#fff">
-        <p class="hidden-pc"><br></p>
-        <Bookmarks class="bookmark">
-            <li>
-              <nuxt-link to="/multimedia">
-                <p class="hidden-mobile">多媒體報導</p>
-                <p class="hidden-pc">多媒體</p>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/data">
-                <p class="hidden-mobile">數據專題</p>
-                <p class="hidden-pc">數據</p>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/interactive">
-                <p class="hidden-mobile">互動新聞</p>
-                <p class="hidden-pc">互動</p>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/explan">
-                <p class="hidden-mobile">解釋影音</p>
-                <p class="hidden-pc">影音</p>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/native">
-                <p class="hidden-mobile">原生廣告</p>
-                <p class="hidden-pc">原生廣告</p>
-              </nuxt-link>
-            </li>
-            <!-- <li>
-              <nuxt-link to="/research">
-                <p class="hidden-mobile">研究報告</p>
-              </nuxt-link>
-            </li> -->
+    <HeadBar bookmarkDisplay="true">
+        <Bookmarks class="bookmark" background-color="#fff">
+          <li>
+            <nuxt-link to="/multimedia">
+              <p class="hidden-mobile">多媒體報導</p>
+              <p class="hidden-pc">多媒體</p>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/data">
+              <p class="hidden-mobile">數據專題</p>
+              <p class="hidden-pc">數據</p>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/interactive">
+              <p class="hidden-mobile">互動新聞</p>
+              <p class="hidden-pc">互動</p>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/explan">
+              <p class="hidden-mobile">解釋影音</p>
+              <p class="hidden-pc">影音</p>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/native">
+              <p class="hidden-mobile">原生廣告</p>
+              <p class="hidden-pc">原生廣告</p>
+            </nuxt-link>
+          </li>
+          <!-- <li>
+            <nuxt-link to="/research">
+              <p class="hidden-mobile">研究報告</p>
+            </nuxt-link>
+          </li> -->
         </Bookmarks>
-      </ContentWrapper>
     </HeadBar>
     <ContentWrapper background-color="#f7f7f7">
       <div class="padding-for-headbar"></div>
       <p class="hidden-pc"><br></p>
       <p><br></p>
       <div class="cover-wrapper">
-        <div class="anim hidden-mobile">bodymovin</div>
+        <Bodymovin slot="anim hidden-mobile" :jsonfile="animMultimedia"></Bodymovin>
         <div class="title-wrapper">
           <h3 class="title">
             多媒體報導
@@ -98,18 +95,20 @@ import Works from '~/Components/Works.vue'
 import PageCover from '~/Components/PageCover.vue'
 import Contact from '~/Components/Contact.vue'
 import Logo from '~/Components/Logo.vue'
+import Bodymovin from '~/Components/Bodymovin.vue'
 
 import coverSrc from '~/assets/pc/a-bg.jpg'
 import ball from '~/assets/a-6.svg'
 
 export default {
   components: {
-    ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo
+    ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
   },
   data: function () {
     return {
       coverImage: coverSrc,
       ball: ball,
+      animMultimedia: 'bodymovin/multimedia/data.json',
       coverTitle: '好好說再見 插畫記林杰樑走後1500天',
       coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
       coverDate: '2017.11.23',

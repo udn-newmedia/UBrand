@@ -16,7 +16,7 @@
                 </div>
             </div>
         </ContentWrapper>
-        <slot></slot>
+        <slot v-if="bookmarkDisplay"></slot>
     </div>
 </template>
 
@@ -32,7 +32,7 @@ import ContentWrapper from './Content'
 
 export default {
   name: 'Headbar',
-  props: ['color', 'buttonColor'],
+  props: ['color', 'buttonColor', 'bookmarkDisplay'],
   components: {ContentWrapper},
   data: function () {
     return {

@@ -24,7 +24,7 @@ export default {
     .chart-title{
         font-size: 28px;
     }
-    p{
+    p,a{
         font-size: 21px;
         margin: 0;
     }
@@ -50,7 +50,7 @@ export default {
         .chart-title{
             font-size: 26px;
         }
-        p{
+        p,a{
             font-size: 18px;
             line-height: 32px;
         }
@@ -68,7 +68,7 @@ export default {
         h2{
             font-size: 30px;
         }
-        p{
+        p,a{
             font-size: 20px;
             line-height: 32px;
         }

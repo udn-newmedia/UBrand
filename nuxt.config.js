@@ -1,4 +1,8 @@
 module.exports = {
+  router: {
+    base: '/ubrand/'
+  },
+
   /*
   ** Headers of the page
   */
@@ -13,7 +17,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: 'https://udn.com/upf/newmedia/image/udn-icon.ico' },
       { rel: 'stylesheet', href: 'https://udn.com/upf/newmedia/css/bootstrap.min.css' },
       { rel: 'stylesheet', href: 'https://udn.com/upf/newmedia/css/font-awesome.min.css' }
-
     ]
   },
   /*
@@ -27,7 +30,6 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({

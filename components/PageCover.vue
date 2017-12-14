@@ -67,7 +67,7 @@ h2, p{
 .coverlabel{
     font-size: 12px;
     color: white;
-    background: red;
+    background: linear-gradient(to right,#c13432 ,#d3611c);
     padding: 5px 10px;
     border-radius: 100px;
 }
