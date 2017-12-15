@@ -76,14 +76,14 @@ export default {
 @media screen and (max-width: 1199px){
   ul{
       margin: 0;
-  } 
+  }
 }
 
 ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style: none;
     padding: 0;
 }

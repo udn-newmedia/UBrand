@@ -64,6 +64,11 @@ export default {
 </script>
 
 <style scoped>
+
+.fluid .container {
+    padding: 0;
+}
+
 .Contact {
     position: relative;
     display: block;

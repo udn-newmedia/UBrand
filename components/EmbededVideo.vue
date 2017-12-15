@@ -1,10 +1,10 @@
 <template>
     <div class="videocontainer" id="thevideo">
         <div class="video-contain" :style="{backgroundColor: backgroundColor}">
-            <video preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline></video>
+            <video id="introVideo" preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline></video>
             <div class="video-control">
               <div class="progress hidden-md hidden-lg">
-                <div id="progress-bar" class="progress-bar progress-bar-striped"></div>
+                <div id="progress-bar" class="progress-bar progress-bar-striped" ref="progressbar"></div>
               </div>
               <!-- <i class="fa fa-play video-play hidden-md hidden-lg"></i> -->
               <div class="img-say-out volume-text hidden-lg" @click="volumeClick">點按開聲音</div>
@@ -69,10 +69,15 @@ export default {
     window.addEventListener('scroll', this.onScroll)
   },
   beforeDestroyed: function () {
+    clearInterval(this.getProgressTimer)
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  destroyed: function () {
+    clearInterval(this.getProgressTimer)
     window.removeEventListener('scroll', this.onScroll)
   },
   mounted: function () {
-    let video = document.querySelector('VIDEO')
+    let video = document.getElementById('introVideo')
     let spinner = document.querySelector('.video-wait')
     if (video) {
       video.onwaiting = function () {
@@ -98,10 +103,10 @@ export default {
   },
   methods: {
     onScroll: function () {
-      let thisvideo = document.querySelector('VIDEO')
+      let thisvideo = document.getElementById('introVideo')
       let thisvideoTop = thisvideo.getBoundingClientRect().top
       let thisvideoBottom = thisvideo.getBoundingClientRect().bottom
-      if (thisvideoTop < 200 && thisvideoBottom > 200) {
+      if (thisvideoTop < 300 && thisvideoBottom > 300) {
         if (thisvideo.paused) {
           thisvideo.play()
         }
@@ -112,7 +117,7 @@ export default {
       }
     },
     getPlayingProgress: function () {
-      let thisvideo = document.querySelector('VIDEO')
+      let thisvideo = document.getElementById('introVideo')
       let self = this
       if (this.getProgressTimer == null) {
         this.getProgressTimer = setInterval(function () {
@@ -138,7 +143,7 @@ export default {
       }
     },
     volumeClick: function () {
-      var video = document.querySelector('video')
+      var video = document.getElementById('introVideo')
       if (video.muted) {
         video.muted = false
         document.querySelector('.volume').classList.remove('fa-volume-off')
@@ -156,7 +161,7 @@ export default {
     //   });
     },
     replay: function () {
-      let thisvideo = document.querySelector('VIDEO')
+      let thisvideo = document.getElementById('introVideo')
       thisvideo.currentTime = 0
       document.getElementById('progress-bar').style.width = 0
       thisvideo.play()

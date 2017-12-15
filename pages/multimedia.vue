@@ -1,76 +1,109 @@
 <template>
   <div id="multimedia">
-    <HeadBar bookmarkDisplay="true">
-        <Bookmarks class="bookmark" background-color="#fff">
-          <li>
-            <nuxt-link to="/multimedia">
-              <p class="hidden-mobile">多媒體報導</p>
-              <p class="hidden-pc">多媒體</p>
-            </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/data">
-              <p class="hidden-mobile">數據專題</p>
-              <p class="hidden-pc">數據</p>
-            </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/interactive">
-              <p class="hidden-mobile">互動新聞</p>
-              <p class="hidden-pc">互動</p>
-            </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/explan">
-              <p class="hidden-mobile">解釋影音</p>
-              <p class="hidden-pc">影音</p>
-            </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/native">
-              <p class="hidden-mobile">原生廣告</p>
-              <p class="hidden-pc">原生廣告</p>
-            </nuxt-link>
-          </li>
-          <!-- <li>
-            <nuxt-link to="/research">
-              <p class="hidden-mobile">研究報告</p>
-            </nuxt-link>
-          </li> -->
-        </Bookmarks>
+    <HeadBar 
+    bookmark-display="true">
+      <Bookmarks 
+        class="bookmark" 
+        background-color="#fff">
+        <li>
+          <nuxt-link 
+            to="/multimedia" 
+            class="now">
+            <p class="hidden-mobile">多媒體報導</p>
+            <p class="hidden-pc">多媒體</p>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/data">
+            <p class="hidden-mobile">數據專題</p>
+            <p class="hidden-pc">數據</p>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/interactive">
+            <p class="hidden-mobile">互動新聞</p>
+            <p class="hidden-pc">互動</p>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/explan">
+            <p class="hidden-mobile">解釋影音</p>
+            <p class="hidden-pc">影音</p>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/native">
+            <p class="hidden-mobile">原生廣告</p>
+            <p class="hidden-pc">原生廣告</p>
+          </nuxt-link>
+        </li>
+      <!-- <li>
+        <nuxt-link to="/research">
+          <p class="hidden-mobile">研究報告</p>
+        </nuxt-link>
+      </li> -->
+      </Bookmarks>
     </HeadBar>
-    <ContentWrapper background-color="#f7f7f7">
-      <div class="padding-for-headbar"></div>
+    <ContentWrapper 
+      background-color="#f7f7f7"
+      class="fluid">
+      <div class="padding-for-headbar"/>
       <p class="hidden-pc"><br></p>
       <p><br></p>
       <div class="cover-wrapper">
-        <Bodymovin slot="anim hidden-mobile" :jsonfile="animMultimedia"></Bodymovin>
+        <img 
+          class="anim hidden-mobile" 
+          :src="covericon">
         <div class="title-wrapper">
-          <h3 class="title">
+          <h1 class="title hidden-mobile">
+            多媒體報導
+          </h1>
+          <h3 class="title hidden-pc">
             多媒體報導
           </h3>
           <p class="subtitle">
-            企畫、深度採訪以多媒體形式呈現，並流暢手機閱讀體驗。
+            企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗。
           </p>
         </div>
-        <div class="anim hidden-pc">bodymovin</div>
+        <img 
+          class="anim hidden-pc" 
+          :src="covericon">
       </div>
-      <PageCover class="hidden-mobile" :srcCover="coverImage" :coverTitle="coverTitle" :description="coverDescription" :date="coverDate" :label="coverLabel" :report="coverReport"></PageCover>
+      <p class="hidden-mobile"><br></p>
+      <PageCover 
+        class="hidden-mobile" 
+        :src-cover="coverImage" 
+        :cover-title="coverTitle" 
+        :description="coverDescription" 
+        :date="coverDate" 
+        :label="coverLabel" 
+        :report="coverReport"/>
       <p class="hidden-mobile"><br></p>
     </ContentWrapper>
-    <ContentWrapper background-color="#fff" style="position: relative; overflow: hidden;">
-      <Works></Works>
+    <ContentWrapper 
+      class="worksContentWrapper fluid"
+      style="position: relative; overflow: hidden;">
+      <p class="hidden-mobile"><br></p>
+      <Works/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
       <p><br></p>
       <p><br></p>
       <p><br></p>
-      <img class="bottomBall" :src='ball' alt="">
+      <div class="onetenth hidden-pc"/>
+      <img 
+        class="bottomBall" 
+        :src="ball">
     </ContentWrapper>
-    <Contact background-color="#3e3a39"></Contact>
 
-    <ContentWrapper background-color="#3e3a39">
+    <Contact 
+      background-color="#3e3a39"
+      class="fluid"/>
+
+    <ContentWrapper 
+      background-color="#3e3a39"
+      class="fluid">
       <p><br></p>
       <p><br></p>
       <div class="nmd">
@@ -79,7 +112,7 @@
         <p>TEL : 02-8692-5588 # 2302</p>
         <p>ubrandstudio@udngroup.com.tw</p>
       </div>
-      <Logo></Logo>
+      <Logo/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
@@ -108,7 +141,7 @@ export default {
     return {
       coverImage: coverSrc,
       ball: ball,
-      animMultimedia: 'bodymovin/multimedia/data.json',
+      covericon: 'bodymovin/multimedia/data.jpg',
       coverTitle: '好好說再見 插畫記林杰樑走後1500天',
       coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
       coverDate: '2017.11.23',
@@ -152,9 +185,7 @@ ul {
 }
 
 .anim{
-  border: solid 1px black;
-  width: 30%;
-  height: 100px;
+  width: 120px;
 }
 
 .cover-wrapper{
@@ -171,16 +202,27 @@ ul {
   padding-top: 46px;
 }
 
+.worksContentWrapper {
+  background-color: #f7f7f7;
+}
+
 @media screen and (min-width: 1200px){
   .padding-for-headbar {
     padding-top: 50px;
   }
   .title-wrapper{
-    width: 85%;
+    width: 82%;
   }
   .anim{
-    width: 10%;
-    height: 100px;
+    width: 150px;
+  }
+  
+  .worksContentWrapper {
+    background-color: #fff;
+  }
+
+  .fluid .container {
+    padding: 0;
   }
 }
 
@@ -188,6 +230,9 @@ ul {
   .hidden-mobile{
     display: none!important;
   } 
+  .onetenth{
+    height: 10vh;
+  }
 }
 
 .nmd p{
@@ -197,15 +242,17 @@ ul {
 .bottomBall{
  position: absolute; 
  width: 60%;
- right: -20%; 
- bottom: -60px;
+ right: 0;
+ bottom: 0;
+ transform: rotate(180deg) translate(-30%) translateY(-30%)
 }
 
 @media screen and (min-width: 1200px){
   .bottomBall{
     width: 25%;
-    right: -5%;
-    bottom: -3%;
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg) translate(-30%) translateY(-30%)
   }
 }
 
@@ -213,15 +260,20 @@ ul {
   color: #717071;
   margin: 0;
   border-bottom: 4px solid transparent;
+  font-size: 15px;
 }
 
-.bookmark a:active, a:hover{
+@media screen and (min-width: 1200px){
+  .bookmark p{
+    font-size: 17px;
+  }
+}
+
+a:link, a:active, a:hover, a:visited{
   text-decoration: none;
 }
 
-.bookmark a:active, a:hover p{
+.bookmark a:active, a:hover p, .bookmark .now p{
   border-bottom: 4px solid #e73828;
 }
-
-
 </style>

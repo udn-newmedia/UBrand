@@ -5,7 +5,7 @@
             <span class="coverlabel">{{label}}</span>
             <h2><b>{{title}}<br>{{subtitle}}</b></h2>
             <h3 class="description">{{description}}</h3>
-            <p>{{date}}</p>
+            <h4 class="date">{{date}}</h4>
         </div>
     </div>
 </template>
@@ -28,6 +28,19 @@ export default {
 </script>
 
 <style scoped>
+h2{
+    margin-top: 10px;
+    margin-bottom: 0;
+    line-height: 1.33;
+}
+h3{
+    margin-top: 10px;
+    font-size: 21px;
+    line-height: 1.52;
+}
+h4.date{
+    color: #717071;
+}
 .indexCover{
     position: relative;
 }

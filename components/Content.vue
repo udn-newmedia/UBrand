@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style scoped>
+    h1{
+        font-size: 45px;
+    }
 
     h2{
         text-align: left;
@@ -41,9 +44,10 @@ export default {
     }
     @media screen and (max-width: 767px){
         .container{
-            width: 100%;
-            height: 100%;
+            width: 334px;
+            padding: 0;
         }
+        
         h2{
             font-size: 26px;
         }

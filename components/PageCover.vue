@@ -7,20 +7,20 @@
                 <div class="coverLabel">
                     <h2><b>{{title}}<br>{{subtitle}}</b></h2>
                     <h3 class="description">{{description}}</h3>
-                    <p>{{date}}</p>
+                    <h4 class="date">{{date}}</h4>
                 </div>
             </div>
-            <div class="row" style="align-items: center;">
-                <img :src="bullet2" alt="" class="bullet2">
+            <div class="row">
+                <img :src="bullet2" class="bullet2">
                 <div class="coverLabel">
-                    <p class="report"><b>研究報告：</b>{{report}}</p>
+                    <u><h4 class="report"><b>研究報告：</b>{{report}}</h4></u>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script scoped>
 
 import ContentWrapper from './Content'
 import bullet1 from '~/assets/a-7.svg'
@@ -42,8 +42,13 @@ export default {
 </script>
 
 <style scoped>
-h2, p{
+h2, p, h4{
     margin-top: 0;
+}
+
+h4.report{
+    line-height: 1.41;
+    text-underline-position: under;
 }
 
 .indexCover{
@@ -56,11 +61,11 @@ h2, p{
     transform: translateY(-50%);
     right: 0;
     background: white;
-    width: 45%;
+    width: 430px;
     padding: 20px;
 }
 
-.description{
+.description, .date{
     color: #717071;
 }
 
@@ -75,6 +80,7 @@ h2, p{
 .row{
     display: flex;
     justify-content: space-between;
+    transform: translateX(-8px);
 }
 
 p.report{

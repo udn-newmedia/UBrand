@@ -4,9 +4,11 @@
         </div>
         <div class="introContent">
             <slot name="anim" class="anim"></slot>
-            <slot name="intro" class="intro"></slot>
-            <div class="more">
-                <slot></slot>
+            <div class="introWrapper">
+                <slot name="intro" class="intro"></slot>
+                <div class="more">
+                    <slot></slot>
+                </div>
             </div>
         </div>
         <div class="introContent" :class="{'left': position === 'left'}" v-if="position==='left'">
@@ -31,12 +33,10 @@ export default {
 </script>
 
 <style scoped>
-.anim {
-    height: 100px;
-    border: solid 1px black;
-}
+
 .indexSection {
     display: flex;
+    justify-content: space-between;
     margin: 20px 0;
 }
 .introContent {
@@ -44,11 +44,44 @@ export default {
 }
 
 @media screen and (min-width:1200px){
+    .anim {
+        height: 191px;
+        margin-bottom: 40px;
+    }
     .introContent {
-        width: 50%;
+        position: relative;
+        width: 100%;
     }    
+
     .introContent.left, .introContent.right{
         height: 0;
     }
 }
+
+.introWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.introWrapper .intro{
+    width: 65%;
+}
+
+.introWrapper .more{
+    width: 25%;
+    align-self: flex-end;
+}
+
+@media screen and (min-width:1200px){
+    .introWrapper{
+        width: 100%;
+        flex-direction: column;
+    }
+    .introWrapper .more{
+        margin-top: 30px;
+        align-self: flex-start;
+    }
+}
+
+
 </style>

@@ -68,9 +68,13 @@ export default {
   border: solid 1px black;
 } */
 
+h4{
+  font-size: 25px;
+}
+
 .Slideshow {
   position:absolute; 
-  width: 50%;
+  width: 45%;
   height: 100%;
   top: 50%; 
   transform: translateY(-25%);
@@ -101,7 +105,7 @@ img {
 .projects {
   background: white;
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   right: 50%;
   transform: translateX(50%);
   width: 80%;

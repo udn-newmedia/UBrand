@@ -1,26 +1,26 @@
 <template>
   <div class="Slider" :style="{backgroundColor: backgroundColor}">
     <div class="slider-wrapper">
-        <div class="sliders clearfix" ref="sliders" 
-              :style="{
-                'transition' : 'none' 
-              }">
-            <div v-for="img in list" :key="img.name" class="slider">
-                <a>
-                    <div class="projects">
-                      <img :src="img.pic">
-                      <div class="texts">
-                        <h2>{{img.name}}</h2>
-                      </div>
-                    </div>
-                </a>
+      <div class="sliders clearfix" ref="sliders" 
+          :style="{
+            'transition' : 'none' 
+          }">
+        <div v-for="img in list" :key="img.name" class="slider">
+          <a>
+            <div class="projects">
+              <img :src="img.pic">
+              <div class="texts">
+                <h2>{{ img.name }}</h2>
+              </div>
             </div>
+          </a>
         </div>
-        <ul class="slider-nav">
-            <li v-for="n in list.length-3" :key="n.id">
-                <span class="circle" :class="{'active': n === current}"></span>
-            </li>
-        </ul>
+      </div>
+      <ul class="slider-nav">
+        <li v-for="n in list.length-3" :key="n.id">
+          <span class="circle" :class="{'active': n === current}"></span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

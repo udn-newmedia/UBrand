@@ -9,8 +9,9 @@
                 <div class="work-label">
                     <img :src="bullet1" alt="" class="graphic">
                     <div class="article">
-                        <h4>{{work.title}}<br>{{work.subtitle}}</h4>
-                        <p class="description hidden-mobile">{{work.description}}</p>
+                        <h4 class="bold">{{work.title}}</h4>
+                        <h4 class="bold">{{work.subtitle}}</h4>
+                        <h4 class="description hidden-mobile">{{work.description}}</h4>
                         <p class="date hidden-mobile">{{work.date}}</p>
                     </div>
                 </div>
@@ -19,13 +20,14 @@
                 <div class='research-wrapper' :class="{'opacityZero': !work.research}">
                     <img :src="bullet2" alt="" class="graphic2">                    
                     <div class="article">
-                        <h4>研究報告：</h4>
-                        <p>{{work.research || fillinblank}}</p>
+                        <h4 class="bold hidden-pc">研究報告：</h4>
+                        <h4 class="hidden-pc">{{work.research || fillinblank}}</h4>
+                        <p class="bold hidden-mobile report"><b>研究報告：</b>{{work.research || fillinblank}}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <button id="seemore" @click="seeMore"><p>看更多...</p></button>
+        <button id="seemore" @click="seeMore"><h4>看更多...</h4></button>
     </div>
 </template>
 
@@ -151,24 +153,61 @@ export default {
 p{
     margin: 0;
 }
+
+@media screen and (min-width: 1200px){
+    h4{
+        font-size: 21px;
+        margin-top: 0;
+    }
+
+    .bold{
+        font-weight: bold;
+    }
+
+    p{
+        font-size: 17px;
+    }
+
+    p.report{
+        line-height: 1.41;
+        text-decoration: underline;
+        text-underline-position: under;
+    }
+}
+
 #works{
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
+
+@media screen and (min-width: 1200px){
+    #works{
+        justify-content: space-between;
+    } 
+}
+
 .work .work-label, .research{
     padding: 10px;
 }
 .work{
     display: flex;
     flex-direction: column;
+}
+@media screen and (min-width: 1200px){
+    .work{
+        box-shadow: -2.2px 2px 7px 0 rgba(85, 84, 84, 0.04);
+    }
+}
+
+.work-label{
     background: white;
 }
 .work-and-research{
     display: flex;
     flex-direction: column;
-    margin: 30px 0;
+    margin: 20px 0;
     width: 334px;
 }
 .work-and-research img{
@@ -187,10 +226,14 @@ p{
 .research {
     background: white;
 }
+@media screen and (max-width: 1199px){
+    .research{
+        margin-top: 10px;
+    } 
+}
 .research-wrapper{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
 }
 @media screen and (min-width: 1200px){
     .research-wrapper{
@@ -229,7 +272,7 @@ img.graphic2{
   outline:none;
 }
 
-#seemore p{
+#seemore h4{
   border-bottom: 4px solid #e73828;
 }
 

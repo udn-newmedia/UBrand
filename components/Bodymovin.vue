@@ -1,28 +1,19 @@
 <template>
-    <div id="bodymovin" ref="bodymovin"></div>
+  <video :src="jsonfile" muted autoplay loop></video>
 </template>
 
 <script>
 
-if (process.browser) {
-  var bodymovin = require('lottie-web')
-}
-
 export default {
-  name: 'Bodymovin',
+  name: 'BodymovinUsingVideo',
   props: ['jsonfile'],
   mounted: function () {
-    bodymovin.loadAnimation({
-      container: this.$refs.bodymovin,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: this.jsonfile
-    })
   }
 }
 </script>
 
 <style scoped>
-
+  video{
+    width: 100%;
+  }
 </style>

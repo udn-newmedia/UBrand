@@ -6,16 +6,14 @@
               <img :src='imgSrc1'>
               <div class="projects">
                   <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                  <!-- <p class="date">{{date1}}</p> -->
-                  <p class="date">1</p>
+                  <h4 class="date">{{date1}}</h4>
               </div>
             </div>
             <div class="carousel-wrapper" v-else key="2">
               <img :src='imgSrc2'>
               <div class="projects">
                   <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                  <!-- <p class="date">{{date1}}</p> -->
-                  <p class="date">2</p>
+                  <h4 class="date">{{date2}}</h4>
               </div>
             </div>
         </transition>
@@ -26,16 +24,14 @@
             <img :src='imgSrc2'>
             <div class="projects">
                 <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                <!-- <p class="date">{{date1}}</p> -->
-                <p class="date">3</p>
+                <h4 class="date">{{date3}}</h4>
             </div>
           </div>
           <div class="carousel-wrapper" v-else key="4">
             <img :src='imgSrc1'>
             <div class="projects">
                 <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                <!-- <p class="date">{{date1}}</p> -->
-                <p class="date">4</p>
+                <h4 class="date">{{date4}}</h4>
             </div>
           </div>
         </transition>
@@ -58,6 +54,9 @@ export default {
       title1: '好好說再見',
       subtitle1: '插畫記林杰樑走後1500天',
       date1: '2017.11.23',
+      date2: '2017.11.24',
+      date3: '2017.11.25',
+      date4: '2017.11.26',
       list: [
         {
           name: 'project1',
@@ -79,7 +78,7 @@ export default {
   },
   mounted: function () {
     setInterval(() => {
-      this.show = !this.show
+      // this.show = !this.show
     }, this.interval)
   }
 }
@@ -89,6 +88,14 @@ export default {
 /* * {
   border: solid 1px black;
 } */
+
+h4{
+  font-size: 17px;
+}
+
+h4.text{
+  font-weight: bold;
+}
 
 .Carousel {
   position: relative;
@@ -127,8 +134,7 @@ img {
 }
 
 .projects {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 20px;
 }
 
 .fade-enter-active, .fade-leave-active {

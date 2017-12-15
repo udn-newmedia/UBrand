@@ -213,7 +213,7 @@ ul.slider-nav li .circle.active{
 .projects .texts{
   background: white;
   margin-right: 9px;
-  padding: 10px;
+  padding: 15px;
 }
 
 h2{

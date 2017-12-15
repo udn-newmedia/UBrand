@@ -100,6 +100,7 @@ export default {
     float: right;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 #hbutton {
@@ -204,7 +205,7 @@ export default {
     }
     .icons img{
         height: 24px;
-        margin: 0 5px;
+        margin-left: 5px;
     }
     #hbutton-contain {
         top: 46px;
