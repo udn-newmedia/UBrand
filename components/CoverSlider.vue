@@ -14,6 +14,7 @@
                         <h2>{{work.title}}</h2>
                         <h2>{{work.subtitle}}</h2>
                         <p class="date">{{work.date}}</p>
+                        <CircleAnim triggerPoint="0"/>
                       </div>
                     </div>
                 </a>
@@ -30,6 +31,7 @@
 
 <script>
 import pic1 from '~/assets/mobile/bg-1.jpg'
+import CircleAnim from '~/Components/CircleAnim.vue'
 
 if (process.browser) {
   var Hammer = require('Hammerjs')
@@ -38,6 +40,9 @@ if (process.browser) {
 export default {
   name: 'Slider',
   props: ['interval', 'background-color'],
+  components: {
+    CircleAnim
+  },
   computed: {
     list: function () {
       this.datalist.forEach(ele => {
@@ -80,8 +85,6 @@ export default {
         }
       ]
     }
-  },
-  components: {
   },
   mounted: function () {
     this.list.push(this.list[0])
@@ -211,6 +214,7 @@ ul.slider-nav li .circle.active{
 }
 
 .projects .texts{
+  position: relative;
   background: white;
   margin-right: 9px;
   padding: 15px;

@@ -54,7 +54,10 @@
         </li>
       </Bookmarks>
     </HeadBar>
-    <ContentWrapper background-color="#f7f7f7">
+    <ContentWrapper 
+      background-color="#f7f7f7" 
+      style="position: relative; overflow: hidden;">
+
       <div class="padding-for-headbar"/>
       <p class="hidden-mobile"><br></p>
       <IndexCover 
@@ -68,6 +71,14 @@
       <Carousel 
         class="hidden-mobile" 
         :interval="5000"/>
+      <RectAnim 
+        class="hidden-mobile"
+        :trigger-point="0"
+        position="right"/>
+      <BallAnim
+        class="hidden-mobile"
+        :trigger-point="0"
+        position="left"/>
     </ContentWrapper>  
     <CoverSlider 
       class="hidden-pc" 
@@ -131,24 +142,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="left">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animMultimedia"/>
+            :jsonfile="animMultimedia"/> -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animMultimedia" 
+            muted /> 
           <div 
             slot="intro" 
-            class="intro">
+            class="intro hideAtStart">
             <h1>多媒體報導</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/multimedia">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/multimedia">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -158,22 +174,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="right">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animData"/>
-          <div slot="intro" class="intro">
+            :jsonfile="animData"/> -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animData" 
+            muted/> 
+          <div 
+            slot="intro" 
+            class="intro hideAtStart">
             <h1>數據專題</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/data">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/data">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -183,22 +206,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="left">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animInteractive"/>          
-          <div slot="intro" class="intro">
+            :jsonfile="animInteractive"/>      -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animInteractive" 
+            muted/>      
+          <div 
+            slot="intro" 
+            class="intro hideAtStart">
             <h1>互動新聞</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/interactive">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/interactive">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -208,22 +238,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="right">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animExplan"/>          
-          <div slot="intro" class="intro">
+            :jsonfile="animExplan"/>  -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animExplan" 
+            muted/>               
+          <div 
+            slot="intro" 
+            class="intro hideAtStart">
             <h1>解釋影音</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/explan">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/explan">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -233,22 +270,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="left">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animNative"/>          
-          <div slot="intro" class="intro">
+            :jsonfile="animNative"/>     -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animNative" 
+            muted/>                     
+          <div 
+            slot="intro" 
+            class="intro hideAtStart">
             <h1>原生廣告</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/native">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/native">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -258,22 +302,29 @@
 
     <section>
       <slideshow 
-        class="hidden-mobile slideshow" 
+        class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
           position="right">
-          <Bodymovin 
+          <!-- <Bodymovin 
             slot="anim" 
             class="anim"
-            :jsonfile="animResearch"/>                    
-          <div slot="intro" class="intro">
+            :jsonfile="animResearch"/>     -->
+          <video 
+            slot="anim"
+            class="anim" 
+            :src="animResearch" 
+            muted/>                    
+          <div 
+            slot="intro" 
+            class="intro hideAtStart">
             <h1>研究報告</h1>
             <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button><nuxt-link to="/research">看更多...</nuxt-link></button>
+          <button class="hideAtStart"><nuxt-link to="/research">看更多...</nuxt-link></button>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -282,15 +333,22 @@
       <div class="hidden-pc onetenth"/>
     </section>
     
-    <ContentWrapper background-color="#f7f7f7">
+    <ContentWrapper 
+      background-color="#f7f7f7" 
+      id="aboutSection"
+      style="position: relative;">
       <p><br></p>
       <p><br></p>
       <div class="about">
-        <div class="anim hidden-mobile">動畫</div>
+        <div class="anim hidden-mobile">
+          <CircleAnim :trigger-point="aboutSectionOffset"/>
+        </div>
         <div class="info">
           <div class="infoTitle">
             <h2><b>未來的媒體 <br class="hidden-pc">用創新說故事</b></h2>
-            <div class="anim hidden-pc">動畫</div>
+            <div class="anim hidden-pc" style="transform: translateY(60%);">
+              <CircleAnim :trigger-point="aboutSectionOffset"/>              
+            </div>
           </div>
           <p><br></p>
           <p>新媒體中心是聯合報新聞部的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看動新聞議題。<br class="hidden-mobile"></p>
@@ -309,6 +367,10 @@
           </div>
         </div>
       </div>
+      <RectAnim 
+        class="hidden-mobile"
+        :trigger-point="aboutSectionOffset"
+        position="left"/>
     </ContentWrapper>
 
     <section class="fullpage backgroundGray">
@@ -353,20 +415,27 @@ import EmbededVideo from '~/Components/EmbededVideo.vue'
 import Contact from '~/Components/Contact.vue'
 import Logo from '~/Components/Logo.vue'
 import Bodymovin from '~/Components/Bodymovin.vue'
+import CircleAnim from '~/Components/CircleAnim.vue'
+import RectAnim from '~/Components/RectAnim.vue'
+import BallAnim from '~/Components/BallAnim.vue'
 
 // pics
 import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
+
 import introVideo from '~/assets/Ubrandstudio.mp4'
+
+var AboutSectionOffset
 
 export default {
   components: {
-    Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin
+    Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
   },
   data: function () {
     return {
       stickyAnchors: false,
       fbLogo: fbLogo,
+      aboutSectionOffset: AboutSectionOffset,
       animMultimedia: 'bodymovin/multimedia/data.mp4',
       animData: 'bodymovin/data/data.mp4',
       animResearch: 'bodymovin/research/data.mp4',
@@ -390,8 +459,12 @@ export default {
   destroyed: function () {
     window.removeEventListener('scroll', this.onScroll)
   },
+  mounted: function () {
+    this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
+  },
   methods: {
     onScroll: function () {
+      // floating or sticky anchors
       let anchors = document.getElementById('floatingAnchor')
       let anchorOffsetY = anchors.getBoundingClientRect().top
 
@@ -404,6 +477,24 @@ export default {
         if (!this.stickyAnchors) {
           this.stickyAnchors = true
           anchors.style.opacity = '0'
+        }
+      }
+
+      // section animation
+      let section = document.getElementsByTagName('section')
+      for (let i = 0; i < section.length; i++) {
+        let sectionOffsetY = section[i].getBoundingClientRect().top
+        if (sectionOffsetY < 200) {
+          if (section[i].querySelector('video').paused) {
+            section[i].querySelector('video').play()
+          }
+          if (window.innerWidth > 1200) {
+            if (section[i].querySelector('.hideAtStart')) {
+              Array.prototype.forEach.call(section[i].querySelectorAll('.hideAtStart'), function (el) {
+                el.classList.remove('hideAtStart')
+              })
+            }
+          }
         }
       }
     }
@@ -508,12 +599,15 @@ ul {
 }
 
 .about .anim {
-  border: solid 1px black;
+  position: relative;  
   width: 20%;
-  height: 50px;
 }
 
 @media screen and (min-width: 1200px){
+
+  .about .anim {
+    transform: translateX(-60%);
+  }
 
   .padding-for-headbar {
     padding-top: 50px;
@@ -551,9 +645,6 @@ ul {
   .infoTitle h2 {
     width: 100%;
   }
-
-/* For ie11 and up */
-  /* _:-ms-fullscreen, :root .slideshow.ie11 { top: 0!important; } */
 }
 
 .nmd p {
@@ -609,5 +700,25 @@ a{
     line-height: 1.52;
   }
 }
+
+@media screen and (min-width: 1200px){
+  section .hideAtStart{
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  .slideshow.hideAtStart.hideAtStart{
+    transform: translateY(0);
+  }
+}
+
+video.anim{
+  width: 100%;
+}
+
+@media all and (-ms-high-contrast:none)
+{
+  video.anim { width: auto } /* IE10 */
+  *::-ms-backdrop, video.anim { width: auto } /* IE11 */
+}  
 
 </style>

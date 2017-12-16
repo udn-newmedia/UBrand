@@ -1,23 +1,24 @@
 <template>
     <div class="indexCover">
-        <img :src='srcCover' alt="">
+        <img :src="srcCover" alt="">
         <div class="titleCard">
             <span class="coverlabel">{{label}}</span>
             <h2><b>{{title}}<br>{{subtitle}}</b></h2>
             <h3 class="description">{{description}}</h3>
             <h4 class="date">{{date}}</h4>
         </div>
+        <CircleAnim triggerPoint="0"/>
     </div>
 </template>
 
 <script>
-
 import ContentWrapper from './Content'
+import CircleAnim from './CircleAnim'
 
 export default {
   name: 'IndexCover',
   props: ['srcCover', 'coverTitle', 'description', 'date', 'label'],
-  components: {ContentWrapper},
+  components: {ContentWrapper, CircleAnim},
   data: function () {
     return {
       title: this.coverTitle.split(' ')[0],
@@ -66,5 +67,4 @@ h4.date{
     padding: 5px 10px;
     border-radius: 100px;
 }
-
 </style>

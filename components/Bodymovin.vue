@@ -14,6 +14,7 @@ export default {
 
 <style scoped>
   video{
+    background: white;
     width: 100%;
   }
 </style>

@@ -48,6 +48,7 @@ export default {
         height: 191px;
         margin-bottom: 40px;
     }
+
     .introContent {
         position: relative;
         width: 100%;
@@ -76,6 +77,7 @@ export default {
     .introWrapper{
         width: 100%;
         flex-direction: column;
+        transition: all 0.5s ease-in;
     }
     .introWrapper .more{
         margin-top: 30px;

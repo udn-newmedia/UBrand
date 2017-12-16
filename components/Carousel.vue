@@ -78,7 +78,7 @@ export default {
   },
   mounted: function () {
     setInterval(() => {
-      // this.show = !this.show
+      this.show = !this.show
     }, this.interval)
   }
 }

@@ -78,6 +78,7 @@ h4{
   height: 100%;
   top: 50%; 
   transform: translateY(-25%);
+  transition: all 0.5s ease-in;
 }
 
 .Slideshow.right {
