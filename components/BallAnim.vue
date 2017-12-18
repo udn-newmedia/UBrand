@@ -19,32 +19,41 @@ export default {
       trigger: Number(this.triggerPoint)
     }
   },
-  // beforeMount: function () {
-  //   window.addEventListener('scroll', this.onScroll)
-  // },
-  // beforeDestroyed: function () {
-  //   window.removeEventListener('scroll', this.onScroll)
-  // },
-  // destroyed: function () {
-  //   window.removeEventListener('scroll', this.onScroll)
-  // },
-  // mounted: function () {
-  //   let $secondRect = this.$refs.second
+  beforeMount: function () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroyed: function () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  destroyed: function () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  mounted: function () {
+    let $ball = this.$refs.ball
 
-  //   if (this.trigger === 0) {
-  //     $secondRect.classList.add('blueRectMoveAnim')
-  //   }
-  // },
+    if (this.trigger === 0) {
+      $ball.classList.add('ballGrowAnimLeft')
+    }
+  },
   methods: {
     onScroll: function () {
-      let $rect = this.$refs.rects
-      let $secondRect = this.$refs.second
+      let $ball = this.$refs.ball
+      let offsetY = $ball.getBoundingClientRect().top
+      let offsetBottom = $ball.getBoundingClientRect().bottom
 
       if (pageYOffset > this.triggerPoint - 200) {
-        if ($rect.classList.contains('right') && !$secondRect.classList.contains('blueRectMoveAnim')) {
-          $secondRect.classList.add('blueRectMoveAnim')
-        } else if ($rect.classList.contains('left') && !$secondRect.classList.contains('blueRectMoveAnimLeft')) {
-          $secondRect.classList.add('blueRectMoveAnimLeft')
+        if ($ball.classList.contains('left') && !$ball.classList.contains('ballGrowAnimLeft')) {
+          $ball.classList.add('ballGrowAnimLeft')
+        } else if ($ball.classList.contains('right') && !$ball.classList.contains('ballGrowAnimRight')) {
+          $ball.classList.add('ballGrowAnimRight')
+        }
+      }
+
+      if (offsetY < this.triggerPoint + 300 && offsetBottom > 0) {
+        if (!$ball.classList.contains('allMovingUpLeft') && $ball.classList.contains('left')) {
+          $ball.classList.add('allMovingUpLeft')
+        } else if (!$ball.classList.contains('allMovingUpRight') && $ball.classList.contains('right')) {
+          $ball.classList.add('allMovingUpRight')
         }
       }
     }
@@ -57,71 +66,143 @@ export default {
 .ballAnim {
   position: absolute;
   bottom: 0;
+}
+
+.ballAnim.left {
   left: 0;
   width: 268px;
   height: 280px;
   transform: translateX(-30%) translateY(20%);
 }
 
+.ballAnim.right {
+  right: 0;
+  width: 268px;
+  height: 280px;
+  transform: rotate(180deg) translateX(-25%) translateY(-25%);
+}
+
+@media screen and (max-width: 1200px){
+  .ballAnim.left {
+    left: 0;
+    width: 152px;
+    height: 158px;
+    transform: translateX(-30%) translateY(20%);
+  }
+}
+
 img {
   width: 100%;
 }
 
-/* 
-.rectAnim {
-  position: absolute;
-  bottom: 135px;
-  width: 180px;
-  height: 107px;
-}
-
-.right{
-  right: 0;
-  text-align: right;
-}
-
-.left{
-  left: 0;
-  text-align: left;
-}
-
-.rectAnim img:first-child{
-  width: 120px;
-}
-
-.rectAnim img:nth-child(2){
-  width: 140px;
-  margin-top: 5px;
-  transform: translateX(-50%);
-}
-
-.rectAnim img:last-child{
-  width: 90px;  
-  margin-top: 40px;
-}
-
-.blueRectMoveAnim {
-  animation-name: blueRectMove;
+.ballGrowAnimLeft img{
+  animation-name: ballGrowUpLeft;
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
 }
 
-@keyframes blueRectMove {
-    0% {transform: translateX(-50%)}
-    100% {transform: translateX(0)}
-}
-
-.blueRectMoveAnimLeft {
-  animation-name: blueRectMoveLeft;
+.ballGrowAnimRight img{
+  animation-name: ballGrowUpRight;
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
 }
 
-@keyframes blueRectMoveLeft {
-    0% {transform: translateX(50%)}
-    100% {transform: translateX(0)}
-} */
+@keyframes ballGrowUpLeft {
+    0% {
+      width: 268px; 
+      height: 280px;
+    }
+    100% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(-20%);
+    }
+}
+
+@media screen and (max-width: 1200px){
+  @keyframes ballGrowUpLeft {
+      0% {
+        width: 152px; 
+        height: 158px;
+      }
+      100% {
+        width: 228px; 
+        height: 237px;
+        transform: translateX(-10%) translateY(-20%);
+      }
+  }
+}
+
+
+@keyframes ballGrowUpRight {
+    0% {
+      width: 268px; 
+      height: 368px;
+    }
+    100% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(-10%);
+    }
+}
+
+.allMovingUpLeft img{
+  animation-name: movingUpleft;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+@keyframes movingUpleft {
+    0% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(-20%);
+    }
+    100% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(-30%);
+    }
+}
+
+@media screen and (max-width: 1199px){
+  @keyframes movingUpleft {
+      0% {
+        width: 228px; 
+        height: 237px;
+        transform: translateX(-10%) translateY(-20%);
+      }
+      100% {
+        width: 228px; 
+        height: 237px;        
+        transform: translateX(-10%) translateY(-30%);
+      }
+  }
+}
+
+
+.allMovingUpRight img{
+  animation-name: movingUpright;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+@keyframes movingUpright {
+    0% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(-20%);
+    }
+    100% {
+      width: 402px; 
+      height: 420px;
+      transform: translateX(-10%) translateY(0);
+    }
+}
+
 
 </style>

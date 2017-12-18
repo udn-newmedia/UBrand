@@ -9,30 +9,41 @@
         <div class="form">
             <div class="row">
                 <p class="column">姓名</p>
-                <input class="column" type="text" placeholder="請填寫您的 大名">
+                <input id="name" name="姓名" class="column" type="text" v-model.lazy.trim="name" placeholder="請填寫您的 大名" required>
             </div>
             <div class="row">
                 <p class="column">電話</p>
-                <input class="column" type="text" placeholder="請填寫您的 聯絡電話">
+                <input id="phone" name="電話" class="column" type="tel" v-model.lazy.trim="phone" placeholder="請填寫您的 聯絡電話" required>
             </div>
             <div class="row">
                 <p class="column">信箱</p>
-                <input class="column" type="text" placeholder="請填寫您的 聯絡email">
+                <input id="email" name="email" class="column" type="email" v-model.lazy.trim="email" placeholder="請填寫您的 聯絡email" required>
             </div>
             <div class="row">
                 <p class="column">主旨</p>
-                <input class="column" type="text" placeholder="請填寫 信件標題">
+                <input id="title" name="信件標題" class="column" type="text" v-model.lazy.trim="title" placeholder="請填寫 信件標題" required>
             </div>
             <div class="row">
                 <p class="column">簡述</p>
-                <textarea class="column" name="brief" id="brief" cols="30" rows="10" placeholder="請簡述寫下您希望的合作內容"></textarea>
+                <textarea id="message" name="合作內容" class="column" cols="30" rows="10" v-model.lazy.trim="message" placeholder="請簡述寫下您希望的合作內容" required></textarea>
                 <button class="hidden-mobile" @click="send">送出</button>
             </div>
             <div class="mask">
                 <div class="wrapper">
-                    <div class="anim">動畫</div>
-                    <p>希望合作內容 已成功送出<br>謝謝您！<br class="hidden-pc">U brand studio團隊將盡快和您聯繫！</p>
-                    <button @click="close">關閉</button>
+                    <RealBodymovin v-if="success" :jsonfile="animCheck"/>
+                    <p v-if="success">希望合作內容 已成功送出<br class="hidden-mobile"> 謝謝您！<br class="hidden-pc">U brand studio團隊將盡快和您聯繫！</p>
+                    <p v-if="!success && emptyfieldsname.length">
+                        <span v-for="(name, index) in emptyfieldsname">{{name}}<span v-if="index < emptyfieldsname.length - 1">、</span></span> 不能空白，請您補上
+                    </p>
+                    <p v-if="!success && formaterrorfieldsname.length">
+                        <span v-for="(name, index) in formaterrorfieldsname">{{name}}<span v-if="index < formaterrorfieldsname.length - 1">、</span></span> 格式不符合，請您修改
+                    </p>
+                    <button class="closeBtn" @click="close">
+                        <div id="cross-icon">
+                            <span></span>
+                            <span></span>
+                        </div>                        
+                    </button>
                 </div>
             </div>
         </div>
@@ -43,21 +54,110 @@
 <script>
 
 import ContentWrapper from './Content'
+import RealBodymovin from '~/Components/RealBodymovin.vue'
+
+var emptyfields = []
+var formaterrorfields = []
 
 export default {
   name: 'Contact',
   props: ['backgroundColor'],
-  components: {ContentWrapper},
+  components: {ContentWrapper, RealBodymovin},
   data: function () {
     return {
+      animCheck: 'bodymovin/check/data.json',
+      emptyfieldsname: emptyfields,
+      formaterrorfieldsname: formaterrorfields,
+      success: false,
+      name: undefined,
+      phone: undefined,
+      email: undefined,
+      title: undefined,
+      message: undefined
     }
   },
   methods: {
     send: function () {
       document.querySelector('.mask').style.display = 'flex'
+      this.dataCheck()
     },
     close: function () {
       document.querySelector('.mask').style.display = 'none'
+      while (emptyfields.length > 0) {
+        emptyfields.pop()
+      }
+      while (formaterrorfields.length > 0) {
+        formaterrorfields.pop()
+      }
+    },
+    dataCheck: function () {
+      this.emptyfieldsname = this.getEmptyfields()
+      this.formaterrorfieldsname = this.getFormaterrorfields()
+      if (this.emptyfieldsname.length === 0 && this.formaterrorfieldsname.length === 0) {
+        console.log('success')
+      } else {
+        // console.log(this.emptyfields())
+      }
+    },
+    getEmptyfields: function () {
+      if (!this.name) {
+        emptyfields.push(document.getElementById('name').name)
+      }
+      if (!this.phone) {
+        emptyfields.push(document.getElementById('phone').name)
+      }
+      if (!this.email) {
+        emptyfields.push(document.getElementById('email').name)
+      }
+      if (!this.title) {
+        emptyfields.push(document.getElementById('title').name)
+      }
+      if (!this.message) {
+        emptyfields.push(document.getElementById('message').name)
+      }
+      return emptyfields
+    },
+    getFormaterrorfields: function () {
+      if (this.name) {
+        // name 不能是數字，也不能包含數字。
+        if (!isNaN(this.name) || this.name.match(/\d+/g)) {
+          this.name = ''
+          formaterrorfields.push(document.getElementById('name').name)
+        }
+      }
+      if (this.phone) {
+        // phone不能包含文字。
+        if (!this.isAPhoneNumber(this.phone)) {
+          this.phone = ''
+          formaterrorfields.push(document.getElementById('phone').name)
+        }
+      }
+      if (this.email) {
+        // email只能包含英文、數字、符號
+        if (!this.isEmail(this.email)) {
+          this.email = ''
+          formaterrorfields.push(document.getElementById('email').name)
+        }
+      }
+      return formaterrorfields
+    },
+    isAPhoneNumber: function (text) {
+      let i, j, strTemp
+      strTemp = '0123456789-()# '
+      for (i = 0; i < text.length; i++) {
+        j = strTemp.indexOf(text.charAt(i))
+        if (j === -1) {
+          // 說明有字符不合
+          return false
+        } else {
+          // 說明合法
+          return true
+        }
+      }
+    },
+    isEmail: function (text) {
+      let re = /\S+@\S+\.\S+/
+      return re.test(text.toLowerCase())
     }
   }
 }
@@ -111,9 +211,9 @@ button {
 .row{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
-    margin: 5px;
+    margin: 5px 0;
 }
 
 input{
@@ -122,9 +222,11 @@ input{
 
 @media screen and (min-width: 1200px){
     .row{
+        justify-content: flex-start;
         margin: 7px 0;
     }
 }
+
 input:focus{
     outline: none;
     box-shadow: 0 0 0 2px #a6a6a6;
@@ -224,4 +326,46 @@ input.column, textarea.column{
     right: 20px;
     top: 20px;
 }
+
+button {
+    margin-right: 10px;
+}
+
+button.closeBtn {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    border-radius: 50%;
+    padding: 0;
+}
+
+#cross-icon {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+#cross-icon span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    background: #000;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+#cross-icon span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+#cross-icon span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
 </style>

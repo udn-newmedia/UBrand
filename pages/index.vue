@@ -53,6 +53,15 @@
           </a>
         </li>
       </Bookmarks>
+      <div id="home" slot="home">
+        <a href="."><img :src="home"></a>                
+      </div>
+      <div id="about" class="anchor" slot="about" @click="anchorCall(link1)">
+        <img :src="about">                
+      </div>
+      <div id="contact" class="anchor" slot="contact" @click="anchorCall(link2)">
+        <img :src="contact">                
+      </div>
     </HeadBar>
     <ContentWrapper 
       background-color="#f7f7f7" 
@@ -139,7 +148,6 @@
         </a>
       </li>
     </Bookmarks>
-
     <section>
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
@@ -157,7 +165,8 @@
             slot="anim"
             class="anim" 
             :src="animMultimedia" 
-            muted /> 
+            muted
+            playsinline/> 
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -189,7 +198,8 @@
             slot="anim"
             class="anim" 
             :src="animData" 
-            muted/> 
+            muted
+            playsinline/> 
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -221,7 +231,8 @@
             slot="anim"
             class="anim" 
             :src="animInteractive" 
-            muted/>      
+            muted
+            playsinline/>      
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -253,7 +264,8 @@
             slot="anim"
             class="anim" 
             :src="animExplan" 
-            muted/>               
+            muted
+            playsinline/>               
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -285,7 +297,8 @@
             slot="anim"
             class="anim" 
             :src="animNative" 
-            muted/>                     
+            muted
+            playsinline/>                     
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -317,7 +330,8 @@
             slot="anim"
             class="anim" 
             :src="animResearch" 
-            muted/>                    
+            muted
+            playsinline/>                    
           <div 
             slot="intro" 
             class="intro hideAtStart">
@@ -373,15 +387,27 @@
         position="left"/>
     </ContentWrapper>
 
-    <section class="fullpage backgroundGray">
+    <section 
+      class="fullpage backgroundGray" 
+      style=" position: relative; overflow: hidden;">
       <p class="hidden-pc"><br></p>
       <p class="hidden-pc"><br></p>
-      <EmbededVideo 
+      <EmbededVideo
         :src="introVideo" 
         background-color="#f7f7f7"/>
+        <BallAnim 
+          class="hidden-mobile"
+          position="right"
+          :trigger-point="aboutSectionOffset2"/>
+
+      <BallAnim 
+        class="hidden-pc"
+        position="left"
+        :trigger-point="aboutSectionOffset2"/>
+
     </section>
 
-    <Contact background-color="#3e3a39"/>
+    <Contact id="contactUs" background-color="#3e3a39"/>
 
     <ContentWrapper background-color="#3e3a39">
       <p><br></p>
@@ -406,7 +432,7 @@ import ContentWrapper from '~/Components/Content.vue'
 import Carousel from '~/Components/Carousel.vue'
 import CoverSlider from '~/Components/CoverSlider.vue'
 import ContentSlider from '~/Components/ContentSlider.vue'
-import HeadBar from '~/Components/HeadBar.vue'
+import HeadBar from '~/Components/IndexHeadBar.vue'
 import Bookmarks from '~/Components/Bookmarks.vue'
 import IndexSection from '~/Components/IndexSection.vue'
 import Slideshow from '~/Components/Slideshow.vue'
@@ -420,12 +446,16 @@ import RectAnim from '~/Components/RectAnim.vue'
 import BallAnim from '~/Components/BallAnim.vue'
 
 // pics
+import PicAbout from '~/assets/logo_about.svg'
+import PicContact from '~/assets/logo_contact.svg'
+import PicHome from '~/assets/logo_home.svg'
+
 import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
 
 import introVideo from '~/assets/Ubrandstudio.mp4'
 
-var AboutSectionOffset
+var AboutSectionOffset, AboutSectionOffset2
 
 export default {
   components: {
@@ -435,7 +465,13 @@ export default {
     return {
       stickyAnchors: false,
       fbLogo: fbLogo,
+      about: PicAbout,
+      contact: PicContact,
+      home: PicHome,
       aboutSectionOffset: AboutSectionOffset,
+      aboutSectionOffset2: AboutSectionOffset2,
+      link1: 'aboutSection',
+      link2: 'contactUs',
       animMultimedia: 'bodymovin/multimedia/data.mp4',
       animData: 'bodymovin/data/data.mp4',
       animResearch: 'bodymovin/research/data.mp4',
@@ -447,7 +483,8 @@ export default {
       coverTitle: '好好說再見 插畫記林杰樑走後1500天',
       coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
       coverDate: '2017.11.23',
-      coverLabel: '多媒體報導'
+      coverLabel: '多媒體報導',
+      scroll_now: 0
     }
   },
   beforeMount: function () {
@@ -461,9 +498,11 @@ export default {
   },
   mounted: function () {
     this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
+    this.aboutSectionOffset2 = document.getElementById('thevideo').getBoundingClientRect().top
   },
   methods: {
     onScroll: function () {
+      this.scroll_now = window.pageYOffset
       // floating or sticky anchors
       let anchors = document.getElementById('floatingAnchor')
       let anchorOffsetY = anchors.getBoundingClientRect().top
@@ -485,8 +524,8 @@ export default {
       for (let i = 0; i < section.length; i++) {
         let sectionOffsetY = section[i].getBoundingClientRect().top
         if (sectionOffsetY < 200) {
-          if (section[i].querySelector('video').paused) {
-            section[i].querySelector('video').play()
+          if (!this.isPlaying(section[i].getElementsByTagName('video')[0])) {
+            section[i].getElementsByTagName('video')[0].play()
           }
           if (window.innerWidth > 1200) {
             if (section[i].querySelector('.hideAtStart')) {
@@ -497,9 +536,42 @@ export default {
           }
         }
       }
+    },
+    isPlaying: function (video) {
+      return video.onplay
+    },
+    anchorCall: function (link) {
+      let scrollDuration = 1000
+      let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+      let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+
+      if (destination > window.pageYOffset) {
+        let scrollInterval = setInterval(function () {
+          this.scroll_now = window.pageYOffset
+          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+          if (this.scroll_now < destination) {
+            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+            window.scrollBy(0, scrollStep)
+          } else {
+            clearInterval(scrollInterval)
+          }
+          scrollDuration -= 15
+        }, 15)
+      } else {
+        let scrollInterval = setInterval(function () {
+          this.scroll_now = window.pageYOffset
+          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+          if (this.scroll_now > destination) {
+            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+            window.scrollBy(0, scrollStep)
+          } else {
+            clearInterval(scrollInterval)
+          }
+          scrollDuration -= 15
+        }, 15)
+      }
     }
   }
-
 }
 </script>
 
@@ -721,4 +793,35 @@ video.anim{
   *::-ms-backdrop, video.anim { width: auto } /* IE11 */
 }  
 
+button{
+  width: 102px;
+  height: 41px;
+  border-radius: 20.1px;
+  background-color: #ffffff;
+  border: solid 1px #0b0305;
+  padding: 3px 10px;
+  color: #717071; 
+  box-shadow: 5px 5px 0#e73828;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1199px){
+  button{
+    width: 80px;
+    height: 33px;
+  }
+}
+
+button:hover{
+  box-shadow: 1px 1px 0#e73828;
+}
+
+button a:focus, button a:hover, button a:active, button a:visited{
+  color: #717071;
+  text-decoration: none;
+}
+
+.anchor {
+  cursor: pointer;
+}
 </style>

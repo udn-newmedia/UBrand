@@ -270,6 +270,7 @@ img.graphic2{
   cursor:pointer;
   overflow: hidden;
   outline:none;
+  box-shadow: none;
 }
 
 #seemore h4{

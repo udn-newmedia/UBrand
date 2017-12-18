@@ -276,4 +276,36 @@ a:link, a:active, a:hover, a:visited{
 .bookmark a:active, a:hover p, .bookmark .now p{
   border-bottom: 4px solid #e73828;
 }
+
+button{
+  width: 102px;
+  height: 41px;
+  border-radius: 20.1px;
+  background-color: #ffffff;
+  border: solid 1px #0b0305;
+  /* padding: 3px 10px; */
+  color: #717071; 
+  box-shadow: 5px 5px 0#e73828;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1199px){
+  button{
+    width: 80px;
+    height: 33px;
+  }
+  button#seemore{
+    width: auto;
+    border-radius: 0;
+  }
+}
+
+button:hover{
+  box-shadow: 1px 1px 0#e73828;
+}
+
+button a:focus, button a:hover, button a:active, button a:visited{
+  color: #717071;
+  text-decoration: none;
+}
 </style>
