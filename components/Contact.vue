@@ -1,52 +1,53 @@
 <template>
     <div class="Contact">
         <ContentWrapper :style="{backgroundColor: backgroundColor}">
-        <p><br></p>
-        <p><br></p>
-        <h2>聯絡我們</h2>
-        <button class="hidden-pc" @click="send">送出</button>
-        <p><br></p>
-        <div class="form">
-            <div class="row">
-                <p class="column">姓名</p>
-                <input id="name" name="姓名" class="column" type="text" v-model.lazy.trim="name" placeholder="請填寫您的 大名" required>
-            </div>
-            <div class="row">
-                <p class="column">電話</p>
-                <input id="phone" name="電話" class="column" type="tel" v-model.lazy.trim="phone" placeholder="請填寫您的 聯絡電話" required>
-            </div>
-            <div class="row">
-                <p class="column">信箱</p>
-                <input id="email" name="email" class="column" type="email" v-model.lazy.trim="email" placeholder="請填寫您的 聯絡email" required>
-            </div>
-            <div class="row">
-                <p class="column">主旨</p>
-                <input id="title" name="信件標題" class="column" type="text" v-model.lazy.trim="title" placeholder="請填寫 信件標題" required>
-            </div>
-            <div class="row">
-                <p class="column">簡述</p>
-                <textarea id="message" name="合作內容" class="column" cols="30" rows="10" v-model.lazy.trim="message" placeholder="請簡述寫下您希望的合作內容" required></textarea>
-                <button class="hidden-mobile" @click="send">送出</button>
-            </div>
-            <div class="mask">
-                <div class="wrapper">
-                    <RealBodymovin v-if="success" :jsonfile="animCheck"/>
-                    <p v-if="success">希望合作內容 已成功送出<br class="hidden-mobile"> 謝謝您！<br class="hidden-pc">U brand studio團隊將盡快和您聯繫！</p>
-                    <p v-if="!success && emptyfieldsname.length">
-                        <span v-for="(name, index) in emptyfieldsname">{{name}}<span v-if="index < emptyfieldsname.length - 1">、</span></span> 不能空白，請您補上
-                    </p>
-                    <p v-if="!success && formaterrorfieldsname.length">
-                        <span v-for="(name, index) in formaterrorfieldsname">{{name}}<span v-if="index < formaterrorfieldsname.length - 1">、</span></span> 格式不符合，請您修改
-                    </p>
-                    <button class="closeBtn" @click="close">
-                        <div id="cross-icon">
-                            <span></span>
-                            <span></span>
-                        </div>                        
-                    </button>
+            <p><br></p>
+            <p><br></p>
+            <h2>聯絡我們</h2>
+            <button id="sendbtn" class="hidden-pc" @click="send">送出</button>
+            <p><br></p>
+            <form v-on:submit.prevent="send">
+                <div class="row">
+                    <p class="column">姓名</p>
+                    <input id="name" name="name" class="column" type="text" v-model.lazy.trim="name" placeholder="請填寫您的 大名">
                 </div>
-            </div>
-        </div>
+                <div class="row">
+                    <p class="column">電話</p>
+                    <input id="phone" name="phone" class="column" type="tel" v-model.lazy.trim="phone" placeholder="請填寫您的 聯絡電話">
+                </div>
+                <div class="row">
+                    <p class="column">信箱</p>
+                    <input id="email" name="email" class="column" type="email" v-model.lazy.trim="email" placeholder="請填寫您的 聯絡email">
+                </div>
+                <div class="row">
+                    <p class="column">主旨</p>
+                    <input id="title" name="title" class="column" type="text" v-model.lazy.trim="title" placeholder="請填寫 信件標題">
+                </div>
+                <div class="row">
+                    <p class="column">簡述</p>
+                    <textarea id="message" name="message" class="column" cols="30" rows="10" v-model.lazy.trim="message" placeholder="請簡述寫下您希望的合作內容"></textarea>
+                    <button class="hidden-mobile">送出</button>
+                </div>
+                <div class="mask" v-if="dialogueIsOpen">
+                    <div class="wrapper">
+                        <RealBodymovin v-if="success" :jsonfile="animCheck"/>
+                        <p v-if="success">希望合作內容 已成功送出<br class="hidden-mobile"> 謝謝您！<br class="hidden-pc">U brand studio團隊將盡快和您聯繫！</p>
+                        <p v-if="!success && emptyfieldsname.length">
+                            <span v-for="(name, index) in emptyfieldsname">{{name}}<span v-if="index < emptyfieldsname.length - 1">、</span></span> 不能空白，請您補上
+                        </p>
+                        <p v-if="!success && formaterrorfieldsname.length">
+                            <span v-for="(name, index) in formaterrorfieldsname">{{name}}<span v-if="index < formaterrorfieldsname.length - 1">、</span></span> 格式不符合，請您修改
+                        </p>
+                        <p v-if="!success && ajaxerr">發生錯誤，請再試一次</p>
+                        <button class="closeBtn" @click="close">
+                            <div id="cross-icon">
+                                <span></span>
+                                <span></span>
+                            </div>                        
+                        </button>
+                    </div>
+                </div>
+            </form>
         </ContentWrapper>    
     </div>
 </template>
@@ -68,6 +69,8 @@ export default {
       animCheck: 'bodymovin/check/data.json',
       emptyfieldsname: emptyfields,
       formaterrorfieldsname: formaterrorfields,
+      dialogueIsOpen: false,
+      ajaxerr: false,
       success: false,
       name: undefined,
       phone: undefined,
@@ -78,11 +81,13 @@ export default {
   },
   methods: {
     send: function () {
-      document.querySelector('.mask').style.display = 'flex'
-      this.dataCheck()
+      if (!this.dialogueIsOpen) {
+        this.dataCheck()
+      }
     },
     close: function () {
-      document.querySelector('.mask').style.display = 'none'
+      this.success = false
+      this.dialogueClose()
       while (emptyfields.length > 0) {
         emptyfields.pop()
       }
@@ -94,26 +99,26 @@ export default {
       this.emptyfieldsname = this.getEmptyfields()
       this.formaterrorfieldsname = this.getFormaterrorfields()
       if (this.emptyfieldsname.length === 0 && this.formaterrorfieldsname.length === 0) {
-        console.log('success')
+        this.success = this.sendmail(this.name)
       } else {
-        // console.log(this.emptyfields())
+        this.dialogueOpen()
       }
     },
     getEmptyfields: function () {
       if (!this.name) {
-        emptyfields.push(document.getElementById('name').name)
+        emptyfields.push('姓名')
       }
       if (!this.phone) {
-        emptyfields.push(document.getElementById('phone').name)
+        emptyfields.push('電話')
       }
       if (!this.email) {
-        emptyfields.push(document.getElementById('email').name)
+        emptyfields.push('email')
       }
       if (!this.title) {
-        emptyfields.push(document.getElementById('title').name)
+        emptyfields.push('信件標題')
       }
       if (!this.message) {
-        emptyfields.push(document.getElementById('message').name)
+        emptyfields.push('合作內容')
       }
       return emptyfields
     },
@@ -122,21 +127,21 @@ export default {
         // name 不能是數字，也不能包含數字。
         if (!isNaN(this.name) || this.name.match(/\d+/g)) {
           this.name = ''
-          formaterrorfields.push(document.getElementById('name').name)
+          formaterrorfields.push('姓名')
         }
       }
       if (this.phone) {
         // phone不能包含文字。
         if (!this.isAPhoneNumber(this.phone)) {
           this.phone = ''
-          formaterrorfields.push(document.getElementById('phone').name)
+          formaterrorfields.push('電話')
         }
       }
       if (this.email) {
         // email只能包含英文、數字、符號
         if (!this.isEmail(this.email)) {
           this.email = ''
-          formaterrorfields.push(document.getElementById('email').name)
+          formaterrorfields.push('email')
         }
       }
       return formaterrorfields
@@ -158,6 +163,34 @@ export default {
     isEmail: function (text) {
       let re = /\S+@\S+\.\S+/
       return re.test(text.toLowerCase())
+    },
+    sendmail: function (name) {
+      let xmlHttp = new XMLHttpRequest()
+      let that = this
+      xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4) {
+          let response = xmlHttp.responseText
+          if (xmlHttp.status === 200) {
+            console.log(response)
+            that.success = true
+            that.dialogueOpen()
+          } else {
+            console.log(response)
+            that.success = false
+            that.ajaxerr = true
+            that.dialogueOpen()
+          }
+        }
+      }
+      xmlHttp.open('POST', 'php/sendmail.php', true)
+      xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+      xmlHttp.send('name=' + this.name + '&phone=' + this.phone + '&email=' + this.email + '&title=' + this.title + '&message=' + this.message)
+    },
+    dialogueOpen: function () {
+      this.dialogueIsOpen = true
+    },
+    dialogueClose: function () {
+      this.dialogueIsOpen = false
     }
   }
 }
@@ -201,7 +234,7 @@ button {
   }
 }
 
-.form{
+form{
     width: 100%;
     position: relative;
     display: flex;
@@ -293,7 +326,7 @@ input.column, textarea.column{
 
 .mask{
     position: absolute;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     top: 0;
