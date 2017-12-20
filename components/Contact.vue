@@ -184,7 +184,7 @@ export default {
       }
       xmlHttp.open('POST', 'php/sendmail.php', true)
       xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-      xmlHttp.send('name=' + this.name + '&phone=' + this.phone + '&email=' + this.email + '&title=' + this.title + '&message=' + this.message)
+      xmlHttp.send('name=' + this.name + '&phone=' + this.phone + '&email=' + this.email + '&title=' + this.title + '&message=' + this.message + '&password=' + 'udnnmd')
     },
     dialogueOpen: function () {
       this.dialogueIsOpen = true

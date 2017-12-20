@@ -1,7 +1,7 @@
 <template>
     <div class="videocontainer" id="thevideo">
         <div class="video-contain" :style="{backgroundColor: backgroundColor}">
-            <video id="introVideo" preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline></video>
+            <video id="introVideo" preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline controls></video>
             <div class="video-control">
               <div class="progress hidden-md hidden-lg">
                 <div id="progress-bar" class="progress-bar progress-bar-striped" ref="progressbar"></div>

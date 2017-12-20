@@ -4,52 +4,54 @@
       <Bookmarks class="anchors">
         <li>
           <a 
-            href="." 
-            class="hidden-pc"><p>多媒體</p>
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
           </a>
           <a 
-            href="." 
-            class="hidden-mobile"><p>多媒體報導</p>
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
+          </a>
+        </li>
+        <li>
+          <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
+          </a>
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
+          </a>
+        </li>
+        <li>
+          <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
+          </a>
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
+          </a>
+        </li>
+        <li>
+          <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
+          </a>
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
           </a>
         </li>
         <li>
           <a 
             href="." 
-            class="hidden-pc"><p>數據</p>
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
           </a>
           <a 
             href="." 
-            class="hidden-mobile"><p>數據報導</p>
-          </a>
-        </li>
-        <li>
-          <a 
-            href="." 
-            class="hidden-pc"><p>互動</p>
-          </a>
-          <a 
-            href="." 
-            class="hidden-mobile"><p>互動新聞</p>
-          </a>
-        </li>
-        <li>
-          <a 
-            href="." 
-            class="hidden-pc"><p>影音</p>
-          </a>
-          <a 
-            href="." 
-            class="hidden-mobile"><p>解釋影音</p>
-          </a>
-        </li>
-        <li>
-          <a 
-            href="." 
-            class="hidden-pc"><p>原生廣告</p>
-          </a>
-          <a 
-            href="." 
-            class="hidden-mobile"><p>原生廣告</p>
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
           </a>
         </li>
       </Bookmarks>
@@ -99,56 +101,58 @@
       <p slot="padding"><br></p>
       <li>
         <a 
-          href="." 
-          class="hidden-pc"><p>多媒體</p>
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
         </a>
         <a 
-          href="." 
-          class="hidden-mobile"><p>多媒體報導</p>
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
+        </a>
+      </li>
+      <li>
+        <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
+        </a>
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
+        </a>
+      </li>
+      <li>
+        <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
+        </a>
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
+        </a>
+      </li>
+      <li>
+        <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
+        </a>
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
         </a>
       </li>
       <li>
         <a 
           href="." 
-          class="hidden-pc"><p>數據</p>
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
         </a>
         <a 
           href="." 
-          class="hidden-mobile"><p>數據報導</p>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="." 
-          class="hidden-pc"><p>互動</p>
-        </a>
-        <a 
-          href="." 
-          class="hidden-mobile"><p>互動新聞</p>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="." 
-          class="hidden-pc"><p>影音</p>
-        </a>
-        <a 
-          href="." 
-          class="hidden-mobile"><p>解釋影音</p>
-        </a>
-      </li>
-      <li>
-        <a 
-          href="." 
-          class="hidden-pc"><p>原生廣告</p>
-        </a>
-        <a 
-          href="." 
-          class="hidden-mobile"><p>原生廣告</p>
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
         </a>
       </li>
     </Bookmarks>
-    <section>
+    <section id="multimediaSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
@@ -181,7 +185,7 @@
         background-color="#fff"/>
     </section>
 
-    <section>
+    <section id="dataSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
@@ -214,7 +218,7 @@
         background-color="#fff"/>
     </section>
 
-    <section>
+    <section id="interactiveSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
@@ -247,7 +251,7 @@
         background-color="#fff"/>
     </section>
 
-    <section>
+    <section id="explanSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
@@ -280,7 +284,7 @@
         background-color="#fff"/>
     </section>
 
-    <section>
+    <section id="nativeSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
@@ -435,7 +439,7 @@ import ContentSlider from '~/Components/ContentSlider.vue'
 import HeadBar from '~/Components/IndexHeadBar.vue'
 import Bookmarks from '~/Components/Bookmarks.vue'
 import IndexSection from '~/Components/IndexSection.vue'
-import Slideshow from '~/Components/Slideshow.vue'
+import Slideshow from '~/Components/OneSlide.vue'
 import IndexCover from '~/Components/IndexCover.vue'
 import EmbededVideo from '~/Components/EmbededVideo.vue'
 import Contact from '~/Components/Contact.vue'
@@ -472,6 +476,11 @@ export default {
       aboutSectionOffset2: AboutSectionOffset2,
       link1: 'aboutSection',
       link2: 'contactUs',
+      multimediaAnchor: 'multimediaSection',
+      dataAnchor: 'dataSection',
+      interactiveAnchor: 'interactiveSection',
+      explanAnchor: 'explanSection',
+      nativeAnchor: 'nativeSection',
       animMultimedia: 'bodymovin/multimedia/data.mp4',
       animData: 'bodymovin/data/data.mp4',
       animResearch: 'bodymovin/research/data.mp4',
@@ -479,6 +488,7 @@ export default {
       animExplan: 'bodymovin/explan/data.mp4',
       animNative: 'bodymovin/native/data.mp4',
       introVideo: introVideo,
+      projectData: 'projects/projects.json',
       coverImage: coverSrc,
       coverTitle: '好好說再見 插畫記林杰樑走後1500天',
       coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
@@ -570,6 +580,9 @@ export default {
           scrollDuration -= 15
         }, 15)
       }
+    },
+    clickAnchor: function () {
+      console.log('click')
     }
   }
 }
@@ -727,6 +740,7 @@ a{
   color: #717071;
   margin: 0;
   border-bottom: 4px solid transparent;
+  cursor: pointer;
 }
 
 .anchors p{
