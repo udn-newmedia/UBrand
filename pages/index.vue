@@ -81,7 +81,8 @@
       <p class="hidden-mobile"><br></p>
       <Carousel 
         class="hidden-mobile" 
-        :interval="5000"/>
+        :interval="5000"
+        :projects="projectslist"/>
       <RectAnim 
         class="hidden-mobile"
         :trigger-point="0"
@@ -93,7 +94,8 @@
     </ContentWrapper>  
     <CoverSlider 
       class="hidden-pc" 
-      background-color="#f7f7f7"/>
+      background-color="#f7f7f7"
+      :sliders="coverSliders"/>
     
     <Bookmarks 
       id="floatingAnchor" 
@@ -156,7 +158,8 @@
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="right"/>
+        position="right"
+        :slide="contentSliders1"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -182,14 +185,16 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders1"/>
     </section>
 
     <section id="dataSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="left"/>
+        position="left"
+        :slide="contentSliders2"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -215,14 +220,16 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders2"/>
     </section>
 
     <section id="interactiveSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="right"/>
+        position="right"
+        :slide="contentSliders3"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -248,14 +255,16 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders3"/>
     </section>
 
     <section id="explanSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="left"/>
+        position="left"
+        :slide="contentSliders4"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -281,14 +290,16 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders4"/>
     </section>
 
     <section id="nativeSection">
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="right"/>
+        position="right"
+        :slide="contentSliders5"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -314,14 +325,16 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders5"/>
     </section>
 
     <section>
       <slideshow 
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
-        position="left"/>
+        position="left"
+        :slide="contentSliders6"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -347,7 +360,8 @@
       </ContentWrapper>
       <ContentSlider 
         class="hidden-pc" 
-        background-color="#fff"/>
+        background-color="#fff"
+        :sliders="contentSliders6"/>
       <div class="hidden-pc onetenth"/>
     </section>
     
@@ -449,21 +463,88 @@ import CircleAnim from '~/Components/CircleAnim.vue'
 import RectAnim from '~/Components/RectAnim.vue'
 import BallAnim from '~/Components/BallAnim.vue'
 
-// pics
+// Assets
 import PicAbout from '~/assets/logo_about.svg'
 import PicContact from '~/assets/logo_contact.svg'
 import PicHome from '~/assets/logo_home.svg'
+import introVideo from '~/assets/Ubrandstudio.mp4'
 
-import coverSrc from '~/assets/pc/bg-1.jpg'
+// import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
 
-import introVideo from '~/assets/Ubrandstudio.mp4'
+import axios from 'axios'
 
 var AboutSectionOffset, AboutSectionOffset2
 
 export default {
   components: {
     Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
+  },
+  asyncData ({param, error}) {
+    let json = `https://nmdap.udn.com.tw/ubrand/projects/projects.json`
+    // let testjson = `https://spreadsheets.google.com/feeds/list/1loEISDptaHu1MqFcPmN7zW6aSgAr6tbkypQ2APZDzsk/1/public/values?alt=json`
+    return axios.get(json)
+      .then((res) => {
+        let datalist = res.data.projects
+        let coverImageSrc = datalist[0].pcPic
+        let coverTitle = datalist[0].title
+        let coverDescription = datalist[0].description
+        let coverDate = datalist[0].date
+        let coverLabel = datalist[0].class
+        let coverSliders = []
+        coverSliders.push(datalist[0])
+        coverSliders.push(datalist[1])
+        coverSliders.push(datalist[2])
+        coverSliders.push(datalist[3])
+        let contentSliders1 = []
+        contentSliders1.push(datalist[0])
+        contentSliders1.push(datalist[1])
+        contentSliders1.push(datalist[2])
+        contentSliders1.push(datalist[3])
+        let contentSliders2 = []
+        contentSliders2.push(datalist[0])
+        contentSliders2.push(datalist[1])
+        contentSliders2.push(datalist[2])
+        contentSliders2.push(datalist[3])
+        let contentSliders3 = []
+        contentSliders3.push(datalist[0])
+        contentSliders3.push(datalist[1])
+        contentSliders3.push(datalist[2])
+        contentSliders3.push(datalist[3])
+        let contentSliders4 = []
+        contentSliders4.push(datalist[0])
+        contentSliders4.push(datalist[1])
+        contentSliders4.push(datalist[2])
+        contentSliders4.push(datalist[3])
+        let contentSliders5 = []
+        contentSliders5.push(datalist[0])
+        contentSliders5.push(datalist[1])
+        contentSliders5.push(datalist[2])
+        contentSliders5.push(datalist[3])
+        let contentSliders6 = []
+        contentSliders6.push(datalist[0])
+        contentSliders6.push(datalist[1])
+        contentSliders6.push(datalist[2])
+        contentSliders6.push(datalist[3])
+        return {
+          projectslist: datalist,
+          coverImage: coverImageSrc,
+          coverTitle: coverTitle,
+          coverDescription: coverDescription,
+          coverDate: coverDate,
+          coverLabel: coverLabel,
+          coverSliders: coverSliders,
+          contentSliders1: contentSliders1,
+          contentSliders2: contentSliders2,
+          contentSliders3: contentSliders3,
+          contentSliders4: contentSliders4,
+          contentSliders5: contentSliders5,
+          contentSliders6: contentSliders6
+        }
+      })
+      .catch((e) => {
+        error({statusCode: 404, message: 'File not found'})
+      })
   },
   data: function () {
     return {
@@ -488,14 +569,11 @@ export default {
       animExplan: 'bodymovin/explan/data.mp4',
       animNative: 'bodymovin/native/data.mp4',
       introVideo: introVideo,
-      projectData: 'projects/projects.json',
-      coverImage: coverSrc,
-      coverTitle: '好好說再見 插畫記林杰樑走後1500天',
-      coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-      coverDate: '2017.11.23',
-      coverLabel: '多媒體報導',
       scroll_now: 0
     }
+  },
+  computed: {
+
   },
   beforeMount: function () {
     window.addEventListener('scroll', this.onScroll)
@@ -580,9 +658,6 @@ export default {
           scrollDuration -= 15
         }, 15)
       }
-    },
-    clickAnchor: function () {
-      console.log('click')
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="Slideshow" :class="{'right': position === 'right','left': position === 'left'}">
     <div class="slide-wrapper">
       <div class="relative">
-        <img :src='imgSrc1'>
+        <img :src='imgSrc'>
         <div class="projects">
             <h4 class="text">{{title}} {{subtitle}}</h4>
         </div>
@@ -12,27 +12,31 @@
 </template>
 
 <script>
-import pic1 from '~/assets/pc/a1-web.jpg'
-
 export default {
   name: 'OneSlide',
-  props: ['interval', 'position'],
+  props: ['interval', 'position', 'slide'],
+  computed: {
+    pick: function () {
+      return Math.floor(Math.random() * this.slide.length)
+    },
+    imgSrc: function () {
+      return this.slide[this.pick].pcPic
+    },
+    title: function () {
+      return this.slide[this.pick].title.split(' ')[0]
+    },
+    subtitle: function () {
+      return this.slide[this.pick].title.split(' ')[1]
+    }
+  },
   data: function () {
     return {
-      show: true,
-      imgSrc1: pic1,
-      title: '好好說再見',
-      subtitle: '插畫記林杰樑走後1500天',
-      date: '2017.11.23'
     }
   }
 }
 </script>
 
 <style scoped>
-/* * {
-  border: solid 1px black;
-} */
 
 h4{
   font-size: 25px;

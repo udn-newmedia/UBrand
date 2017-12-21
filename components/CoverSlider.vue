@@ -8,10 +8,10 @@
             <div v-for="work in list" :key="work.name" class="slider">
                 <a>
                     <div class="projects" :style="{width: projectWidth}">
-                      <img :src="work.pic">
+                      <img :src="work.mobCoverPic">
                       <div class="texts">
-                        <div class="coverlabel">{{work.category}}</div>
-                        <h2>{{work.title}}</h2>
+                        <div class="coverlabel">{{work.class}}</div>
+                        <h2>{{work.maintitle}}</h2>
                         <h2>{{work.subtitle}}</h2>
                         <p class="date">{{work.date}}</p>
                         <CircleAnim triggerPoint="0"/>
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import pic1 from '~/assets/mobile/bg-1.jpg'
 import CircleAnim from '~/Components/CircleAnim.vue'
 
 if (process.browser) {
@@ -39,51 +38,26 @@ if (process.browser) {
 
 export default {
   name: 'Slider',
-  props: ['interval', 'background-color'],
+  props: ['interval', 'background-color', 'sliders'],
   components: {
     CircleAnim
   },
   computed: {
     list: function () {
-      this.datalist.forEach(ele => {
-        ele.title = ele.name.split(' ')[0]
-        ele.subtitle = ele.name.split(' ')[1]
+      this.sliders.forEach(ele => {
+        ele.maintitle = ele.title.split(' ')[0]
+        ele.subtitle = ele.title.split(' ')[1]
       })
-      return this.datalist
+      return this.sliders
     }
   },
   data: function () {
     return {
-      pic1: pic1,
       current: 1,
       transitionDuration: 500,
       projectWidth: 340,
       transitionWidth: 340 + 9,
-      panOnce: false,
-      datalist: [
-        {
-          name: '好好說再見 插畫記林杰樑走後1500天1',
-          //   title: 'project1',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天2',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天3',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天4',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }
-      ]
+      panOnce: false
     }
   },
   mounted: function () {

@@ -5,12 +5,12 @@
               :style="{
                 'transition' : 'none' 
               }">
-            <div v-for="work in list" :key="work.name" class="slider">
+            <div v-for="work in list" :key="work.title" class="slider">
                 <a>
                     <div class="projects" :style="{width: projectWidth}">
-                      <img :src="work.pic">
+                      <img :src="work.mobPic">
                       <div class="texts">
-                        <p>{{work.title}}</p>
+                        <p>{{work.maintitle}}</p>
                         <p>{{work.subtitle}}</p>
                       </div>
                     </div>
@@ -27,56 +27,29 @@
 </template>
 
 <script>
-import pic1 from '~/assets/mobile/pic1.jpg'
-
 if (process.browser) {
   var Hammer = require('Hammerjs')
 }
 
 export default {
   name: 'Slider',
-  props: ['interval', 'background-color'],
+  props: ['interval', 'background-color', 'sliders'],
   computed: {
     list: function () {
-      this.datalist.forEach(ele => {
-        ele.title = ele.name.split(' ')[0]
-        ele.subtitle = ele.name.split(' ')[1]
+      this.sliders.forEach(ele => {
+        ele.maintitle = ele.title.split(' ')[0]
+        ele.subtitle = ele.title.split(' ')[1]
       })
-      return this.datalist
+      return this.sliders
     }
   },
   data: function () {
     return {
-      pic1: pic1,
       current: 1,
       transitionDuration: 500,
       projectWidth: 340,
       transitionWidth: 340 + 9,
-      panOnce: false,
-      datalist: [
-        {
-          name: '好好說再見 插畫記林杰樑走後1500天1',
-          //   title: 'project1',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天2',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天3',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }, {
-          name: '好好說再見 插畫記林杰樑走後1500天4',
-          category: '多媒體報導',
-          date: '2017.10.30',
-          pic: pic1
-        }
-      ]
+      panOnce: false
     }
   },
   components: {

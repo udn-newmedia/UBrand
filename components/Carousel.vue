@@ -10,10 +10,10 @@
               </div>
             </div>
             <div class="carousel-wrapper" v-else key="2">
-              <img :src='imgSrc2'>
+              <img :src='imgSrc3'>
               <div class="projects">
-                  <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                  <h4 class="date">{{date2}}</h4>
+                  <h4 class="text">{{title3}}<br>{{subtitle3}}</h4>
+                  <h4 class="date">{{date3}}</h4>
               </div>
             </div>
         </transition>
@@ -23,14 +23,14 @@
           <div class="carousel-wrapper" v-if='show' key="3">
             <img :src='imgSrc2'>
             <div class="projects">
-                <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                <h4 class="date">{{date3}}</h4>
+                <h4 class="text">{{title2}}<br>{{subtitle2}}</h4>
+                <h4 class="date">{{date2}}</h4>
             </div>
           </div>
           <div class="carousel-wrapper" v-else key="4">
-            <img :src='imgSrc1'>
+            <img :src='imgSrc4'>
             <div class="projects">
-                <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                <h4 class="text">{{title4}}<br>{{subtitle4}}</h4>
                 <h4 class="date">{{date4}}</h4>
             </div>
           </div>
@@ -40,38 +40,147 @@
 </template>
 
 <script>
-import pic1 from '~/assets/pc/bg-2.jpg'
-import pic2 from '~/assets/pc/bg-3.jpg'
 
 export default {
   name: 'Carousel',
-  props: ['interval'],
+  props: ['interval', 'projects'],
+  computed: {
+    imgSrc1: {
+      get: function () {
+        return this.projects[this.pick1].pcPic
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    imgSrc2: {
+      get: function () {
+        return this.projects[this.pick2].pcPic
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    imgSrc3: {
+      get: function () {
+        return this.projects[this.pick3].pcPic
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    imgSrc4: {
+      get: function () {
+        return this.projects[this.pick4].pcPic
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    title1: {
+      get: function () {
+        return this.projects[this.pick1].title.split(' ')[0]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    subtitle1: {
+      get: function () {
+        return this.projects[this.pick1].title.split(' ')[1]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    title2: {
+      get: function () {
+        return this.projects[this.pick2].title.split(' ')[0]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    subtitle2: {
+      get: function () {
+        return this.projects[this.pick2].title.split(' ')[1]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    title3: {
+      get: function () {
+        return this.projects[this.pick3].title.split(' ')[0]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    subtitle3: {
+      get: function () {
+        return this.projects[this.pick3].title.split(' ')[1]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    title4: {
+      get: function () {
+        return this.projects[this.pick4].title.split(' ')[0]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    subtitle4: {
+      get: function () {
+        return this.projects[this.pick4].title.split(' ')[1]
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    date1: {
+      get: function () {
+        return this.projects[this.pick1].date
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    date2: {
+      get: function () {
+        return this.projects[this.pick2].date
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    date3: {
+      get: function () {
+        return this.projects[this.pick3].date
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    date4: {
+      get: function () {
+        return this.projects[this.pick4].date
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    }
+  },
   data: function () {
     return {
       show: true,
-      imgSrc1: pic1,
-      imgSrc2: pic2,
-      title1: '好好說再見',
-      subtitle1: '插畫記林杰樑走後1500天',
-      date1: '2017.11.23',
-      date2: '2017.11.24',
-      date3: '2017.11.25',
-      date4: '2017.11.26',
-      list: [
-        {
-          name: 'project1',
-          pic: pic1,
-          title: '好好說再見',
-          subtitle: '插畫記林杰樑走後1500天',
-          date: '2017.11.23'
-        }, {
-          name: 'project2',
-          pic: pic2,
-          title: '好好說再見',
-          subtitle: '插畫記林杰樑走後1500天',
-          date: '2017.11.23'
-        }
-      ]
+      pick1: Math.floor(Math.random() * this.projects.length),
+      pick2: Math.floor(Math.random() * this.projects.length),
+      pick3: Math.floor(Math.random() * this.projects.length),
+      pick4: Math.floor(Math.random() * this.projects.length)
     }
   },
   components: {
@@ -79,15 +188,29 @@ export default {
   mounted: function () {
     setInterval(() => {
       this.show = !this.show
+      this.changeProjects()
+      // console.log(this.pick1)
+      // console.log(this.pick2)
+      // console.log(this.pick3)
+      // console.log(this.pick4)
     }, this.interval)
+  },
+  methods: {
+    changeProjects: function () {
+      // 撈兩個
+      if (this.show) {
+        this.pick3 = Math.floor(Math.random() * this.projects.length)
+        this.pick4 = Math.floor(Math.random() * this.projects.length)
+      } else {
+        this.pick1 = Math.floor(Math.random() * this.projects.length)
+        this.pick2 = Math.floor(Math.random() * this.projects.length)
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
-/* * {
-  border: solid 1px black;
-} */
 
 h4{
   font-size: 17px;

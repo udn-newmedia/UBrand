@@ -9,20 +9,20 @@
                 <div class="work-label">
                     <img :src="bullet1" alt="" class="graphic">
                     <div class="article">
-                        <h4 class="bold">{{work.title}}</h4>
+                        <h4 class="bold">{{work.maintitle}}</h4>
                         <h4 class="bold">{{work.subtitle}}</h4>
                         <h4 class="description hidden-mobile">{{work.description}}</h4>
                         <p class="date hidden-mobile">{{work.date}}</p>
                     </div>
                 </div>
             </div>
-            <div class="research" :class="{'hidden-mobile': !work.research}">
-                <div class='research-wrapper' :class="{'opacityZero': !work.research}">
+            <div class="research" :class="{'hidden-mobile': !work.reportTitle}">
+                <div class='research-wrapper' :class="{'opacityZero': !work.reportTitle}">
                     <img :src="bullet2" alt="" class="graphic2">                    
                     <div class="article">
                         <h4 class="bold hidden-pc">研究報告：</h4>
-                        <h4 class="hidden-pc">{{work.research || fillinblank}}</h4>
-                        <p class="bold hidden-mobile report"><b>研究報告：</b>{{work.research || fillinblank}}</p>
+                        <h4 class="hidden-pc">{{work.reportTitle || fillinblank}}</h4>
+                        <p class="bold hidden-mobile report"><b>研究報告：</b>{{work.reportTitle || fillinblank}}</p>
                     </div>
                 </div>
             </div>
@@ -33,105 +33,44 @@
 
 <script>
 import ContentWrapper from './Content'
-import mobPic1 from '~/assets/mobile/a-1.jpg'
-import pcPic1 from '~/assets/pc/a-1.jpg'
 import bullet1 from '~/assets/a-7.svg'
 import bullet2 from '~/assets/a-8.svg'
 
 export default {
   name: 'Work',
-  props: [],
+  props: ['projects'],
   components: {ContentWrapper},
   computed: {
-    list: {
-      get: function () {
-        this.datalist.forEach(function (ele) {
-          let titlesplit = ele.title.split(' ')
-          ele.title = titlesplit[0]
-          ele.subtitle = titlesplit[1]
-        })
-        return this.datalist
-      },
-      set: function (newList) {
-        newList.forEach(function (ele) {
-          let titlesplit = ele.title.split(' ')
-          ele.title = titlesplit[0]
-          ele.subtitle = titlesplit[1]
-        })
-        this.list = newList
+    projectlist: function () {
+      this.projects.forEach(function (ele) {
+        ele.maintitle = ele.title.split(' ')[0]
+        ele.subtitle = ele.title.split(' ')[1]
+      })
+      return this.projects
+    },
+    list: function () {
+      for (let i = (this.part - 1) * 8; i < this.part * 8; i++) {
+        if (i < this.projectlist.length) {
+          this.works.push(this.projectlist[i])
+        }
       }
+      return this.works
     }
   },
   data: function () {
     return {
-      mobPic1: mobPic1,
-      pcPic1: pcPic1,
+      part: 1,
+      works: [],
       bullet1: bullet1,
       bullet2: bullet2,
-      fillinblank: '把3D模型擺進新聞 學到的3件事',
-      datalist: [
-        {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1,
-          research: '把3D模型擺進新聞 學到的3件事'
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1,
-          research: '把3D模型擺進新聞 學到的3件事'
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1,
-          research: '把3D模型擺進新聞 學到的3件事'
-        }, {
-          title: '好好說再見 插畫記林杰樑走後1500天',
-          description: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-          date: '2017.11.23',
-          pcPic: pcPic1,
-          mobPic: mobPic1
-        }
-      ]
+      fillinblank: '把3D模型擺進新聞 學到的3件事'
     }
   },
   mounted: function () {
   },
   methods: {
     seeMore: function () {
-      let temp = []
-      temp = this.datalist.slice()
-      this.datalist = this.datalist.concat(temp)
+      this.part++
     }
   }
 }

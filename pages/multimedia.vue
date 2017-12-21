@@ -76,15 +76,15 @@
         :cover-title="coverTitle" 
         :description="coverDescription" 
         :date="coverDate" 
-        :label="coverLabel" 
-        :report="coverReport"/>
+        :report="coverReportTitle"
+        :reportlink="coverReportLink"/>
       <p class="hidden-mobile"><br></p>
     </ContentWrapper>
     <ContentWrapper 
       class="worksContentWrapper fluid"
       style="position: relative; overflow: hidden;">
       <p class="hidden-mobile"><br></p>
-      <Works/>
+      <Works :projects="projectslist"/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
@@ -133,20 +133,43 @@ import Bodymovin from '~/Components/Bodymovin.vue'
 import coverSrc from '~/assets/pc/a-bg.jpg'
 import ball from '~/assets/a-6.svg'
 
+import axios from 'axios'
+
 export default {
   components: {
     ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
+  },
+  asyncData ({param, error}) {
+    // 只撈一個類別
+    let json = `https://nmdap.udn.com.tw/ubrand/projects/projects.json`
+    return axios.get(json)
+      .then((res) => {
+        let datalist = res.data.projects
+        let coverImageSrc = datalist[0].pcPic
+        let coverTitle = datalist[0].title
+        let coverDescription = datalist[0].description
+        let coverDate = datalist[0].date
+        let coverReportTitle = datalist[0].reportTitle
+        let coverReportLink = datalist[0].reportLink
+        return {
+          projectslist: datalist,
+          coverImage: coverImageSrc,
+          coverTitle: coverTitle,
+          coverDescription: coverDescription,
+          coverDate: coverDate,
+          coverReportTitle: coverReportTitle,
+          coverReportLink: coverReportLink
+        }
+      })
+      .catch((e) => {
+        error({statusCode: 404, message: 'File not found'})
+      })
   },
   data: function () {
     return {
       coverImage: coverSrc,
       ball: ball,
-      covericon: 'bodymovin/multimedia/data.jpg',
-      coverTitle: '好好說再見 插畫記林杰樑走後1500天',
-      coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-      coverDate: '2017.11.23',
-      coverLabel: '多媒體報導',
-      coverReport: '把3D模型擺進新聞 學到的三件事'
+      covericon: 'bodymovin/multimedia/data.jpg'
     }
   }
 }
