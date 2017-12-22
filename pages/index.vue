@@ -68,7 +68,6 @@
     <ContentWrapper 
       background-color="#f7f7f7" 
       style="position: relative; overflow: hidden;">
-
       <div class="padding-for-headbar"/>
       <p class="hidden-mobile"><br></p>
       <IndexCover 
@@ -77,7 +76,8 @@
         :cover-title="coverTitle" 
         :description="coverDescription" 
         :date="coverDate" 
-        :label="coverLabel"/>
+        :label="coverLabel"
+        :link="coverLink"/>
       <p class="hidden-mobile"><br></p>
       <Carousel 
         class="hidden-mobile" 
@@ -213,7 +213,7 @@
             slot="intro" 
             class="intro hideAtStart">
             <h1>數據專題</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相</h3>
           </div>
           <button class="hideAtStart"><nuxt-link to="/data">看更多...</nuxt-link></button>
         </IndexSection>
@@ -248,7 +248,7 @@
             slot="intro" 
             class="intro hideAtStart">
             <h1>互動新聞</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角</h3>
           </div>
           <button class="hideAtStart"><nuxt-link to="/interactive">看更多...</nuxt-link></button>
         </IndexSection>
@@ -283,7 +283,7 @@
             slot="intro" 
             class="intro hideAtStart">
             <h1>解釋影音</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>以動畫、影音形式描繪新聞事件或生活短影音</h3>
           </div>
           <button class="hideAtStart"><nuxt-link to="/explan">看更多...</nuxt-link></button>
         </IndexSection>
@@ -318,7 +318,7 @@
             slot="intro" 
             class="intro hideAtStart">
             <h1>原生廣告</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>有腳本、有情節的影音內容，提供消費者有用的生活資訊</h3>
           </div>
           <button class="hideAtStart"><nuxt-link to="/native">看更多...</nuxt-link></button>
         </IndexSection>
@@ -353,7 +353,7 @@
             slot="intro" 
             class="intro hideAtStart">
             <h1>研究報告</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>定期分享科技與媒體新趨勢的研究報告</h3>
           </div>
           <button class="hideAtStart"><nuxt-link to="/research">看更多...</nuxt-link></button>
         </IndexSection>
@@ -383,19 +383,19 @@
             </div>
           </div>
           <p><br></p>
-          <p>新媒體中心是聯合報新聞部的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看動新聞議題。<br class="hidden-mobile"></p>
+          <p>U Brand Studio 融媒體發展部是聯合報新聞部的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看動新聞議題。<br class="hidden-mobile"></p>
           <p><br></p>
           <p>推出多檔叫好叫座專題，<br class="hidden-mobile">包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，<br class="hidden-mobile">引起讀者廣泛討論。</p>
           <p><br></p>
           <div class="fbLink">
-            <div class="fb">
+            <a href="https://www.facebook.com/udnNewMediaLab/" target="_blank" class="fb">
               <img :src="fbLogo">
               <p class="fbgroup">UDN 新媒體</p>
-            </div>
-            <div class="fb">
+            </a>
+            <a href="https://www.facebook.com/groups/UDNNEWMEDIA/" target="_blank" class="fb">
               <img :src="fbLogo">
-              <p class="fbgroup">聯 沙龍</p>
-            </div>
+              <p class="fbgroup salon">聯 沙龍</p>
+            </a>
           </div>
         </div>
       </div>
@@ -431,7 +431,7 @@
       <p><br></p>
       <p><br></p>
       <div class="nmd">
-        <p>聯合報新聞部 新媒體中心</p>
+        <p>聯合報 U Brand Studio 融媒體發展部</p>
         <p>新北市汐止區大同路一段369號</p>
         <p>TEL : 02-8692-5588 # 2302</p>
         <p>ubrandstudio@udngroup.com.tw</p>
@@ -473,6 +473,7 @@ import introVideo from '~/assets/Ubrandstudio.mp4'
 import fbLogo from '~/assets/logo_fb.svg'
 
 import axios from 'axios'
+import _ from 'lodash'
 
 var AboutSectionOffset, AboutSectionOffset2
 
@@ -481,51 +482,63 @@ export default {
     Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
   },
   asyncData ({param, error}) {
-    let json = `https://nmdap.udn.com.tw/ubrand/projects/projects.json`
-    // let testjson = `https://spreadsheets.google.com/feeds/list/1loEISDptaHu1MqFcPmN7zW6aSgAr6tbkypQ2APZDzsk/1/public/values?alt=json`
+    let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
     return axios.get(json)
       .then((res) => {
-        let datalist = res.data.projects
-        let coverImageSrc = datalist[0].pcPic
-        let coverTitle = datalist[0].title
-        let coverDescription = datalist[0].description
-        let coverDate = datalist[0].date
-        let coverLabel = datalist[0].class
+        let datalist = res.data.feed.entry
+        let coverImageSrc = 'projects/' + datalist[0].gsx$pcpic.$t
+        let coverTitle = datalist[0].gsx$title.$t
+        let coverDescription = datalist[0].gsx$description.$t
+        let coverDate = datalist[0].gsx$date.$t
+        let coverLabel = datalist[0].gsx$class.$t
+        let coverLink = datalist[0].gsx$link.$t
         let coverSliders = []
         coverSliders.push(datalist[0])
         coverSliders.push(datalist[1])
         coverSliders.push(datalist[2])
         coverSliders.push(datalist[3])
+        // multimedia
         let contentSliders1 = []
-        contentSliders1.push(datalist[0])
-        contentSliders1.push(datalist[1])
-        contentSliders1.push(datalist[2])
-        contentSliders1.push(datalist[3])
+        let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
+        contentSliders1.push(multi[1])
+        contentSliders1.push(multi[2])
+        contentSliders1.push(multi[3])
+        contentSliders1.push(multi[4])
+        // data
         let contentSliders2 = []
-        contentSliders2.push(datalist[0])
-        contentSliders2.push(datalist[1])
-        contentSliders2.push(datalist[2])
-        contentSliders2.push(datalist[3])
+        let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+        contentSliders2.push(dataprojects[0])
+        contentSliders2.push(dataprojects[1])
+        contentSliders2.push(dataprojects[2])
+        contentSliders2.push(dataprojects[3])
+        // interactive
         let contentSliders3 = []
-        contentSliders3.push(datalist[0])
-        contentSliders3.push(datalist[1])
-        contentSliders3.push(datalist[2])
-        contentSliders3.push(datalist[3])
+        let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
+        contentSliders3.push(interactive[0])
+        contentSliders3.push(interactive[1])
+        contentSliders3.push(interactive[2])
+        contentSliders3.push(interactive[3])
+        // explan
         let contentSliders4 = []
-        contentSliders4.push(datalist[0])
-        contentSliders4.push(datalist[1])
-        contentSliders4.push(datalist[2])
-        contentSliders4.push(datalist[3])
+        let explain = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
+        contentSliders4.push(explain[0])
+        contentSliders4.push(explain[1])
+        contentSliders4.push(explain[2])
+        contentSliders4.push(explain[3])
+        // native
         let contentSliders5 = []
-        contentSliders5.push(datalist[0])
-        contentSliders5.push(datalist[1])
-        contentSliders5.push(datalist[2])
-        contentSliders5.push(datalist[3])
+        let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
+        contentSliders5.push(native[0])
+        contentSliders5.push(native[1])
+        contentSliders5.push(native[2])
+        contentSliders5.push(native[3])
+        // research
         let contentSliders6 = []
-        contentSliders6.push(datalist[0])
-        contentSliders6.push(datalist[1])
-        contentSliders6.push(datalist[2])
-        contentSliders6.push(datalist[3])
+        let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+        contentSliders6.push(research[0])
+        contentSliders6.push(research[1])
+        contentSliders6.push(research[2])
+        contentSliders6.push(research[3])
         return {
           projectslist: datalist,
           coverImage: coverImageSrc,
@@ -533,6 +546,7 @@ export default {
           coverDescription: coverDescription,
           coverDate: coverDate,
           coverLabel: coverLabel,
+          coverLink: coverLink,
           coverSliders: coverSliders,
           contentSliders1: contentSliders1,
           contentSliders2: contentSliders2,
@@ -798,14 +812,37 @@ ul {
     width: 200px;
   }
 
-  .fb .fbgroup {
-    transform: translateX(15%);
-  }
-
   .infoTitle h2 {
     width: 100%;
   }
 }
+
+@-moz-document url-prefix() {
+  .fb .fbgroup {
+    transform: translateX(15%);
+    left: 25%;
+    top: 25%;
+  }
+  .fb .fbgroup.salon {
+    transform: translateX(15%);
+    left: 35%;
+    top: 25%;
+  }
+}
+
+@media all and (-ms-high-contrast:none)
+{
+  .fb .fbgroup {
+    transform: translateX(15%);
+    left: 25%;
+    top: 25%;
+  }
+  .fb .fbgroup.salon {
+    transform: translateX(15%);
+    left: 35%;
+    top: 25%;
+  }  
+}  
 
 .nmd p {
   color: #fff;
@@ -912,5 +949,9 @@ button a:focus, button a:hover, button a:active, button a:visited{
 
 .anchor {
   cursor: pointer;
+}
+
+.fb p {
+  color: black;
 }
 </style>

@@ -2,10 +2,12 @@
   <div class="Slideshow" :class="{'right': position === 'right','left': position === 'left'}">
     <div class="slide-wrapper">
       <div class="relative">
-        <img :src='imgSrc'>
-        <div class="projects">
-            <h4 class="text">{{title}} {{subtitle}}</h4>
-        </div>
+        <a :href="link" target="_blank">
+          <img :src='imgSrc'>
+          <div class="projects">
+              <h4 class="text">{{maintitle}} {{subtitle}}</h4>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -20,13 +22,16 @@ export default {
       return Math.floor(Math.random() * this.slide.length)
     },
     imgSrc: function () {
-      return this.slide[this.pick].pcPic
+      return 'projects/' + this.slide[this.pick].gsx$pcpic.$t
     },
-    title: function () {
-      return this.slide[this.pick].title.split(' ')[0]
+    maintitle: function () {
+      return this.slide[this.pick].gsx$title.$t.split(' ')[0]
     },
     subtitle: function () {
-      return this.slide[this.pick].title.split(' ')[1]
+      return this.slide[this.pick].gsx$title.$t.split(' ')[1]
+    },
+    link: function () {
+      return this.slide[this.pick].gsx$link.$t
     }
   },
   data: function () {
@@ -39,6 +44,7 @@ export default {
 <style scoped>
 
 h4{
+  color: black;
   font-size: 25px;
 }
 

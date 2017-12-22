@@ -1,28 +1,34 @@
 <template>
-    <div id="works">
-        <div v-for="work in list" :key="work.title" class="work-and-research">
-            <div class="work">
-                <picture>
-                    <source media="(max-width: 1199px)" :srcset="work.mobPic">
-                    <img :src="work.pcPic" alt="">
-                </picture>
-                <div class="work-label">
-                    <img :src="bullet1" alt="" class="graphic">
-                    <div class="article">
-                        <h4 class="bold">{{work.maintitle}}</h4>
-                        <h4 class="bold">{{work.subtitle}}</h4>
-                        <h4 class="description hidden-mobile">{{work.description}}</h4>
-                        <p class="date hidden-mobile">{{work.date}}</p>
-                    </div>
+    <div class="manyworks">
+        <div id="works">
+            <div v-for="work in list" :key="work.gsx$title.$t" class="work-and-research">
+                <div class="work">
+                    <a :href="work.gsx$link.$t" target="_blank">
+                        <picture>
+                            <source media="(max-width: 1199px)" :srcset="'projects/' + work.gsx$mobpic.$t">
+                            <img :src="'projects/' + work.gsx$pcpic.$t" alt="">
+                        </picture>
+                        <div class="work-label">
+                            <img :src="bullet1" alt="" class="graphic">
+                            <div class="article">
+                                <h4 class="bold">{{work.maintitle}}</h4>
+                                <h4 class="bold">{{work.subtitle}}</h4>
+                                <Description class="description hidden-mobile" :texts="work.gsx$description.$t" maxLen="30"/>
+                                <p class="date hidden-mobile">{{work.gsx$date.$t}}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="research" :class="{'hidden-mobile': !work.reportTitle}">
-                <div class='research-wrapper' :class="{'opacityZero': !work.reportTitle}">
-                    <img :src="bullet2" alt="" class="graphic2">                    
-                    <div class="article">
-                        <h4 class="bold hidden-pc">研究報告：</h4>
-                        <h4 class="hidden-pc">{{work.reportTitle || fillinblank}}</h4>
-                        <p class="bold hidden-mobile report"><b>研究報告：</b>{{work.reportTitle || fillinblank}}</p>
+                <div class="research" :class="{'hidden-mobile': !work.gsx$reporttitle.$t}">
+                    <div class='research-wrapper' :class="{'opacityZero': !work.gsx$reporttitle.$t}">
+                            <img :src="bullet2" alt="" class="graphic2">                    
+                            <div class="article">
+                                <a :href="work.gsx$reportlink.$t" target="_blank">
+                                    <h4 class="bold hidden-pc">研究報告：</h4>
+                                    <h4 class="hidden-pc">{{work.gsx$reporttitle.$t || fillinblank}}</h4>
+                                    <p class="hidden-mobile report"><b>研究報告：</b>{{work.gsx$reporttitle.$t || fillinblank}}</p>
+                                </a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -33,21 +39,38 @@
 
 <script>
 import ContentWrapper from './Content'
+import Description from './TrancatedWords'
 import bullet1 from '~/assets/a-7.svg'
 import bullet2 from '~/assets/a-8.svg'
 
 export default {
   name: 'Work',
   props: ['projects'],
-  components: {ContentWrapper},
+  components: {ContentWrapper, Description},
   computed: {
     projectlist: function () {
       this.projects.forEach(function (ele) {
-        ele.maintitle = ele.title.split(' ')[0]
-        ele.subtitle = ele.title.split(' ')[1]
+        if (ele.gsx$title.$t.split(' ').length > 2) {
+          ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+          ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < ele.gsx$title.$t.split(' ').length; i++) {
+            let str = ele.gsx$title.$t.split(' ')[i]
+            ele.subtitle = ele.subtitle + ' ' + str
+          }
+        } else {
+          ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+          ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+        }
       })
       return this.projects
     },
+    // projectlist: function () {
+    //   this.projects.forEach(function (ele) {
+    //     ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+    //     ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+    //   })
+    //   return this.projects
+    // },
     list: function () {
       for (let i = (this.part - 1) * 8; i < this.part * 8; i++) {
         if (i < this.projectlist.length) {
@@ -91,6 +114,18 @@ export default {
 
 p{
     margin: 0;
+}
+
+h4{
+    color:black;
+}
+
+p.date{
+    color: #717071;        
+}
+
+h4.description{
+    color: #717071;    
 }
 
 @media screen and (min-width: 1200px){
@@ -216,4 +251,7 @@ img.graphic2{
   border-bottom: 4px solid #e73828;
 }
 
+a{
+    color: black;
+}
 </style>

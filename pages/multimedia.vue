@@ -62,7 +62,7 @@
             多媒體報導
           </h3>
           <p class="subtitle">
-            企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗。
+            企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗
           </p>
         </div>
         <img 
@@ -77,7 +77,8 @@
         :description="coverDescription" 
         :date="coverDate" 
         :report="coverReportTitle"
-        :reportlink="coverReportLink"/>
+        :reportlink="coverReportLink"
+        :link="coverLink"/>
       <p class="hidden-mobile"><br></p>
     </ContentWrapper>
     <ContentWrapper 
@@ -107,7 +108,7 @@
       <p><br></p>
       <p><br></p>
       <div class="nmd">
-        <p>聯合報新聞部 新媒體中心</p>
+        <p>聯合報 U Brand Studio 融媒體發展部</p>
         <p>新北市汐止區大同路一段369號</p>
         <p>TEL : 02-8692-5588 # 2302</p>
         <p>ubrandstudio@udngroup.com.tw</p>
@@ -130,33 +131,36 @@ import Contact from '~/Components/Contact.vue'
 import Logo from '~/Components/Logo.vue'
 import Bodymovin from '~/Components/Bodymovin.vue'
 
-import coverSrc from '~/assets/pc/a-bg.jpg'
 import ball from '~/assets/a-6.svg'
 
 import axios from 'axios'
+import _ from 'lodash'
 
 export default {
   components: {
     ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
   },
   asyncData ({param, error}) {
-    // 只撈一個類別
-    let json = `https://nmdap.udn.com.tw/ubrand/projects/projects.json`
+    let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
     return axios.get(json)
       .then((res) => {
-        let datalist = res.data.projects
-        let coverImageSrc = datalist[0].pcPic
-        let coverTitle = datalist[0].title
-        let coverDescription = datalist[0].description
-        let coverDate = datalist[0].date
-        let coverReportTitle = datalist[0].reportTitle
-        let coverReportLink = datalist[0].reportLink
+        let datalist = res.data.feed.entry
+        let projects = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
+        let coverImageSrc = 'projects/' + projects[0].gsx$pcpic.$t
+        let coverTitle = projects[0].gsx$title.$t
+        let coverDescription = projects[0].gsx$description.$t
+        let coverDate = projects[0].gsx$date.$t
+        let coverLink = projects[0].gsx$link.$t
+        let coverReportTitle = projects[0].gsx$reporttitle.$t
+        let coverReportLink = projects[0].gsx$reportlink.$t
+        projects.shift()
         return {
-          projectslist: datalist,
+          projectslist: projects,
           coverImage: coverImageSrc,
           coverTitle: coverTitle,
           coverDescription: coverDescription,
           coverDate: coverDate,
+          coverLink: coverLink,
           coverReportTitle: coverReportTitle,
           coverReportLink: coverReportLink
         }
@@ -167,7 +171,6 @@ export default {
   },
   data: function () {
     return {
-      coverImage: coverSrc,
       ball: ball,
       covericon: 'bodymovin/multimedia/data.jpg'
     }
@@ -296,7 +299,7 @@ a:link, a:active, a:hover, a:visited{
   text-decoration: none;
 }
 
-.bookmark a:active, a:hover p, .bookmark .now p{
+.bookmark a:active, .bookmark a:hover p, .bookmark .now p{
   border-bottom: 4px solid #e73828;
 }
 

@@ -3,36 +3,52 @@
       <div class="carousel-left">
         <transition name="fade">
             <div class="carousel-wrapper" v-if='show' key="1">
-              <img :src='imgSrc1'>
-              <div class="projects">
-                  <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
-                  <h4 class="date">{{date1}}</h4>
-              </div>
+              <a :href="link1" target="_blank">
+                <img :src='imgSrc1'>
+              </a>
+              <a :href="link1" target="_blank">
+                <div class="projects">
+                    <h4 class="text">{{title1}}<br>{{subtitle1}}</h4>
+                    <h4 class="date">{{date1}}</h4>
+                </div>
+              </a>
             </div>
             <div class="carousel-wrapper" v-else key="2">
-              <img :src='imgSrc3'>
-              <div class="projects">
-                  <h4 class="text">{{title3}}<br>{{subtitle3}}</h4>
-                  <h4 class="date">{{date3}}</h4>
-              </div>
+              <a :href="link3" target="_blank">
+                <img :src='imgSrc3'>
+              </a>
+              <a :href="link3" target="_blank">
+                <div class="projects">
+                    <h4 class="text">{{title3}}<br>{{subtitle3}}</h4>
+                    <h4 class="date">{{date3}}</h4>
+                </div>
+              </a>
             </div>
         </transition>
       </div>
       <div class="carousel-right">
         <transition name="fade">
           <div class="carousel-wrapper" v-if='show' key="3">
-            <img :src='imgSrc2'>
-            <div class="projects">
-                <h4 class="text">{{title2}}<br>{{subtitle2}}</h4>
-                <h4 class="date">{{date2}}</h4>
-            </div>
+            <a :href="link2" target="_blank">
+              <img :src='imgSrc2'>
+            </a>
+            <a :href="link2" target="_blank">
+              <div class="projects">
+                  <h4 class="text">{{title2}}<br>{{subtitle2}}</h4>
+                  <h4 class="date">{{date2}}</h4>
+              </div>
+            </a>
           </div>
           <div class="carousel-wrapper" v-else key="4">
-            <img :src='imgSrc4'>
-            <div class="projects">
-                <h4 class="text">{{title4}}<br>{{subtitle4}}</h4>
-                <h4 class="date">{{date4}}</h4>
-            </div>
+            <a :href="link4" target="_blank">
+              <img :src='imgSrc4'>
+            </a>
+            <a :href="link4" target="_blank">
+              <div class="projects">
+                  <h4 class="text">{{title4}}<br>{{subtitle4}}</h4>
+                  <h4 class="date">{{date4}}</h4>
+              </div>
+            </a>
           </div>
         </transition>
       </div>
@@ -47,39 +63,39 @@ export default {
   computed: {
     imgSrc1: {
       get: function () {
-        return this.projects[this.pick1].pcPic
+        return 'projects/' + this.projects[this.pick1].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return newValue
+        return 'projects/' + newValue
       }
     },
     imgSrc2: {
       get: function () {
-        return this.projects[this.pick2].pcPic
+        return 'projects/' + this.projects[this.pick2].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return newValue
+        return 'projects/' + newValue
       }
     },
     imgSrc3: {
       get: function () {
-        return this.projects[this.pick3].pcPic
+        return 'projects/' + this.projects[this.pick3].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return newValue
+        return 'projects/' + newValue
       }
     },
     imgSrc4: {
       get: function () {
-        return this.projects[this.pick4].pcPic
+        return 'projects/' + this.projects[this.pick4].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return newValue
+        return 'projects/' + newValue
       }
     },
     title1: {
       get: function () {
-        return this.projects[this.pick1].title.split(' ')[0]
+        return this.projects[this.pick1].gsx$title.$t.split(' ')[0]
       },
       set: function (newValue) {
         return newValue
@@ -87,7 +103,16 @@ export default {
     },
     subtitle1: {
       get: function () {
-        return this.projects[this.pick1].title.split(' ')[1]
+        if (this.projects[this.pick1].gsx$title.$t.split(' ').length > 2) {
+          let subtitle = this.projects[this.pick1].gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < this.projects[this.pick1].gsx$title.$t.split(' ').length; i++) {
+            let str = this.projects[this.pick1].gsx$title.$t.split(' ')[i]
+            subtitle = subtitle + ' ' + str
+          }
+          return subtitle
+        } else {
+          return this.projects[this.pick1].gsx$title.$t.split(' ')[1]
+        }
       },
       set: function (newValue) {
         return newValue
@@ -95,7 +120,7 @@ export default {
     },
     title2: {
       get: function () {
-        return this.projects[this.pick2].title.split(' ')[0]
+        return this.projects[this.pick2].gsx$title.$t.split(' ')[0]
       },
       set: function (newValue) {
         return newValue
@@ -103,7 +128,16 @@ export default {
     },
     subtitle2: {
       get: function () {
-        return this.projects[this.pick2].title.split(' ')[1]
+        if (this.projects[this.pick2].gsx$title.$t.split(' ').length > 2) {
+          let subtitle = this.projects[this.pick2].gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < this.projects[this.pick2].gsx$title.$t.split(' ').length; i++) {
+            let str = this.projects[this.pick2].gsx$title.$t.split(' ')[i]
+            subtitle = subtitle + ' ' + str
+          }
+          return subtitle
+        } else {
+          return this.projects[this.pick2].gsx$title.$t.split(' ')[1]
+        }
       },
       set: function (newValue) {
         return newValue
@@ -111,7 +145,7 @@ export default {
     },
     title3: {
       get: function () {
-        return this.projects[this.pick3].title.split(' ')[0]
+        return this.projects[this.pick3].gsx$title.$t.split(' ')[0]
       },
       set: function (newValue) {
         return newValue
@@ -119,7 +153,16 @@ export default {
     },
     subtitle3: {
       get: function () {
-        return this.projects[this.pick3].title.split(' ')[1]
+        if (this.projects[this.pick3].gsx$title.$t.split(' ').length > 2) {
+          let subtitle = this.projects[this.pick3].gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < this.projects[this.pick3].gsx$title.$t.split(' ').length; i++) {
+            let str = this.projects[this.pick3].gsx$title.$t.split(' ')[i]
+            subtitle = subtitle + ' ' + str
+          }
+          return subtitle
+        } else {
+          return this.projects[this.pick3].gsx$title.$t.split(' ')[1]
+        }
       },
       set: function (newValue) {
         return newValue
@@ -127,7 +170,7 @@ export default {
     },
     title4: {
       get: function () {
-        return this.projects[this.pick4].title.split(' ')[0]
+        return this.projects[this.pick4].gsx$title.$t.split(' ')[0]
       },
       set: function (newValue) {
         return newValue
@@ -135,7 +178,16 @@ export default {
     },
     subtitle4: {
       get: function () {
-        return this.projects[this.pick4].title.split(' ')[1]
+        if (this.projects[this.pick4].gsx$title.$t.split(' ').length > 2) {
+          let subtitle = this.projects[this.pick4].gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < this.projects[this.pick4].gsx$title.$t.split(' ').length; i++) {
+            let str = this.projects[this.pick4].gsx$title.$t.split(' ')[i]
+            subtitle = subtitle + ' ' + str
+          }
+          return subtitle
+        } else {
+          return this.projects[this.pick4].gsx$title.$t.split(' ')[1]
+        }
       },
       set: function (newValue) {
         return newValue
@@ -143,7 +195,7 @@ export default {
     },
     date1: {
       get: function () {
-        return this.projects[this.pick1].date
+        return this.projects[this.pick1].gsx$date.$t
       },
       set: function (newValue) {
         return newValue
@@ -151,7 +203,7 @@ export default {
     },
     date2: {
       get: function () {
-        return this.projects[this.pick2].date
+        return this.projects[this.pick2].gsx$date.$t
       },
       set: function (newValue) {
         return newValue
@@ -159,7 +211,7 @@ export default {
     },
     date3: {
       get: function () {
-        return this.projects[this.pick3].date
+        return this.projects[this.pick3].gsx$date.$t
       },
       set: function (newValue) {
         return newValue
@@ -167,7 +219,39 @@ export default {
     },
     date4: {
       get: function () {
-        return this.projects[this.pick4].date
+        return this.projects[this.pick4].gsx$date.$t
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    link1: {
+      get: function () {
+        return this.projects[this.pick1].gsx$link.$t
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    link2: {
+      get: function () {
+        return this.projects[this.pick2].gsx$link.$t
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    link3: {
+      get: function () {
+        return this.projects[this.pick3].gsx$link.$t
+      },
+      set: function (newValue) {
+        return newValue
+      }
+    },
+    link4: {
+      get: function () {
+        return this.projects[this.pick4].gsx$link.$t
       },
       set: function (newValue) {
         return newValue
@@ -177,10 +261,14 @@ export default {
   data: function () {
     return {
       show: true,
-      pick1: Math.floor(Math.random() * this.projects.length),
-      pick2: Math.floor(Math.random() * this.projects.length),
-      pick3: Math.floor(Math.random() * this.projects.length),
-      pick4: Math.floor(Math.random() * this.projects.length)
+      // pick1: Math.floor(Math.random() * this.projects.length),
+      // pick2: Math.floor(Math.random() * this.projects.length),
+      // pick3: Math.floor(Math.random() * this.projects.length),
+      // pick4: Math.floor(Math.random() * this.projects.length)
+      pick1: 1,
+      pick2: 2,
+      pick3: 3,
+      pick4: 4
     }
   },
   components: {
@@ -220,10 +308,15 @@ h4.text{
   font-weight: bold;
 }
 
+h4.date{
+  color: #717071
+}
+
 .Carousel {
   position: relative;
   width: 100%;
   height: 126px;
+  z-index: 1;
 }
 
 .carousel-left, .carousel-right {
@@ -258,6 +351,7 @@ img {
 
 .projects {
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -268,4 +362,13 @@ img {
   opacity: 0
 }
 
+a{
+  color: black;
+  text-decoration: none;
+  border: 0;
+}
+a:hover{
+  color: black;
+  text-decoration: none;
+}
 </style>

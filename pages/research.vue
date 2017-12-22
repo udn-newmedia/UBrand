@@ -61,7 +61,7 @@
             研究報告
           </h3>
           <p class="subtitle">
-            企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗。
+            定期分享科技與媒體新趨勢的研究報告
           </p>
         </div>
         <img 
@@ -75,15 +75,16 @@
         :cover-title="coverTitle" 
         :description="coverDescription" 
         :date="coverDate" 
-        :label="coverLabel" 
-        :report="coverReport"/>
+        :report="coverReportTitle"
+        :reportlink="coverReportLink"
+        :link="coverLink"/>
       <p class="hidden-mobile"><br></p>
     </ContentWrapper>
     <ContentWrapper 
       class="worksContentWrapper fluid"
       style="position: relative; overflow: hidden;">
       <p class="hidden-mobile"><br></p>
-      <Works/>
+      <Works :projects="projectslist"/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
@@ -106,7 +107,7 @@
       <p><br></p>
       <p><br></p>
       <div class="nmd">
-        <p>聯合報新聞部 新媒體中心</p>
+        <p>聯合報 U Brand Studio 融媒體發展部</p>
         <p>新北市汐止區大同路一段369號</p>
         <p>TEL : 02-8692-5588 # 2302</p>
         <p>ubrandstudio@udngroup.com.tw</p>
@@ -129,23 +130,48 @@ import Contact from '~/Components/Contact.vue'
 import Logo from '~/Components/Logo.vue'
 import Bodymovin from '~/Components/Bodymovin.vue'
 
-import coverSrc from '~/assets/pc/a-bg.jpg'
 import ball from '~/assets/a-6.svg'
+
+import axios from 'axios'
+import _ from 'lodash'
 
 export default {
   components: {
     ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
   },
+  asyncData ({param, error}) {
+    let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
+    return axios.get(json)
+      .then((res) => {
+        let datalist = res.data.feed.entry
+        let projects = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+        let coverImageSrc = 'projects/' + projects[0].gsx$pcpic.$t
+        let coverTitle = projects[0].gsx$title.$t
+        let coverDescription = projects[0].gsx$description.$t
+        let coverDate = projects[0].gsx$date.$t
+        let coverLink = projects[0].gsx$link.$t
+        let coverReportTitle = projects[0].gsx$reporttitle.$t
+        let coverReportLink = projects[0].gsx$reportlink.$t
+        projects.shift()
+        return {
+          projectslist: projects,
+          coverImage: coverImageSrc,
+          coverTitle: coverTitle,
+          coverDescription: coverDescription,
+          coverDate: coverDate,
+          coverLink: coverLink,
+          coverReportTitle: coverReportTitle,
+          coverReportLink: coverReportLink
+        }
+      })
+      .catch((e) => {
+        error({statusCode: 404, message: 'File not found'})
+      })
+  },
   data: function () {
     return {
-      coverImage: coverSrc,
       ball: ball,
-      covericon: 'bodymovin/multimedia/data.jpg',
-      coverTitle: '好好說再見 插畫記林杰樑走後1500天',
-      coverDescription: '俠醫逝世四年餘，遺孀譚敦慈難得卸下理性形象：永遠走不過這......',
-      coverDate: '2017.11.23',
-      coverLabel: '多媒體報導',
-      coverReport: '把3D模型擺進新聞 學到的三件事'
+      covericon: 'bodymovin/research/data.jpg'
     }
   }
 }
@@ -272,7 +298,7 @@ a:link, a:active, a:hover, a:visited{
   text-decoration: none;
 }
 
-.bookmark a:active, a:hover p, .bookmark .now p{
+.bookmark a:active, .bookmark a:hover p, .bookmark .now p{
   border-bottom: 4px solid #e73828;
 }
 

@@ -66,6 +66,7 @@ export default {
 .ballAnim {
   position: absolute;
   bottom: 0;
+  z-index: 0;
 }
 
 .ballAnim.left {

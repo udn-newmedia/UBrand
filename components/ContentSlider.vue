@@ -5,15 +5,15 @@
               :style="{
                 'transition' : 'none' 
               }">
-            <div v-for="work in list" :key="work.title" class="slider">
-                <a>
-                    <div class="projects" :style="{width: projectWidth}">
-                      <img :src="work.mobPic">
-                      <div class="texts">
-                        <p>{{work.maintitle}}</p>
-                        <p>{{work.subtitle}}</p>
-                      </div>
+            <div v-for="work in list" :key="work.gsx$title.$t" class="slider">
+                <a :href="work.gsx$link.$t" target="_blank">
+                  <div class="projects" :style="{width: projectWidth}">
+                    <img :src="'projects/' + work.gsx$mobpic.$t">
+                    <div class="texts">
+                      <p>{{work.maintitle}}</p>
+                      <p>{{work.subtitle}}</p>
                     </div>
+                  </div>
                 </a>
             </div>
         </div>
@@ -37,11 +37,27 @@ export default {
   computed: {
     list: function () {
       this.sliders.forEach(ele => {
-        ele.maintitle = ele.title.split(' ')[0]
-        ele.subtitle = ele.title.split(' ')[1]
+        if (ele.gsx$title.$t.split(' ').length > 2) {
+          ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+          ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+          for (let i = 2; i < ele.gsx$title.$t.split(' ').length; i++) {
+            let str = ele.gsx$title.$t.split(' ')[i]
+            ele.subtitle = ele.subtitle + ' ' + str
+          }
+        } else {
+          ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+          ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+        }
       })
       return this.sliders
     }
+    // list: function () {
+    //   this.sliders.forEach(ele => {
+    //     ele.maintitle = ele.gsx$title.$t.split(' ')[0]
+    //     ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+    //   })
+    //   return this.sliders
+    // }
   },
   data: function () {
     return {

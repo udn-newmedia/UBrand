@@ -1,6 +1,7 @@
 <template>
     <div id="head-bar" :style="{top: top+'px'}">
-        <ContentWrapper>
+        <ContentWrapper 
+            background-color="#fff">
             <div id="icon">
                 <a href="."><img :src="logo"></a>
             </div>
@@ -52,7 +53,7 @@ export default {
   methods: {
     handleClick: function () {
       this.isOpen = !this.isOpen
-      console.log('hamburger click')
+    //   console.log('hamburger click')
       // ga("send", {
       //     "hitType": "event",
       //     "eventCategory": "Ham Click",
@@ -76,7 +77,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #head-bar {
     position: fixed;
     background-color: #ffffff;

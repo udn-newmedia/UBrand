@@ -174,6 +174,7 @@ export default {
 
 .videocontainer {
     width: 100%;
+    z-index: 1;
 }
 
 video::-webkit-media-controls-start-playback-button {

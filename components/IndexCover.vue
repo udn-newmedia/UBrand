@@ -1,12 +1,14 @@
 <template>
     <div class="indexCover">
-        <img :src="srcCover" alt="">
-        <div class="titleCard">
-            <span class="coverlabel">{{label}}</span>
-            <h2><b>{{title}}<br>{{subtitle}}</b></h2>
-            <h3 class="description">{{description}}</h3>
-            <h4 class="date">{{date}}</h4>
-        </div>
+        <a :href="link" target="_blank">
+            <img :src="srcCover" alt="">
+            <div class="titleCard">
+                <span class="coverlabel">{{label}}</span>
+                <h2><b>{{title}}<br>{{subtitle}}</b></h2>
+                <h3 class="description">{{truncatedDescription}}</h3>
+                <h4 class="date">{{date}}</h4>
+            </div>
+        </a>
         <CircleAnim triggerPoint="0"/>
     </div>
 </template>
@@ -17,8 +19,18 @@ import CircleAnim from './CircleAnim'
 
 export default {
   name: 'IndexCover',
-  props: ['srcCover', 'coverTitle', 'description', 'date', 'label'],
+  props: ['srcCover', 'coverTitle', 'description', 'date', 'label', 'link'],
   components: {ContentWrapper, CircleAnim},
+  computed: {
+    truncatedDescription: function () {
+      let len = 30
+      if (this.description.length > len) {
+        return this.description.substring(0, len - 1) + '...'
+      } else {
+        return this.description
+      }
+    }
+  },
   data: function () {
     return {
       title: this.coverTitle.split(' ')[0],
@@ -44,6 +56,7 @@ h4.date{
 }
 .indexCover{
     position: relative;
+    z-index: 1;
 }
 
 .titleCard{
@@ -66,5 +79,9 @@ h4.date{
     background: linear-gradient(to right,#c13432 ,#d3611c);
     padding: 5px 10px;
     border-radius: 100px;
+}
+
+a{
+    color: black;
 }
 </style>

@@ -67,7 +67,8 @@ export default {
             width: 100%;
         }
         .content{
-            padding: 64px 100px;
+            /* padding: 64px 100px; */
+            padding: 0 100px;
         }
         h2{
             font-size: 30px;
