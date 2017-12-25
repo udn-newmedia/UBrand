@@ -217,13 +217,13 @@ button {
     float: right;
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
   .hidden-mobile{
     display: none!important;
   } 
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .hidden-pc{
     display: none!important;
   } 
@@ -241,6 +241,12 @@ form{
     flex-direction: column;
 }
 
+@media screen and (max-width: 1023px){
+    form{
+        margin-top: 30px;
+    }
+}
+
 .row{
     display: flex;
     flex-direction: row;
@@ -253,7 +259,7 @@ input{
     height: 36px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .row{
         justify-content: flex-start;
         margin: 7px 0;
@@ -294,7 +300,7 @@ p.column{
     width: 15%;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     p.column{
         color: white;
         width: 5%;
@@ -308,7 +314,7 @@ input.column, textarea.column{
     border-radius: 5px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     input.column {
         width: 60%;
     }
@@ -342,7 +348,7 @@ input.column, textarea.column{
     margin-top: 10px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .mask p {
         text-align: center;
     }

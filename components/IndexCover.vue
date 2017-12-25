@@ -1,7 +1,9 @@
 <template>
     <div class="indexCover">
         <a :href="link" target="_blank">
-            <img :src="srcCover" alt="">
+            <div class="imgwrapper">
+                <img :src="srcCover" alt="">
+            </div> 
             <div class="titleCard">
                 <span class="coverlabel">{{label}}</span>
                 <h2><b>{{title}}<br>{{subtitle}}</b></h2>
@@ -84,4 +86,17 @@ h4.date{
 a{
     color: black;
 }
+
+.imgwrapper{
+  overflow: hidden;
+}
+
+.imgwrapper:hover img {
+  transform: scale(1.1);
+}
+
+img {
+  transition: all 0.5s;    
+}
+
 </style>

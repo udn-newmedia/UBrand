@@ -4,10 +4,12 @@
             <div v-for="work in list" :key="work.gsx$title.$t" class="work-and-research">
                 <div class="work">
                     <a :href="work.gsx$link.$t" target="_blank">
-                        <picture>
-                            <source media="(max-width: 1199px)" :srcset="'projects/' + work.gsx$mobpic.$t">
-                            <img :src="'projects/' + work.gsx$pcpic.$t" alt="">
-                        </picture>
+                        <div class="imgwrapper">
+                            <picture>
+                                <source media="(max-width: 1199px)" :srcset="'projects/' + work.gsx$mobpic.$t">
+                                <img :src="'projects/' + work.gsx$pcpic.$t" alt="">
+                            </picture>
+                        </div>
                         <div class="work-label">
                             <img :src="bullet1" alt="" class="graphic">
                             <div class="article">
@@ -100,13 +102,13 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
     .hidden-mobile{
         display: none!important;
     } 
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .hidden-pc{
         display: none!important;
     } 
@@ -118,6 +120,7 @@ p{
 
 h4{
     color:black;
+    font-weight: normal;
 }
 
 p.date{
@@ -128,7 +131,7 @@ h4.description{
     color: #717071;    
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     h4{
         font-size: 21px;
         margin-top: 0;
@@ -154,9 +157,10 @@ h4.description{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 1;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     #works{
         justify-content: space-between;
     } 
@@ -169,7 +173,7 @@ h4.description{
     display: flex;
     flex-direction: column;
 }
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .work{
         box-shadow: -2.2px 2px 7px 0 rgba(85, 84, 84, 0.04);
     }
@@ -188,7 +192,21 @@ h4.description{
     width: 334px;
     height: 230px;
 }
-@media screen and (min-width: 1200px){
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .work-and-research{
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+        width: 100%;
+    }    
+    .work-and-research img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1024px){
     .work-and-research{
         width: 455px;
     }
@@ -200,7 +218,7 @@ h4.description{
 .research {
     background: white;
 }
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
     .research{
         margin-top: 10px;
     } 
@@ -209,7 +227,7 @@ h4.description{
     display: flex;
     flex-direction: row;
 }
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .research-wrapper{
         margin-top: 0;
     }
@@ -254,4 +272,17 @@ img.graphic2{
 a{
     color: black;
 }
+
+.imgwrapper{
+  overflow: hidden;
+}
+
+.imgwrapper:hover img {
+  transform: scale(1.1);
+}
+
+img {
+  transition: all 0.5s;    
+}
+
 </style>

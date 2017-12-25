@@ -105,9 +105,10 @@ export default {
 
 .blueRectMoveAnimLeft {
   animation-name: blueRectMoveLeft;
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes blueRectMoveLeft {

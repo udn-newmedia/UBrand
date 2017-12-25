@@ -14,12 +14,12 @@
                         <h2>{{work.maintitle}}</h2>
                         <h2>{{work.subtitle}}</h2>
                         <p class="date">{{work.gsx$date.$t}}</p>
-                        <CircleAnim triggerPoint="0"/>
                       </div>
                     </div>
                 </a>
             </div>
         </div>
+        <CircleAnim class="circlesAnim" triggerPoint="0"/>
         <ul class="slider-nav">
             <li v-for="n in list.length-3" :key="n.id">
                 <span class="circle" :class="{'active': n === current}"></span>
@@ -169,6 +169,7 @@ img{
 
 .sliders{
     display: block;
+    position: relative;
     width:99999999px;
 }
 
@@ -238,7 +239,7 @@ a{
       line-height: 32px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 1023px){
   h2{
       font-size: 30px;
   }
@@ -247,7 +248,7 @@ a{
       line-height: 32px;
   }
 }
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 1024px){
   p>br{
       line-height: 50px;
   }
@@ -265,5 +266,19 @@ p.date{
     padding: 5px 10px;
     margin: 5px 0;
     border-radius: 100px;
+}
+
+@media screen and (max-width: 767px){
+  .circlesAnim{
+    top: 283px; 
+    right: 30px;
+  }  
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+  .circlesAnim{
+    top: 283px; 
+    right: 400px;
+  }    
 }
 </style>

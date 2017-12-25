@@ -193,10 +193,25 @@ export default {
     color: #F589BA;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 767px){
     #head-bar {
         height: 46px;
     }
+    .icons {
+        width: 35%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    #head-bar {
+        height: 47px;
+    }
+    .icons {
+        width: 22.5%;
+    }    
+}
+
+@media screen and (max-width: 1023px) {
     #icon {
         height: 46px;
         line-height: 46px;
@@ -240,7 +255,7 @@ export default {
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
     #head-bar {
         height: 50px;
     }
@@ -259,4 +274,5 @@ export default {
     }
 
 }
+
 </style>

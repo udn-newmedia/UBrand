@@ -53,8 +53,17 @@ h4{
   width: 45%;
   height: 100%;
   top: 50%; 
-  transform: translateY(-25%);
+  transform: translateY(-7.5%);
   transition: all 0.5s ease-in;
+}
+
+@media screen and (min-width:1200px){
+  .Slideshow {
+    /* transform: translateY(-22.5%); */
+    transform: translateY(-30%);
+    width: 700px;
+    height: 400px;
+  }
 }
 
 .Slideshow.right {
@@ -74,9 +83,18 @@ h4{
   width: 100%;
 }
 
+.slide-wrapper .relative {
+  overflow: hidden;
+}
+
 img {
   width: 100%;
   height: auto;
+  transition: all 0.5s;
+}
+
+.slide-wrapper:hover img {
+  transform: scale(1.1);
 }
 
 .projects {

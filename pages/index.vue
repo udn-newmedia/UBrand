@@ -629,7 +629,7 @@ export default {
           if (!this.isPlaying(section[i].getElementsByTagName('video')[0])) {
             section[i].getElementsByTagName('video')[0].play()
           }
-          if (window.innerWidth > 1200) {
+          if (window.innerWidth > 1023) {
             if (section[i].querySelector('.hideAtStart')) {
               Array.prototype.forEach.call(section[i].querySelectorAll('.hideAtStart'), function (el) {
                 el.classList.remove('hideAtStart')
@@ -685,7 +685,7 @@ export default {
   text-align: justify;  
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
   .hidden-mobile{
     display: none!important;
   } 
@@ -694,7 +694,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .hidden-pc{
     display: none!important;
   } 
@@ -757,7 +757,7 @@ ul {
   background-color: #fff;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
   .fb .fbgroup {
     font-size: 15px;
   }
@@ -777,7 +777,7 @@ ul {
   width: 20%;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
 
   .about .anim {
     transform: translateX(-60%);
@@ -872,7 +872,7 @@ a{
   font-size: 15px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .anchors.anchors p{
     font-size: 17px;
   }
@@ -889,7 +889,7 @@ a{
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .intro h1{
     font-size: 45px;
   } 
@@ -899,7 +899,7 @@ a{
   }
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   section .hideAtStart{
     opacity: 0;
     transform: translateY(50px);

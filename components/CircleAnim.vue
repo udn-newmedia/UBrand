@@ -82,7 +82,7 @@ export default {
     transition-timing-function: linear;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1023px){
   .circles{
     width: 68px;
     height: 104px;
@@ -141,7 +141,7 @@ export default {
     100% {transform: translateX(60%) translateY(-25%)}
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1023px){
   @keyframes movingDownThenUp {
       0% {transform: translateX(-20px) translateY(-70px)}
       100% {transform: translateX(-20px) translateY(-100px)}

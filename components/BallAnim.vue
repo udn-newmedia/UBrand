@@ -154,6 +154,7 @@ img {
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  animation-iteration-count: 1;
 }
 
 @keyframes movingUpleft {
@@ -190,6 +191,7 @@ img {
   animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  animation-iteration-count: 1;
 }
 
 @keyframes movingUpright {

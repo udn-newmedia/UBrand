@@ -186,13 +186,13 @@ export default {
   text-align: justify;  
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
   .hidden-mobile{
     display: none!important;
   } 
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .hidden-pc{
     display: none!important;
   } 
@@ -232,7 +232,7 @@ ul {
   background-color: #f7f7f7;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .padding-for-headbar {
     padding-top: 50px;
   }
@@ -252,7 +252,7 @@ ul {
   }
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
   .hidden-mobile{
     display: none!important;
   } 
@@ -273,7 +273,7 @@ ul {
  transform: rotate(180deg) translate(-30%) translateY(-30%)
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .bottomBall{
     width: 25%;
     right: 0;
@@ -289,7 +289,7 @@ ul {
   font-size: 15px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
   .bookmark p{
     font-size: 17px;
   }
@@ -315,7 +315,7 @@ button{
   transition: box-shadow 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 1023px){
   button{
     width: 80px;
     height: 33px;

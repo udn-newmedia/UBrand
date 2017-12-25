@@ -1,6 +1,7 @@
 <template>
     <div id="head-bar" :style="{top: top+'px'}">
-        <ContentWrapper>
+        <ContentWrapper
+            background-color="#fff">
             <div id="icon">
                 <a href="."><img :src="logo"></a>
             </div>
@@ -195,10 +196,19 @@ export default {
     color: #F589BA;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 767px){
     #head-bar {
         height: 46px;
     }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #head-bar {
+        height: 47px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
     #icon {
         height: 46px;
         line-height: 46px;

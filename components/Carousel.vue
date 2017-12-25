@@ -4,7 +4,9 @@
         <transition name="fade">
             <div class="carousel-wrapper" v-if='show' key="1">
               <a :href="link1" target="_blank">
-                <img :src='imgSrc1'>
+                <div class="imgwrapper">
+                  <img :src='imgSrc1'>
+                </div>
               </a>
               <a :href="link1" target="_blank">
                 <div class="projects">
@@ -15,7 +17,9 @@
             </div>
             <div class="carousel-wrapper" v-else key="2">
               <a :href="link3" target="_blank">
-                <img :src='imgSrc3'>
+                <div class="imgwrapper">
+                  <img :src='imgSrc3'>
+                </div>
               </a>
               <a :href="link3" target="_blank">
                 <div class="projects">
@@ -30,7 +34,9 @@
         <transition name="fade">
           <div class="carousel-wrapper" v-if='show' key="3">
             <a :href="link2" target="_blank">
-              <img :src='imgSrc2'>
+              <div class="imgwrapper">
+                <img :src='imgSrc2'>
+              </div>
             </a>
             <a :href="link2" target="_blank">
               <div class="projects">
@@ -41,7 +47,9 @@
           </div>
           <div class="carousel-wrapper" v-else key="4">
             <a :href="link4" target="_blank">
-              <img :src='imgSrc4'>
+              <div class="imgwrapper">
+                <img :src='imgSrc4'>
+              </div>
             </a>
             <a :href="link4" target="_blank">
               <div class="projects">
@@ -321,7 +329,7 @@ h4.date{
 
 .carousel-left, .carousel-right {
   position: absolute;
-  width: calc(50%-10px);
+  width: calc(50%-17.5px);
   height: 100%;
 }
 
@@ -371,4 +379,17 @@ a:hover{
   color: black;
   text-decoration: none;
 }
+
+.imgwrapper{
+  overflow: hidden;
+}
+
+.imgwrapper:hover img {
+  transform: scale(1.1);
+}
+
+img {
+  transition: all 0.5s;    
+}
+
 </style>

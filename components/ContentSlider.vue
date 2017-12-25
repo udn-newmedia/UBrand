@@ -161,6 +161,10 @@ img{
     overflow-x: hidden;
 }
 
+.Slider{
+  margin-bottom: 40px;
+}
+
 .sliders{
     display: block;
     width:99999999px;
@@ -240,7 +244,7 @@ a{
       line-height: 32px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 1023px){
   h2{
       font-size: 30px;
   }
@@ -249,7 +253,7 @@ a{
       line-height: 32px;
   }
 }
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 1024px){
   p>br{
       line-height: 50px;
   }

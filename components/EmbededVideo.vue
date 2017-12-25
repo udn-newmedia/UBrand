@@ -3,7 +3,7 @@
         <div class="video-contain" :style="{backgroundColor: backgroundColor}">
             <video id="introVideo" preload="metadata" :src="source" :poster="videoPoster" :muted="isMuted" playsinline controls></video>
             <div class="video-control">
-              <div class="progress hidden-md hidden-lg">
+              <div class="progress">
                 <div id="progress-bar" class="progress-bar progress-bar-striped" ref="progressbar"></div>
               </div>
               <!-- <i class="fa fa-play video-play hidden-md hidden-lg"></i> -->
@@ -268,7 +268,7 @@ video{
     transition: width 0.6s linear;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
     .videocontainer{
         width: 955px;
     }

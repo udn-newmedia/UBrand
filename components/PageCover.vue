@@ -1,15 +1,17 @@
 <template>
     <div class="indexCover">
-        <img :src='srcCover' alt="">
+        <div class="imgwrapper">
+            <img :src='srcCover' alt="">
+        </div>
         <div class="titleCard">
             <a :href="link" target="_blank">
                 <div class="row">
-                        <img :src="bullet1" alt="" class="bullet1">
-                        <div class="coverLabel">
-                            <h2><b>{{title}}<br>{{subtitle}}</b></h2>
-                            <h3 class="description">{{truncatedDescription}}</h3>
-                            <h4 class="date">{{date}}</h4>
-                        </div>
+                    <img :src="bullet1" alt="" class="bullet1">
+                    <div class="coverLabel">
+                        <h2><b>{{title}}<br>{{subtitle}}</b></h2>
+                        <h3 class="description">{{truncatedDescription}}</h3>
+                        <h4 class="date">{{date}}</h4>
+                    </div>
                 </div>
             </a>
             <a :href="reportlink" target="_blank" v-if="report!==''">
@@ -67,6 +69,10 @@ h4.report{
     text-underline-position: under;
 }
 
+h3.description{
+    font-size: 21px;
+}
+
 .indexCover{
     position: relative;
 }
@@ -121,6 +127,18 @@ p.report{
 a{
     color: black;
     text-decoration: none;
+}
+
+.imgwrapper{
+  overflow: hidden;
+}
+
+.imgwrapper:hover img {
+  transform: scale(1.1);
+}
+
+img {
+  transition: all 0.5s;    
 }
 
 </style>

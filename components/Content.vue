@@ -62,7 +62,7 @@ export default {
             font-size: 15px;
         }
     }
-    @media screen and (min-width: 768px) and (max-width: 1024px){
+    @media screen and (min-width: 768px) and (max-width: 1023px){
         .container{
             width: 100%;
         }
@@ -78,7 +78,7 @@ export default {
             line-height: 32px;
         }
     }
-    @media screen and (min-width: 1025px){
+    @media screen and (min-width: 1024px){
         .container{
             width: 955px;
         }
