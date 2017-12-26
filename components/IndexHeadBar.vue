@@ -89,6 +89,7 @@ export default {
     left: 0;
     z-index: 99999;
     transition: opacity 0.7s ease;
+    box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
 }
 
 #icon {
@@ -200,15 +201,21 @@ export default {
     #head-bar {
         height: 46px;
     }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    #head-bar {
-        height: 47px;
+    .icons {
+        width: 40%;
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    #head-bar {
+        height: 47px;
+    }
+    .icons {
+        width: 22.5%;
+    }    
+}
+
+@media screen and (max-width: 1023px) {
     #icon {
         height: 46px;
         line-height: 46px;
@@ -252,7 +259,7 @@ export default {
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1024px) {
     #head-bar {
         height: 50px;
     }

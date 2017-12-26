@@ -62,7 +62,7 @@
             多媒體報導
           </h3>
           <p class="subtitle">
-            企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗
+            專題企劃、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗
           </p>
         </div>
         <img 
@@ -301,6 +301,10 @@ a:link, a:active, a:hover, a:visited{
 
 .bookmark a:active, .bookmark a:hover p, .bookmark .now p{
   border-bottom: 4px solid #e73828;
+}
+
+.bookmark{
+  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
 }
 
 button{

@@ -2,7 +2,7 @@
     <div class="indexSection" :style="{backgroundColor: backgroundColor}">
         <div class="introContent hidden-mobile" :class="{'right': position === 'right'}" v-if="position==='right'">
         </div>
-        <div class="introContent">
+        <div class="introContent introWords">
             <slot name="anim" class="anim"></slot>
             <div class="introWrapper">
                 <slot name="intro" class="intro"></slot>
@@ -64,6 +64,9 @@ export default {
 
     .introContent.left, .introContent.right{
         height: 0;
+    }
+    .introContent.introWords{
+        width: 60%;
     }
 }
 

@@ -11,7 +11,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'ubrand site' }
+      { hid: 'description', name: 'description', content: 'ubrand site' },
+      { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },      
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://udn.com/upf/newmedia/image/udn-icon.ico' },

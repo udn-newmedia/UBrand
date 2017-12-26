@@ -175,6 +175,7 @@ img{
 
 .sliders .slider{
     float: left;
+    max-width: 349px;
 }
 
 ul.slider-nav{
@@ -241,10 +242,10 @@ a{
 }
 @media screen and (min-width: 768px) and (max-width: 1023px){
   h2{
-      font-size: 30px;
+      font-size: 26px;
   }
   p{
-      font-size: 20px;
+      font-size: 18px;
       line-height: 32px;
   }
 }

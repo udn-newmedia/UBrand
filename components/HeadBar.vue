@@ -86,6 +86,7 @@ export default {
     left: 0;
     z-index: 99999;
     transition: opacity 0.7s ease;
+    box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
 }
 
 #icon {
@@ -198,7 +199,7 @@ export default {
         height: 46px;
     }
     .icons {
-        width: 35%;
+        width: 40%;
     }
 }
 

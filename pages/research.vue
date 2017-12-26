@@ -302,6 +302,10 @@ a:link, a:active, a:hover, a:visited{
   border-bottom: 4px solid #e73828;
 }
 
+.bookmark{
+  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
+}
+
 button{
   width: 102px;
   height: 41px;

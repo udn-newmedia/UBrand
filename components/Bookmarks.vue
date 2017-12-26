@@ -103,5 +103,4 @@ a:active, a:hover p{
   border-bottom: 4px solid #e73828;
 }
 
-
 </style>

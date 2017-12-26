@@ -17,4 +17,10 @@ export default {
     background: white;
     width: 100%;
   }
+  @media screen and (max-width: 767px){
+    video{
+      width: 334px;
+      height: 300.59px;
+    }    
+  }
 </style>

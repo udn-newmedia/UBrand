@@ -1,7 +1,7 @@
 <template>
   <div id="index">
     <HeadBar :bookmark-display="stickyAnchors">
-      <Bookmarks class="anchors">
+      <Bookmarks class="anchors fixed">
         <li>
           <a 
             class="hidden-pc"
@@ -171,16 +171,21 @@
           <video 
             slot="anim"
             class="anim" 
-            :src="animMultimedia" 
+            :src="animMultimedia"
+            :poster="posterMultimedia" 
             muted
             playsinline/> 
           <div 
             slot="intro" 
             class="intro hideAtStart">
             <h1>多媒體報導</h1>
-            <h3>專題企畫、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
+            <h3>專題企劃、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/multimedia">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/multimedia">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>                              
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -207,6 +212,7 @@
             slot="anim"
             class="anim" 
             :src="animData" 
+            :poster="posterData"             
             muted
             playsinline/> 
           <div 
@@ -215,7 +221,11 @@
             <h1>數據專題</h1>
             <h3>數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/data">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/data">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -241,7 +251,8 @@
           <video 
             slot="anim"
             class="anim" 
-            :src="animInteractive" 
+            :src="animInteractive"
+            :poster="posterInteractive"  
             muted
             playsinline/>      
           <div 
@@ -250,7 +261,11 @@
             <h1>互動新聞</h1>
             <h3>文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/interactive">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/interactive">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -277,6 +292,7 @@
             slot="anim"
             class="anim" 
             :src="animExplan" 
+            :poster="posterExplan" 
             muted
             playsinline/>               
           <div 
@@ -285,7 +301,11 @@
             <h1>解釋影音</h1>
             <h3>以動畫、影音形式描繪新聞事件或生活短影音</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/explan">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/explan">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -311,7 +331,8 @@
           <video 
             slot="anim"
             class="anim" 
-            :src="animNative" 
+            :src="animNative"
+            :poster="posterNative"  
             muted
             playsinline/>                     
           <div 
@@ -320,7 +341,11 @@
             <h1>原生廣告</h1>
             <h3>有腳本、有情節的影音內容，提供消費者有用的生活資訊</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/native">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/native">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -346,7 +371,8 @@
           <video 
             slot="anim"
             class="anim" 
-            :src="animResearch" 
+            :src="animResearch"
+            :poster="posterResearch"  
             muted
             playsinline/>                    
           <div 
@@ -355,7 +381,11 @@
             <h1>研究報告</h1>
             <h3>定期分享科技與媒體新趨勢的研究報告</h3>
           </div>
-          <button class="hideAtStart"><nuxt-link to="/research">看更多...</nuxt-link></button>
+          <div class="hideAtStart">
+            <nuxt-link to="/research">
+              <button>看更多...</button>  
+            </nuxt-link>
+          </div>
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
@@ -383,7 +413,7 @@
             </div>
           </div>
           <p><br></p>
-          <p>U Brand Studio 融媒體發展部是聯合報新聞部的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看動新聞議題。<br class="hidden-mobile"></p>
+          <p>U Brand Studio 融媒體發展部是聯合報的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看懂新聞議題。<br class="hidden-mobile"></p>
           <p><br></p>
           <p>推出多檔叫好叫座專題，<br class="hidden-mobile">包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，<br class="hidden-mobile">引起讀者廣泛討論。</p>
           <p><br></p>
@@ -406,22 +436,24 @@
     </ContentWrapper>
 
     <section 
-      class="fullpage backgroundGray" 
+      class="backgroundGray" 
       style=" position: relative; overflow: hidden;">
       <p class="hidden-pc"><br></p>
       <p class="hidden-pc"><br></p>
       <EmbededVideo
-        :src="introVideo" 
+        :src="introVideo"
+        :poster="introVideoBG" 
         background-color="#f7f7f7"/>
-        <BallAnim 
-          class="hidden-mobile"
-          position="right"
-          :trigger-point="aboutSectionOffset2"/>
 
-      <BallAnim 
+      <!-- <BallAnim 
+        class="hidden-mobile"
+        position="right"
+        :trigger-point="aboutSectionOffset2"/> -->
+
+      <!-- <BallAnim 
         class="hidden-pc"
         position="left"
-        :trigger-point="aboutSectionOffset2"/>
+        :trigger-point="aboutSectionOffset2"/> -->
 
     </section>
 
@@ -468,6 +500,7 @@ import PicAbout from '~/assets/logo_about.svg'
 import PicContact from '~/assets/logo_contact.svg'
 import PicHome from '~/assets/logo_home.svg'
 import introVideo from '~/assets/Ubrandstudio.mp4'
+import introVideoBG from '~/assets/Ubrandstudio_bg.jpg'
 
 // import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
@@ -582,7 +615,14 @@ export default {
       animInteractive: 'bodymovin/interactive/data.mp4',
       animExplan: 'bodymovin/explan/data.mp4',
       animNative: 'bodymovin/native/data.mp4',
+      posterMultimedia: 'bodymovin/multimedia/video_bg.jpg',
+      posterData: 'bodymovin/data/video_bg.jpg',
+      posterResearch: 'bodymovin/research/video_bg.jpg',
+      posterInteractive: 'bodymovin/interactive/video_bg.jpg',
+      posterExplan: 'bodymovin/explan/video_bg.jpg',
+      posterNative: 'bodymovin/native/video_bg.jpg',
       introVideo: introVideo,
+      introVideoBG: introVideoBG,
       scroll_now: 0
     }
   },
@@ -641,6 +681,37 @@ export default {
     },
     isPlaying: function (video) {
       return video.onplay
+    },
+    anchorCall1: function (link) {
+      let scrollDuration = 1000
+      let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+      let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+
+      if (destination > window.pageYOffset) {
+        let scrollInterval = setInterval(function () {
+          this.scroll_now = window.pageYOffset
+          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+          if (this.scroll_now === destination) {
+            clearInterval(scrollInterval)
+          } else {
+            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+            window.scrollBy(0, scrollStep)
+          }
+          scrollDuration -= 15
+        }, 15)
+      } else {
+        let scrollInterval = setInterval(function () {
+          this.scroll_now = window.pageYOffset
+          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
+          if (this.scroll_now === destination) {
+            clearInterval(scrollInterval)
+          } else {
+            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+            window.scrollBy(0, scrollStep)
+          }
+          scrollDuration -= 15
+        }, 15)
+      }
     },
     anchorCall: function (link) {
       let scrollDuration = 1000
@@ -913,36 +984,46 @@ video.anim{
   width: 100%;
 }
 
+@media screen and (max-width: 767px){
+  video.anim{
+    width: 334px;
+    height: 300.59px;
+    border: none;
+  }    
+}
+
 @media all and (-ms-high-contrast:none)
 {
   video.anim { width: auto } /* IE10 */
   *::-ms-backdrop, video.anim { width: auto } /* IE11 */
 }  
 
-button{
+button, .button{
   width: 102px;
   height: 41px;
   border-radius: 20.1px;
   background-color: #ffffff;
   border: solid 1px #0b0305;
-  padding: 3px 10px;
+  padding: 10px 15px;  
   color: #717071; 
-  box-shadow: 5px 5px 0#e73828;
+  /* box-shadow: 5px 5px 0#e73828; */
+  box-shadow: 5px 5px 0 0 #e73828;
   transition: box-shadow 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 1199px){
-  button{
+@media screen and (max-width: 1023px){
+  button, .button{
     width: 80px;
     height: 33px;
+    padding: 7px 10px;  
   }
 }
 
-button:hover{
-  box-shadow: 1px 1px 0#e73828;
+button:hover, .button:hover{
+  box-shadow: 1px 1px 0 0 #e73828;
 }
 
-button a:focus, button a:hover, button a:active, button a:visited{
+button:focus, button:hover, button:active, button:visited, a.button:focus, a.button:hover, a.button:active, a.button:visited{
   color: #717071;
   text-decoration: none;
 }
@@ -953,5 +1034,9 @@ button a:focus, button a:hover, button a:active, button a:visited{
 
 .fb p {
   color: black;
+}
+
+.anchors.fixed {
+  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
 }
 </style>
