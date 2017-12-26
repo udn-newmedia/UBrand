@@ -395,55 +395,57 @@
       <div class="hidden-pc onetenth"/>
     </section>
     
-    <ContentWrapper 
-      background-color="#f7f7f7" 
-      id="aboutSection"
-      style="position: relative;">
-      <p><br></p>
-      <p><br></p>
-      <div class="about">
-        <div class="anim hidden-mobile">
-          <CircleAnim :trigger-point="aboutSectionOffset"/>
-        </div>
-        <div class="info">
-          <div class="infoTitle">
-            <h2><b>未來的媒體 <br class="hidden-pc">用創新說故事</b></h2>
-            <div class="anim hidden-pc" style="transform: translateY(60%);">
-              <CircleAnim :trigger-point="aboutSectionOffset"/>              
+    <section id="aboutSection" class="backgroundGray" style="display: block; padding-bottom: 10vh;">
+      <ContentWrapper 
+        background-color="#f7f7f7" 
+        style="position: relative;">
+        <p><br></p>
+        <p><br></p>
+        <div class="about">
+          <div class="anim hidden-mobile">
+            <CircleAnim :trigger-point="aboutSectionOffset"/>
+          </div>
+          <div class="info">
+            <div class="infoTitle">
+              <h2><b>未來的媒體 <br class="hidden-pc">用創新說故事</b></h2>
+              <div class="anim hidden-pc" style="transform: translateY(60%);">
+                <CircleAnim :trigger-point="aboutSectionOffset"/>              
+              </div>
+            </div>
+            <p><br></p>
+            <p>U Brand Studio 融媒體發展部是聯合報的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看懂新聞議題。<br class="hidden-mobile"></p>
+            <p><br></p>
+            <p>推出多檔叫好叫座專題，<br class="hidden-mobile">包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，<br class="hidden-mobile">引起讀者廣泛討論。</p>
+            <p><br></p>
+            <div class="fbLink">
+              <a href="https://www.facebook.com/udnNewMediaLab/" target="_blank" class="fb">
+                <img :src="fbLogo">
+                <p class="fbgroup">UDN 新媒體</p>
+              </a>
+              <a href="https://www.facebook.com/groups/UDNNEWMEDIA/" target="_blank" class="fb">
+                <img :src="fbLogo">
+                <p class="fbgroup salon">聯 沙龍</p>
+              </a>
             </div>
           </div>
-          <p><br></p>
-          <p>U Brand Studio 融媒體發展部是聯合報的數位心臟，<br class="hidden-mobile">由新聞、資訊工程、視覺設計與行銷人才組成的團隊，<br class="hidden-mobile">探索創新的內容閱讀體驗，結合新科技，<br class="hidden-mobile">製作多媒體報導、數據專題、互動新聞等，<br class="hidden-mobile">讓讀者更淺顯易懂的看懂新聞議題。<br class="hidden-mobile"></p>
-          <p><br></p>
-          <p>推出多檔叫好叫座專題，<br class="hidden-mobile">包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，<br class="hidden-mobile">引起讀者廣泛討論。</p>
-          <p><br></p>
-          <div class="fbLink">
-            <a href="https://www.facebook.com/udnNewMediaLab/" target="_blank" class="fb">
-              <img :src="fbLogo">
-              <p class="fbgroup">UDN 新媒體</p>
-            </a>
-            <a href="https://www.facebook.com/groups/UDNNEWMEDIA/" target="_blank" class="fb">
-              <img :src="fbLogo">
-              <p class="fbgroup salon">聯 沙龍</p>
-            </a>
-          </div>
         </div>
-      </div>
-      <RectAnim 
-        class="hidden-mobile"
-        :trigger-point="aboutSectionOffset"
-        position="left"/>
-    </ContentWrapper>
-
-    <section 
-      class="backgroundGray" 
-      style=" position: relative; overflow: hidden;">
+        <RectAnim 
+          class="hidden-mobile"
+          :trigger-point="aboutSectionOffset"
+          position="left"/>
+      </ContentWrapper>
       <p class="hidden-pc"><br></p>
       <p class="hidden-pc"><br></p>
       <EmbededVideo
         :src="introVideo"
         :poster="introVideoBG" 
+        style="margin: 0 auto;"
         background-color="#f7f7f7"/>
+    </section>
+
+    <!-- <section
+      class="backgroundGray" 
+      style=" position: relative; overflow: hidden;"> -->
 
       <!-- <BallAnim 
         class="hidden-mobile"
@@ -455,24 +457,27 @@
         position="left"
         :trigger-point="aboutSectionOffset2"/> -->
 
+    <!-- </section> -->
+
+    <section id="contactUs" style="display: block; height: 100vh; background-color: #3e3a39;">
+
+      <Contact background-color="#3e3a39"/>
+
+      <ContentWrapper background-color="#3e3a39">
+        <p><br></p>
+        <p><br></p>
+        <div class="nmd">
+          <p>聯合報 U Brand Studio 融媒體發展部</p>
+          <p>新北市汐止區大同路一段369號</p>
+          <p>TEL : 02-8692-5588 # 2302</p>
+          <p>ubrandstudio@udngroup.com.tw</p>
+        </div>
+        <Logo/>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+      </ContentWrapper>
     </section>
-
-    <Contact id="contactUs" background-color="#3e3a39"/>
-
-    <ContentWrapper background-color="#3e3a39">
-      <p><br></p>
-      <p><br></p>
-      <div class="nmd">
-        <p>聯合報 U Brand Studio 融媒體發展部</p>
-        <p>新北市汐止區大同路一段369號</p>
-        <p>TEL : 02-8692-5588 # 2302</p>
-        <p>ubrandstudio@udngroup.com.tw</p>
-      </div>
-      <Logo/>
-      <p><br></p>
-      <p><br></p>
-      <p><br></p>
-    </ContentWrapper>
   </div>
 </template>
 
@@ -682,38 +687,31 @@ export default {
     isPlaying: function (video) {
       return video.onplay
     },
-    anchorCall1: function (link) {
+    anchorCall: function (link) {
       let scrollDuration = 1000
       let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
       let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
-
       if (destination > window.pageYOffset) {
         let scrollInterval = setInterval(function () {
           this.scroll_now = window.pageYOffset
-          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-          if (this.scroll_now === destination) {
-            clearInterval(scrollInterval)
-          } else {
-            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+          if (this.scroll_now < destination) {
             window.scrollBy(0, scrollStep)
+          } else {
+            clearInterval(scrollInterval)
           }
-          scrollDuration -= 15
         }, 15)
-      } else {
+      } else if (destination < window.pageYOffset) {
         let scrollInterval = setInterval(function () {
           this.scroll_now = window.pageYOffset
-          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-          if (this.scroll_now === destination) {
-            clearInterval(scrollInterval)
-          } else {
-            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+          if (this.scroll_now > destination) {
             window.scrollBy(0, scrollStep)
+          } else {
+            clearInterval(scrollInterval)
           }
-          scrollDuration -= 15
         }, 15)
       }
     },
-    anchorCall: function (link) {
+    anchorCall_original: function (link) {
       let scrollDuration = 1000
       let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
       let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
@@ -864,6 +862,10 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  #aboutSection {
+    height: auto;
   }
 
   .about .info {
