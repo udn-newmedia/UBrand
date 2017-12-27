@@ -263,6 +263,7 @@ img.graphic2{
   overflow: hidden;
   outline:none;
   box-shadow: none;
+  padding: 0;
 }
 
 #seemore h4{

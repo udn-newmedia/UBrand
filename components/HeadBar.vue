@@ -10,10 +10,10 @@
                     <a href="."><img :src="home"></a>                
                 </div>
                 <div id="about">
-                    <a href="."><img :src="about"></a>                
+                    <a href="./#aboutSection"><img :src="about"></a>                
                 </div>
                 <div id="contact">
-                    <a href="."><img :src="contact"></a>                
+                    <a href="./#contactUs"><img :src="contact"></a>                
                 </div>
             </div>
         </ContentWrapper>
@@ -86,7 +86,6 @@ export default {
     left: 0;
     z-index: 99999;
     transition: opacity 0.7s ease;
-    box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
 }
 
 #icon {

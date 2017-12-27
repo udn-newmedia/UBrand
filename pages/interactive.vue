@@ -1,5 +1,5 @@
 <template>
-  <div id="multimedia">
+  <div id="interactive">
     <HeadBar 
     bookmark-display="true">
       <Bookmarks 
@@ -180,7 +180,7 @@ export default {
 </script>
 
 <style>
-#multimedia {
+#interactive {
   line-height: 1.5;
   font-family: Arial, "微軟正黑體","Microsoft JhengHei", sans-serif;
   word-wrap: break-word;

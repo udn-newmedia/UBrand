@@ -3,65 +3,110 @@
     <HeadBar :bookmark-display="stickyAnchors">
       <Bookmarks class="anchors fixed">
         <li>
-          <a 
+          <!-- <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
+          </a> -->
+          <a
+            id="multi" 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體</p>
           </a>
-          <a 
+          <!-- <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
+          </a> -->
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體報導</p>
           </a>
         </li>
         <li>
-          <a 
+          <!-- <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
-          </a>
+          </a> -->
           <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall('dataSection')"><p>數據</p>
+          </a>
+          <!-- <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
+          </a> -->
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall('dataSection')"><p>數據報導</p>
           </a>
         </li>
         <li>
-          <a 
+          <!-- <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
-          </a>
+          </a> -->
           <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall('interactiveSection')"><p>互動</p>
+          </a>
+          <!-- <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
+          </a> -->
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall('interactiveSection')"><p>互動新聞</p>
           </a>
         </li>
         <li>
-          <a 
+          <!-- <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
-          </a>
+          </a> -->
           <a 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall('explanSection')"><p>影音</p>
+          </a>
+          <!-- <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
+          </a> -->
+          <a 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall('explanSection')"><p>解釋影音</p>
           </a>
         </li>
         <li>
-          <a 
+          <!-- <a 
             href="." 
             class="hidden-pc"
             v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-          </a>
+          </a> -->
           <a 
+            href="." 
+            class="hidden-pc"
+            v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+          </a>
+          <!-- <a 
             href="." 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
+          </a> -->
+          <a 
+            href="." 
+            class="hidden-mobile"
+            v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
           </a>
         </li>
       </Bookmarks>
       <div id="home" slot="home">
         <a href="."><img :src="home"></a>                
       </div>
-      <div id="about" class="anchor" slot="about" @click="anchorCall(link1)">
+      <!-- <div id="about" class="anchor" slot="about" @click="anchorCall(link1)"> -->
+      <div id="about" class="anchor" slot="about">
         <img :src="about">                
       </div>
-      <div id="contact" class="anchor" slot="contact" @click="anchorCall(link2)">
+      <!-- <div id="contact" class="anchor" slot="contact" @click="anchorCall(link2)"> -->
+      <div id="contact" class="anchor" slot="contact">
         <img :src="contact">                
       </div>
     </HeadBar>
@@ -102,55 +147,97 @@
       class="anchors">
       <p slot="padding"><br></p>
       <li>
-        <a 
+        <!-- <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
-        </a>
+        </a> -->
         <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體</p>
+        </a>        
+        <!-- <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
+        </a> -->
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體報導</p>
         </a>
       </li>
       <li>
-        <a 
+        <!-- <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
-        </a>
+        </a> -->
         <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall('dataSection')"><p>數據</p>
+        </a>
+        <!-- <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
+        </a> -->
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall('dataSection')"><p>數據報導</p>
         </a>
       </li>
       <li>
-        <a 
+        <!-- <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
-        </a>
+        </a> -->
         <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall('interactiveSection')"><p>互動</p>
+        </a>
+        <!-- <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
+        </a> -->
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall('interactiveSection')"><p>互動新聞</p>
         </a>
       </li>
       <li>
-        <a 
+        <!-- <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
-        </a>
+        </a> -->
         <a 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall('explanSection')"><p>影音</p>
+        </a>
+        <!-- <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
+        </a> -->
+        <a 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall('explanSection')"><p>解釋影音</p>
         </a>
       </li>
       <li>
-        <a 
+        <!-- <a 
           href="." 
           class="hidden-pc"
           v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-        </a>
+        </a> -->
         <a 
+          href="." 
+          class="hidden-pc"
+          v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+        </a>
+        <!-- <a 
           href="." 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
+        </a> -->
+        <a 
+          href="." 
+          class="hidden-mobile"
+          v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
         </a>
       </li>
     </Bookmarks>
@@ -443,22 +530,6 @@
         background-color="#f7f7f7"/>
     </section>
 
-    <!-- <section
-      class="backgroundGray" 
-      style=" position: relative; overflow: hidden;"> -->
-
-      <!-- <BallAnim 
-        class="hidden-mobile"
-        position="right"
-        :trigger-point="aboutSectionOffset2"/> -->
-
-      <!-- <BallAnim 
-        class="hidden-pc"
-        position="left"
-        :trigger-point="aboutSectionOffset2"/> -->
-
-    <!-- </section> -->
-
     <section id="contactUs" style="display: block; height: 100vh; background-color: #3e3a39;">
 
       <Contact background-color="#3e3a39"/>
@@ -512,8 +583,9 @@ import fbLogo from '~/assets/logo_fb.svg'
 
 import axios from 'axios'
 import _ from 'lodash'
+import $ from 'jquery'
 
-var AboutSectionOffset, AboutSectionOffset2
+var AboutSectionOffset
 
 export default {
   components: {
@@ -606,7 +678,6 @@ export default {
       contact: PicContact,
       home: PicHome,
       aboutSectionOffset: AboutSectionOffset,
-      aboutSectionOffset2: AboutSectionOffset2,
       link1: 'aboutSection',
       link2: 'contactUs',
       multimediaAnchor: 'multimediaSection',
@@ -644,8 +715,16 @@ export default {
     window.removeEventListener('scroll', this.onScroll)
   },
   mounted: function () {
+    // anchor
+    $(document).ready(function () {
+      $('#about').click(function () {
+        $('html, body').animate({scrollTop: $('#aboutSection').offset().top}, 1000, function () {})
+      })
+      $('#contact').click(function () {
+        $('html, body').animate({scrollTop: $('#contactUs').offset().top}, 1000, function () {})
+      })
+    })
     this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
-    this.aboutSectionOffset2 = document.getElementById('thevideo').getBoundingClientRect().top
   },
   methods: {
     onScroll: function () {
@@ -671,8 +750,11 @@ export default {
       for (let i = 0; i < section.length; i++) {
         let sectionOffsetY = section[i].getBoundingClientRect().top
         if (sectionOffsetY < 200) {
-          if (!this.isPlaying(section[i].getElementsByTagName('video')[0])) {
-            section[i].getElementsByTagName('video')[0].play()
+          let sectionVideo = section[i].getElementsByTagName('video')[0]
+          if (sectionVideo) {
+            if (!this.isPlaying(sectionVideo)) {
+              sectionVideo.play()
+            }
           }
           if (window.innerWidth > 1023) {
             if (section[i].querySelector('.hideAtStart')) {
@@ -687,58 +769,32 @@ export default {
     isPlaying: function (video) {
       return video.onplay
     },
-    anchorCall: function (link) {
-      let scrollDuration = 1000
-      let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-      let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
-      if (destination > window.pageYOffset) {
-        let scrollInterval = setInterval(function () {
-          this.scroll_now = window.pageYOffset
-          if (this.scroll_now < destination) {
-            window.scrollBy(0, scrollStep)
-          } else {
-            clearInterval(scrollInterval)
-          }
-        }, 15)
-      } else if (destination < window.pageYOffset) {
-        let scrollInterval = setInterval(function () {
-          this.scroll_now = window.pageYOffset
-          if (this.scroll_now > destination) {
-            window.scrollBy(0, scrollStep)
-          } else {
-            clearInterval(scrollInterval)
-          }
-        }, 15)
-      }
+    anchorCall: function (anchor) {
+      $('html, body').animate({scrollTop: $('#' + anchor).offset().top}, 1000, function () {})
     },
-    anchorCall_original: function (link) {
+    anchorCallDoesNotWorkOnMobile: function (link) {
       let scrollDuration = 1000
-      let destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-      let scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
-
-      if (destination > window.pageYOffset) {
+      let distance = document.getElementById(link).getBoundingClientRect().top
+      let scrollStep = distance / (scrollDuration / 15)
+      if (distance > 0) {
         let scrollInterval = setInterval(function () {
-          this.scroll_now = window.pageYOffset
-          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-          if (this.scroll_now < destination) {
-            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+          if (distance > 0) {
             window.scrollBy(0, scrollStep)
+            distance = document.getElementById(link).getBoundingClientRect().top
+            document.getElementById('distance').innerHTML = distance
           } else {
             clearInterval(scrollInterval)
           }
-          scrollDuration -= 15
         }, 15)
-      } else {
+      } else if (distance < 0) {
         let scrollInterval = setInterval(function () {
-          this.scroll_now = window.pageYOffset
-          destination = document.getElementById(link).getBoundingClientRect().top + this.scroll_now
-          if (this.scroll_now > destination) {
-            scrollStep = (destination - this.scroll_now) / (scrollDuration / 15)
+          if (distance < 0) {
             window.scrollBy(0, scrollStep)
+            distance = document.getElementById(link).getBoundingClientRect().top
+            document.getElementById('distance').innerHTML = distance
           } else {
             clearInterval(scrollInterval)
           }
-          scrollDuration -= 15
         }, 15)
       }
     }
