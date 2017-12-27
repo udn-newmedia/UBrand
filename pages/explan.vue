@@ -138,6 +138,18 @@ import axios from 'axios'
 import _ from 'lodash'
 
 export default {
+  head () {
+    return {
+      title: 'U Brand Studio 融媒體 解釋影音 - UDN聯合報',
+      meta: [
+        { property: 'og:title', content: 'U Brand Studio 融媒體 解釋影音 - UDN聯合報' },
+        { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/explan/' },
+        { property: 'og:description', content: 'U Brand Studio 融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
+        { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、解釋、影音' }
+      ]
+    }
+  },
   components: {
     ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
   },
@@ -305,7 +317,7 @@ a:link, a:active, a:hover, a:visited{
 }
 
 .bookmark{
-  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
+  box-shadow: 0 7px 5px -5px rgba(4, 0, 0, 0.05);
 }
 
 button{

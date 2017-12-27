@@ -137,6 +137,18 @@ import axios from 'axios'
 import _ from 'lodash'
 
 export default {
+  head () {
+    return {
+      title: 'U Brand Studio 融媒體 多媒體報導 - UDN聯合報',
+      meta: [
+        { property: 'og:title', content: 'U Brand Studio 融媒體 多媒體報導 - UDN聯合報' },
+        { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/multimedia/' },
+        { property: 'og:description', content: 'U Brand Studio 融媒體，運用多媒體報導手法進行，專題企劃、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，運用多媒體報導進行，專題企劃、深度採訪，以多媒體形式呈現，並流暢手機閱讀體驗。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
+        { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、多媒體、報導' }
+      ]
+    }
+  },
   components: {
     ContentWrapper, HeadBar, Bookmarks, Works, PageCover, Contact, Logo, Bodymovin
   },
@@ -304,7 +316,7 @@ a:link, a:active, a:hover, a:visited{
 }
 
 .bookmark{
-  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
+  box-shadow: 0 7px 5px -5px rgba(4, 0, 0, 0.05);
 }
 
 button{

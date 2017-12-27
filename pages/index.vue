@@ -588,6 +588,18 @@ import $ from 'jquery'
 var AboutSectionOffset
 
 export default {
+  head () {
+    return {
+      title: 'U Brand Studio 融媒體 用創新說故事 - UDN聯合報',
+      meta: [
+        { property: 'og:title', content: 'U Brand Studio 融媒體 用創新說故事 - UDN聯合報' },
+        { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/' },
+        { property: 'og:description', content: 'U Brand Studio 融媒體發展部是聯合報的數位心臟，由新聞、資訊工程、視覺設計與行銷人才組成的團隊，探索創新的內容閱讀體驗，結合新科技，製作多媒體報導、數據專題、互動新聞等，讓讀者更淺顯易懂的看懂新聞議題。推出多檔叫好叫座專題，包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，引起讀者廣泛討論。' },
+        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。' },
+        { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、倡議、故事、行銷' }
+      ]
+    }
+  },
   components: {
     Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
   },
@@ -610,45 +622,74 @@ export default {
         // multimedia
         let contentSliders1 = []
         let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
-        contentSliders1.push(multi[1])
-        contentSliders1.push(multi[2])
-        contentSliders1.push(multi[3])
-        contentSliders1.push(multi[4])
+        let multiRnd1 = Math.floor(Math.random() * multi.length)
+        let multiRnd2 = Math.floor(Math.random() * multi.length)
+        let multiRnd3 = Math.floor(Math.random() * multi.length)
+        let multiRnd4 = Math.floor(Math.random() * multi.length)
+        // let multiRnd = []
+        // while (multiRnd.length < 4) {
+        //   let rnd = Math.floor(Math.random() * multi.length)
+        //   multiRnd.push(rnd)
+        // }
+        contentSliders1.push(multi[multiRnd1])
+        contentSliders1.push(multi[multiRnd2])
+        contentSliders1.push(multi[multiRnd3])
+        contentSliders1.push(multi[multiRnd4])
         // data
         let contentSliders2 = []
         let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-        contentSliders2.push(dataprojects[0])
-        contentSliders2.push(dataprojects[1])
-        contentSliders2.push(dataprojects[2])
-        contentSliders2.push(dataprojects[3])
+        let dataRnd1 = Math.floor(Math.random() * dataprojects.length)
+        let dataRnd2 = Math.floor(Math.random() * dataprojects.length)
+        let dataRnd3 = Math.floor(Math.random() * dataprojects.length)
+        let dataRnd4 = Math.floor(Math.random() * dataprojects.length)
+        contentSliders2.push(dataprojects[dataRnd1])
+        contentSliders2.push(dataprojects[dataRnd2])
+        contentSliders2.push(dataprojects[dataRnd3])
+        contentSliders2.push(dataprojects[dataRnd4])
         // interactive
         let contentSliders3 = []
         let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
-        contentSliders3.push(interactive[0])
-        contentSliders3.push(interactive[1])
-        contentSliders3.push(interactive[2])
-        contentSliders3.push(interactive[3])
+        let interRnd1 = Math.floor(Math.random() * interactive.length)
+        let interRnd2 = Math.floor(Math.random() * interactive.length)
+        let interRnd3 = Math.floor(Math.random() * interactive.length)
+        let interRnd4 = Math.floor(Math.random() * interactive.length)
+        contentSliders3.push(interactive[interRnd1])
+        contentSliders3.push(interactive[interRnd2])
+        contentSliders3.push(interactive[interRnd3])
+        contentSliders3.push(interactive[interRnd4])
         // explan
         let contentSliders4 = []
         let explain = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
-        contentSliders4.push(explain[0])
-        contentSliders4.push(explain[1])
-        contentSliders4.push(explain[2])
-        contentSliders4.push(explain[3])
+        let explainRnd1 = Math.floor(Math.random() * explain.length)
+        let explainRnd2 = Math.floor(Math.random() * explain.length)
+        let explainRnd3 = Math.floor(Math.random() * explain.length)
+        let explainRnd4 = Math.floor(Math.random() * explain.length)
+        contentSliders4.push(explain[explainRnd1])
+        contentSliders4.push(explain[explainRnd2])
+        contentSliders4.push(explain[explainRnd3])
+        contentSliders4.push(explain[explainRnd4])
         // native
         let contentSliders5 = []
         let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
-        contentSliders5.push(native[0])
-        contentSliders5.push(native[1])
-        contentSliders5.push(native[2])
-        contentSliders5.push(native[3])
+        let nativeRnd1 = Math.floor(Math.random() * native.length)
+        let nativeRnd2 = Math.floor(Math.random() * native.length)
+        let nativeRnd3 = Math.floor(Math.random() * native.length)
+        let nativeRnd4 = Math.floor(Math.random() * native.length)
+        contentSliders5.push(native[nativeRnd1])
+        contentSliders5.push(native[nativeRnd2])
+        contentSliders5.push(native[nativeRnd3])
+        contentSliders5.push(native[nativeRnd4])
         // research
         let contentSliders6 = []
         let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
-        contentSliders6.push(research[0])
-        contentSliders6.push(research[1])
-        contentSliders6.push(research[2])
-        contentSliders6.push(research[3])
+        let researchRnd1 = Math.floor(Math.random() * research.length)
+        let researchRnd2 = Math.floor(Math.random() * research.length)
+        let researchRnd3 = Math.floor(Math.random() * research.length)
+        let researchRnd4 = Math.floor(Math.random() * research.length)
+        contentSliders6.push(research[researchRnd1])
+        contentSliders6.push(research[researchRnd2])
+        contentSliders6.push(research[researchRnd3])
+        contentSliders6.push(research[researchRnd4])
         return {
           projectslist: datalist,
           coverImage: coverImageSrc,
@@ -1095,6 +1136,7 @@ button:focus, button:hover, button:active, button:visited, a.button:focus, a.but
 }
 
 .anchors.fixed {
-  box-shadow: -2.2px 2px 7px 0 rgba(4, 0, 0, 0.05);
+  box-shadow: 0 7px 5px -5px rgba(4, 0, 0, 0.05);
 }
+
 </style>
