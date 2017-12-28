@@ -133,8 +133,10 @@ import Bodymovin from '~/Components/Bodymovin.vue'
 
 import ball from '~/assets/a-6.svg'
 
+import Utils from 'udn-newmedia-utils'
 import axios from 'axios'
 import _ from 'lodash'
+import $ from 'jquery'
 
 export default {
   head () {
@@ -192,6 +194,43 @@ export default {
       ball: ball,
       covericon: 'bodymovin/research/data.jpg'
     }
+  },
+  mounted: function () {
+    this.isMob = Utils.detectMob()
+    $(document).ready(() => {
+      let that = this
+      let platform = (this.isMob === true) ? 'Mob' : 'PC'
+      $('button.sendout').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '送出表單按鈕點擊',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + '送出表單' + ']'
+        })
+      })
+      $('#seemore').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '點擊看更多按鈕',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + '點擊看更多' + ']'
+        })
+      })
+      $('a').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '超連結點擊',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + $(this).attr('href') + ']'
+        })
+      })
+    })
+    // [ga] page view
+    this.$ga.page({
+      page: '/research',
+      title: document.title,
+      location: window.location.href
+    })
   }
 }
 </script>

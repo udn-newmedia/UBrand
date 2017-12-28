@@ -4,7 +4,7 @@
             <p><br></p>
             <p><br></p>
             <h2>聯絡我們</h2>
-            <button id="sendbtn" class="hidden-pc" @click="send">送出</button>
+            <button id="sendbtn" class="hidden-pc sendout" @click="send">送出</button>
             <p><br></p>
             <form v-on:submit.prevent="send">
                 <div class="row">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <p class="column">簡述</p>
                     <textarea id="message" name="message" class="column" cols="30" rows="10" v-model.lazy.trim="message" placeholder="請簡述寫下您希望的合作內容"></textarea>
-                    <button class="hidden-mobile">送出</button>
+                    <button class="hidden-mobile sendout">送出</button>
                 </div>
                 <div class="mask" v-if="dialogueIsOpen">
                     <div class="wrapper">
@@ -169,13 +169,13 @@ export default {
       let that = this
       xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === 4) {
-          let response = xmlHttp.responseText
+        //   let response = xmlHttp.responseText
           if (xmlHttp.status === 200) {
-            console.log(response)
+            // console.log(response)
             that.success = true
             that.dialogueOpen()
           } else {
-            console.log(response)
+            // console.log(response)
             that.success = false
             that.ajaxerr = true
             that.dialogueOpen()

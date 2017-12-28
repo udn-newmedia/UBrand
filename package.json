@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/google-analytics": "^2.0.2",
     "axios": "^0.17.1",
     "es6-promise": "^4.1.1",
     "hammerjs": "^2.0.8",

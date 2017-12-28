@@ -39,23 +39,9 @@ export default {
   computed: {
     source: function () {
       return this.src
-    //   if (window.innerWidth < 768) {
-    //     return this.src
-    //   } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-    //     return this.srcPad
-    //   } else {
-    //     return this.srcWeb
-    //   }
     },
     videoPoster: function () {
       return this.poster
-    //   if (window.innerWidth < 768) {
-    //     return this.poster
-    //   } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-    //     return this.posterPad
-    //   } else {
-    //     return this.posterWeb
-    //   }
     },
     isMuted: function () {
       if (platform === 'Mob') {
@@ -79,6 +65,7 @@ export default {
   mounted: function () {
     let video = document.getElementById('introVideo')
     let spinner = document.querySelector('.video-wait')
+    let self = this
     if (video) {
       video.onwaiting = function () {
       //   console.log('wait')
@@ -95,9 +82,21 @@ export default {
           clearInterval(this.getProgressTimer)
           this.getProgressTimer = null
         }
+        self.$ga.event({
+          hitType: 'event',
+          eventCategory: 'movie play',
+          eventAction: 'pause',
+          eventLabel: '[' + platform + '] [' + document.title + '] [介紹影片暫停]'
+        })
       }
       video.onended = function () {
         document.getElementById('progress-bar').style.width = 0
+        self.$ga.event({
+          hitType: 'event',
+          eventCategory: 'movie play',
+          eventAction: 'play',
+          eventLabel: '[' + platform + '] [' + document.title + '] [介紹影片 end]'
+        })
       }
     }
   },
@@ -131,6 +130,13 @@ export default {
           // Send GA every 5 seconds
           if (Math.floor(curTime / 5) > self.progress) {
             self.progress = Math.floor(curTime / 5)
+            self.$ga.event({
+              hitType: 'event',
+              eventCategory: 'movie play',
+              eventAction: 'play',
+              eventLabel: '[' + platform + '] [' + document.title + '] [介紹影片播放' + (self.progress * 5) + '秒]'
+            })
+
             // console.log(self.$options.name + ' : ' + self.progress * 5)
             // ga('send', {
             //     'hitType': 'event',

@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <button id="seemore" @click="seeMore"><h4>看更多...</h4></button>
+        <button v-if="hasmore" id="seemore" @click="seeMore"><h4>看更多...</h4></button>
     </div>
 </template>
 
@@ -66,17 +66,12 @@ export default {
       })
       return this.projects
     },
-    // projectlist: function () {
-    //   this.projects.forEach(function (ele) {
-    //     ele.maintitle = ele.gsx$title.$t.split(' ')[0]
-    //     ele.subtitle = ele.gsx$title.$t.split(' ')[1]
-    //   })
-    //   return this.projects
-    // },
     list: function () {
       for (let i = (this.part - 1) * 8; i < this.part * 8; i++) {
         if (i < this.projectlist.length) {
           this.works.push(this.projectlist[i])
+        } else {
+          this.hasmore = false
         }
       }
       return this.works
@@ -88,7 +83,8 @@ export default {
       works: [],
       bullet1: bullet1,
       bullet2: bullet2,
-      fillinblank: '把3D模型擺進新聞 學到的3件事'
+      fillinblank: '把3D模型擺進新聞 學到的3件事',
+      hasmore: true
     }
   },
   mounted: function () {

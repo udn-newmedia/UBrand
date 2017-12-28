@@ -102,11 +102,13 @@
         <a href="."><img :src="home"></a>                
       </div>
       <!-- <div id="about" class="anchor" slot="about" @click="anchorCall(link1)"> -->
-      <div id="about" class="anchor" slot="about">
+      <div id="about" class="anchor" slot="about"
+       v-on:click="anchorCall('aboutSection')">
         <img :src="about">                
       </div>
       <!-- <div id="contact" class="anchor" slot="contact" @click="anchorCall(link2)"> -->
-      <div id="contact" class="anchor" slot="contact">
+      <div id="contact" class="anchor" slot="contact"
+       v-on:click="anchorCall('contactUs')">
         <img :src="contact">                
       </div>
     </HeadBar>
@@ -270,7 +272,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/multimedia">
-              <button>看更多...</button>  
+              <button data-target="multimedia">看更多...</button>  
             </nuxt-link>
           </div>                              
         </IndexSection>
@@ -310,7 +312,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/data">
-              <button>看更多...</button>  
+              <button data-target="data">看更多...</button>  
             </nuxt-link>
           </div>
         </IndexSection>
@@ -350,7 +352,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/interactive">
-              <button>看更多...</button>  
+              <button data-target="interactive">看更多...</button>  
             </nuxt-link>
           </div>
         </IndexSection>
@@ -390,7 +392,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/explan">
-              <button>看更多...</button>  
+              <button data-target="explan">看更多...</button>  
             </nuxt-link>
           </div>
         </IndexSection>
@@ -430,7 +432,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/native">
-              <button>看更多...</button>  
+              <button data-target="native">看更多...</button>  
             </nuxt-link>
           </div>
         </IndexSection>
@@ -470,7 +472,7 @@
           </div>
           <div class="hideAtStart">
             <nuxt-link to="/research">
-              <button>看更多...</button>  
+              <button data-target="research">看更多...</button>  
             </nuxt-link>
           </div>
         </IndexSection>
@@ -577,10 +579,10 @@ import PicContact from '~/assets/logo_contact.svg'
 import PicHome from '~/assets/logo_home.svg'
 import introVideo from '~/assets/Ubrandstudio.mp4'
 import introVideoBG from '~/assets/Ubrandstudio_bg.jpg'
-
 // import coverSrc from '~/assets/pc/bg-1.jpg'
 import fbLogo from '~/assets/logo_fb.svg'
 
+import Utils from 'udn-newmedia-utils'
 import axios from 'axios'
 import _ from 'lodash'
 import $ from 'jquery'
@@ -766,7 +768,8 @@ export default {
       posterNative: 'bodymovin/native/video_bg.jpg',
       introVideo: introVideo,
       introVideoBG: introVideoBG,
-      scroll_now: 0
+      scroll_now: 0,
+      isMob: false
     }
   },
   computed: {
@@ -782,16 +785,44 @@ export default {
     window.removeEventListener('scroll', this.onScroll)
   },
   mounted: function () {
-    // anchor
-    $(document).ready(function () {
-      $('#about').click(function () {
-        $('html, body').animate({scrollTop: $('#aboutSection').offset().top}, 1000, function () {})
+    this.isMob = Utils.detectMob()
+    this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
+
+    $(document).ready(() => {
+      let that = this
+      let platform = (this.isMob === true) ? 'Mob' : 'PC'
+      $('a button').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '超連結點擊',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + $(this).data('target') + ']'
+        })
       })
-      $('#contact').click(function () {
-        $('html, body').animate({scrollTop: $('#contactUs').offset().top}, 1000, function () {})
+      $('button.sendout').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '送出表單按鈕點擊',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + '送出表單' + ']'
+        })
+      })
+      $('a').click(function () {
+        that.$ga.event({
+          hitType: 'event',
+          eventCategory: '超連結點擊',
+          eventAction: 'click',
+          eventLabel: '[' + platform + '] [' + document.title + '] [' + $(this).attr('href') + ']'
+        })
       })
     })
-    this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
+
+    // [ga] page view
+    this.$ga.page({
+      page: '/',
+      title: document.title,
+      location: window.location.href
+    })
   },
   methods: {
     onScroll: function () {
@@ -837,6 +868,14 @@ export default {
       return video.onplay
     },
     anchorCall: function (anchor) {
+      let platform = (this.isMob === true) ? 'Mob' : 'PC'
+      // [ga] send event
+      this.$ga.event({
+        hitType: 'event',
+        eventCategory: '錨點點擊',
+        eventAction: 'click',
+        eventLabel: '[' + platform + '] [' + document.title + '] [' + anchor + ']'
+      })
       $('html, body').animate({scrollTop: $('#' + anchor).offset().top}, 1000, function () {})
     },
     anchorCallDoesNotWorkOnMobile: function (link) {
