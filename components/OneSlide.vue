@@ -18,20 +18,17 @@ export default {
   name: 'OneSlide',
   props: ['interval', 'position', 'slide'],
   computed: {
-    pick: function () {
-      return Math.floor(Math.random() * this.slide.length)
-    },
     imgSrc: function () {
-      return 'projects/' + this.slide[this.pick].gsx$pcpic.$t
+      return 'projects/' + this.slide[0].gsx$pcpic.$t
     },
     maintitle: function () {
-      return this.slide[this.pick].gsx$title.$t.split(' ')[0]
+      return this.slide[0].gsx$title.$t.split(' ')[0]
     },
     subtitle: function () {
-      return this.slide[this.pick].gsx$title.$t.split(' ')[1]
+      return this.slide[0].gsx$title.$t.split(' ')[1]
     },
     link: function () {
-      return this.slide[this.pick].gsx$link.$t
+      return this.slide[0].gsx$link.$t
     }
   },
   data: function () {

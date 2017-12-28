@@ -86,7 +86,8 @@
       class="worksContentWrapper fluid"
       style="position: relative; overflow: hidden;">
       <p class="hidden-mobile"><br></p>
-      <Works :projects="projectslist"/>
+      <Works class="hidden-mobile" :projects="projectslist"/>
+      <Works class="hidden-pc" :projects="allprojects"/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
@@ -158,16 +159,22 @@ export default {
     return axios.get(json)
       .then((res) => {
         let datalist = res.data.feed.entry
-        let projects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-        let coverImageSrc = 'projects/' + projects[0].gsx$pcpic.$t
-        let coverTitle = projects[0].gsx$title.$t
-        let coverDescription = projects[0].gsx$description.$t
-        let coverDate = projects[0].gsx$date.$t
-        let coverLink = projects[0].gsx$link.$t
-        let coverReportTitle = projects[0].gsx$reporttitle.$t
-        let coverReportLink = projects[0].gsx$reportlink.$t
-        projects.shift()
+        let allprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+        let cover = _.filter(allprojects, ['gsx$pagecover.$t', 'TRUE'])
+        if (cover[0] == null) {
+          cover[0] = allprojects[0]
+        }
+        let projects = _.difference(allprojects, cover)
+        let coverImageSrc = 'projects/' + cover[0].gsx$pcpic.$t
+        let coverTitle = cover[0].gsx$title.$t
+        let coverDescription = cover[0].gsx$description.$t
+        let coverDate = cover[0].gsx$date.$t
+        let coverLink = cover[0].gsx$link.$t
+        let coverReportTitle = cover[0].gsx$reporttitle.$t
+        let coverReportLink = cover[0].gsx$reportlink.$t
         return {
+          coverElement: cover[0],
+          allprojects: allprojects,
           projectslist: projects,
           coverImage: coverImageSrc,
           coverTitle: coverTitle,

@@ -608,88 +608,114 @@ export default {
     return axios.get(json)
       .then((res) => {
         let datalist = res.data.feed.entry
-        let coverImageSrc = 'projects/' + datalist[0].gsx$pcpic.$t
-        let coverTitle = datalist[0].gsx$title.$t
-        let coverDescription = datalist[0].gsx$description.$t
-        let coverDate = datalist[0].gsx$date.$t
-        let coverLabel = datalist[0].gsx$class.$t
-        let coverLink = datalist[0].gsx$link.$t
+        let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
+        if (pccover[0] == null) {
+          pccover[0] = datalist[0]
+        }
+        let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
+        let coverTitle = pccover[0].gsx$title.$t
+        let coverDescription = pccover[0].gsx$description.$t
+        let coverDate = pccover[0].gsx$date.$t
+        let coverLabel = pccover[0].gsx$class.$t
+        let coverLink = pccover[0].gsx$link.$t
         let coverSliders = []
-        coverSliders.push(datalist[0])
-        coverSliders.push(datalist[1])
-        coverSliders.push(datalist[2])
-        coverSliders.push(datalist[3])
+        let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
+        let coverRnd = []
+        while (coverRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * cover.length)
+          coverRnd = coverRnd.filter(function (num) {
+            return num !== rnd
+          })
+          coverRnd.push(rnd)
+        }
+        while (coverSliders.length < 4) {
+          coverSliders.push(cover[coverRnd[coverSliders.length]])
+        }
         // multimedia
         let contentSliders1 = []
         let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
-        let multiRnd1 = Math.floor(Math.random() * multi.length)
-        let multiRnd2 = Math.floor(Math.random() * multi.length)
-        let multiRnd3 = Math.floor(Math.random() * multi.length)
-        let multiRnd4 = Math.floor(Math.random() * multi.length)
-        // let multiRnd = []
-        // while (multiRnd.length < 4) {
-        //   let rnd = Math.floor(Math.random() * multi.length)
-        //   multiRnd.push(rnd)
-        // }
-        contentSliders1.push(multi[multiRnd1])
-        contentSliders1.push(multi[multiRnd2])
-        contentSliders1.push(multi[multiRnd3])
-        contentSliders1.push(multi[multiRnd4])
+        let multiRnd = []
+        while (multiRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * multi.length)
+          multiRnd = multiRnd.filter(function (num) {
+            return num !== rnd
+          })
+          multiRnd.push(rnd)
+        }
+        while (contentSliders1.length < 4) {
+          contentSliders1.push(multi[multiRnd[contentSliders1.length]])
+        }
         // data
         let contentSliders2 = []
         let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-        let dataRnd1 = Math.floor(Math.random() * dataprojects.length)
-        let dataRnd2 = Math.floor(Math.random() * dataprojects.length)
-        let dataRnd3 = Math.floor(Math.random() * dataprojects.length)
-        let dataRnd4 = Math.floor(Math.random() * dataprojects.length)
-        contentSliders2.push(dataprojects[dataRnd1])
-        contentSliders2.push(dataprojects[dataRnd2])
-        contentSliders2.push(dataprojects[dataRnd3])
-        contentSliders2.push(dataprojects[dataRnd4])
+        let dataRnd = []
+        while (dataRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * dataprojects.length)
+          dataRnd = dataRnd.filter(function (num) {
+            return num !== rnd
+          })
+          dataRnd.push(rnd)
+        }
+        while (contentSliders2.length < 4) {
+          contentSliders2.push(dataprojects[dataRnd[contentSliders2.length]])
+        }
         // interactive
         let contentSliders3 = []
         let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
-        let interRnd1 = Math.floor(Math.random() * interactive.length)
-        let interRnd2 = Math.floor(Math.random() * interactive.length)
-        let interRnd3 = Math.floor(Math.random() * interactive.length)
-        let interRnd4 = Math.floor(Math.random() * interactive.length)
-        contentSliders3.push(interactive[interRnd1])
-        contentSliders3.push(interactive[interRnd2])
-        contentSliders3.push(interactive[interRnd3])
-        contentSliders3.push(interactive[interRnd4])
+        let interRnd = []
+        while (interRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * interactive.length)
+          interRnd = interRnd.filter(function (num) {
+            return num !== rnd
+          })
+          interRnd.push(rnd)
+        }
+        while (contentSliders3.length < 4) {
+          contentSliders3.push(interactive[interRnd[contentSliders3.length]])
+        }
         // explan
         let contentSliders4 = []
-        let explain = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
-        let explainRnd1 = Math.floor(Math.random() * explain.length)
-        let explainRnd2 = Math.floor(Math.random() * explain.length)
-        let explainRnd3 = Math.floor(Math.random() * explain.length)
-        let explainRnd4 = Math.floor(Math.random() * explain.length)
-        contentSliders4.push(explain[explainRnd1])
-        contentSliders4.push(explain[explainRnd2])
-        contentSliders4.push(explain[explainRnd3])
-        contentSliders4.push(explain[explainRnd4])
+        let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
+        let explanRnd = []
+        while (explanRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * explan.length)
+          explanRnd = explanRnd.filter(function (num) {
+            return num !== rnd
+          })
+          explanRnd.push(rnd)
+        }
+        while (contentSliders4.length < 4) {
+          contentSliders4.push(explan[explanRnd[contentSliders4.length]])
+        }
         // native
         let contentSliders5 = []
         let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
-        let nativeRnd1 = Math.floor(Math.random() * native.length)
-        let nativeRnd2 = Math.floor(Math.random() * native.length)
-        let nativeRnd3 = Math.floor(Math.random() * native.length)
-        let nativeRnd4 = Math.floor(Math.random() * native.length)
-        contentSliders5.push(native[nativeRnd1])
-        contentSliders5.push(native[nativeRnd2])
-        contentSliders5.push(native[nativeRnd3])
-        contentSliders5.push(native[nativeRnd4])
+        let nativeRnd = []
+        while (nativeRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * native.length)
+          nativeRnd = nativeRnd.filter(function (num) {
+            return num !== rnd
+          })
+          nativeRnd.push(rnd)
+        }
+        while (contentSliders5.length < 4) {
+          contentSliders5.push(native[nativeRnd[contentSliders5.length]])
+        }
+
         // research
         let contentSliders6 = []
         let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
-        let researchRnd1 = Math.floor(Math.random() * research.length)
-        let researchRnd2 = Math.floor(Math.random() * research.length)
-        let researchRnd3 = Math.floor(Math.random() * research.length)
-        let researchRnd4 = Math.floor(Math.random() * research.length)
-        contentSliders6.push(research[researchRnd1])
-        contentSliders6.push(research[researchRnd2])
-        contentSliders6.push(research[researchRnd3])
-        contentSliders6.push(research[researchRnd4])
+        let researchRnd = []
+        while (researchRnd.length < 4) {
+          let rnd = Math.floor(Math.random() * research.length)
+          researchRnd = researchRnd.filter(function (num) {
+            return num !== rnd
+          })
+          researchRnd.push(rnd)
+        }
+        while (contentSliders6.length < 4) {
+          contentSliders6.push(research[researchRnd[contentSliders6.length]])
+        }
         return {
           projectslist: datalist,
           coverImage: coverImageSrc,
