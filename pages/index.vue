@@ -549,6 +549,7 @@ export default {
             cover = _.difference(cover, [item[0]])
           }
         }
+        coverSliders.unshift(pccover[0])
         // multimedia
         let contentSliders1 = []
         let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
