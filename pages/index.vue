@@ -437,8 +437,8 @@
           :trigger-point="aboutSectionOffset"
           position="left"/>
       </ContentWrapper>
-      <p class="hidden-pc"><br></p>
-      <p class="hidden-pc"><br></p>
+      <p><br></p>
+      <p><br></p>
       <EmbededVideo
         :src="introVideo"
         :poster="introVideoBG" 
@@ -527,7 +527,7 @@ export default {
         let datalist = res.data.feed.entry
         let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
         if (pccover[0] == null) {
-          pccover[0] = datalist[0]
+          pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
         }
         let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
         let coverTitle = pccover[0].gsx$title.$t

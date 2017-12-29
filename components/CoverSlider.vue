@@ -7,12 +7,12 @@
               }">
             <div v-for="work in list" :key="work.gsx$title.$t" class="slider">
                 <a :href="work.gsx$link.$t" target="_blank">
-                    <div class="projects" :style="{width: projectWidth}">
+                    <div class="projects">
                       <img :src="'projects/' + work.gsx$mobcoverpic.$t">
                       <div class="texts">
                         <div class="coverlabel">{{work.gsx$class.$t}}</div>
                         <h2>{{work.maintitle}}</h2>
-                        <h2>{{work.subtitle}}</h2>
+                        <h2 :class="{'opacityZero': !work.subtitle}">{{work.subtitle || fillinblank}}</h2>
                         <p class="date">{{work.gsx$date.$t}}</p>
                       </div>
                     </div>
@@ -52,20 +52,15 @@ export default {
             let str = ele.gsx$title.$t.split(' ')[i]
             ele.subtitle = ele.subtitle + ' ' + str
           }
-        } else {
+        } else if (ele.gsx$title.$t.split(' ').length === 2) {
           ele.maintitle = ele.gsx$title.$t.split(' ')[0]
           ele.subtitle = ele.gsx$title.$t.split(' ')[1]
+        } else {
+          ele.maintitle = ele.gsx$title.$t
         }
       })
       return this.sliders
     }
-    // list: function () {
-    //   this.sliders.forEach(ele => {
-    //     ele.maintitle = ele.gsx$title.$t.split(' ')[0]
-    //     ele.subtitle = ele.gsx$title.$t.split(' ')[1]
-    //   })
-    //   return this.sliders
-    // }
   },
   data: function () {
     return {
@@ -73,7 +68,8 @@ export default {
       transitionDuration: 500,
       projectWidth: 340,
       transitionWidth: 340 + 9,
-      panOnce: false
+      panOnce: false,
+      fillinblank: 'blank'
     }
   },
   mounted: function () {
@@ -288,5 +284,9 @@ p.date{
     top: 283px; 
     right: 400px;
   }    
+}
+
+.opacityZero{
+    opacity: 0;
 }
 </style>

@@ -31,12 +31,25 @@ export default {
       } else {
         return this.description
       }
+    },
+    subtitle: function () {
+      if (this.coverTitle.split(' ').length > 2) {
+        let subtitle = this.coverTitle.split(' ')[1]
+        for (let i = 2; i < this.coverTitle.split(' ').length; i++) {
+          let str = this.coverTitle.split(' ')[i]
+          subtitle = subtitle + ' ' + str
+        }
+        return subtitle
+      } else if (this.coverTitle.split(' ').length === 2) {
+        return this.coverTitle.split(' ')[1]
+      } else {
+        return ' '
+      }
     }
   },
   data: function () {
     return {
-      title: this.coverTitle.split(' ')[0],
-      subtitle: this.coverTitle.split(' ')[1]
+      title: this.coverTitle.split(' ')[0]
     }
   }
 }
