@@ -3,94 +3,52 @@
     <HeadBar :bookmark-display="stickyAnchors">
       <Bookmarks class="anchors fixed">
         <li>
-          <!-- <a 
-            class="hidden-pc"
-            v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
-          </a> -->
           <a
             id="multi" 
             class="hidden-pc"
             v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體</p>
           </a>
-          <!-- <a 
-            class="hidden-mobile"
-            v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
-          </a> -->
           <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體報導</p>
           </a>
         </li>
         <li>
-          <!-- <a 
-            class="hidden-pc"
-            v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
-          </a> -->
           <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall('dataSection')"><p>數據</p>
           </a>
-          <!-- <a 
-            class="hidden-mobile"
-            v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
-          </a> -->
           <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall('dataSection')"><p>數據報導</p>
           </a>
         </li>
         <li>
-          <!-- <a 
-            class="hidden-pc"
-            v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
-          </a> -->
           <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall('interactiveSection')"><p>互動</p>
           </a>
-          <!-- <a 
-            class="hidden-mobile"
-            v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
-          </a> -->
           <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall('interactiveSection')"><p>互動新聞</p>
           </a>
         </li>
         <li>
-          <!-- <a 
-            class="hidden-pc"
-            v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
-          </a> -->
           <a 
             class="hidden-pc"
             v-on:click.prevent="anchorCall('explanSection')"><p>影音</p>
           </a>
-          <!-- <a 
-            class="hidden-mobile"
-            v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
-          </a> -->
           <a 
             class="hidden-mobile"
             v-on:click.prevent="anchorCall('explanSection')"><p>解釋影音</p>
           </a>
         </li>
         <li>
-          <!-- <a 
-            href="." 
-            class="hidden-pc"
-            v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-          </a> -->
           <a 
             href="." 
             class="hidden-pc"
             v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
           </a>
-          <!-- <a 
-            href="." 
-            class="hidden-mobile"
-            v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-          </a> -->
           <a 
             href="." 
             class="hidden-mobile"
@@ -101,12 +59,10 @@
       <div id="home" slot="home">
         <a href="."><img :src="home"></a>                
       </div>
-      <!-- <div id="about" class="anchor" slot="about" @click="anchorCall(link1)"> -->
       <div id="about" class="anchor" slot="about"
        v-on:click="anchorCall('aboutSection')">
         <img :src="about">                
       </div>
-      <!-- <div id="contact" class="anchor" slot="contact" @click="anchorCall(link2)"> -->
       <div id="contact" class="anchor" slot="contact"
        v-on:click="anchorCall('contactUs')">
         <img :src="contact">                
@@ -149,93 +105,51 @@
       class="anchors">
       <p slot="padding"><br></p>
       <li>
-        <!-- <a 
-          class="hidden-pc"
-          v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體</p>
-        </a> -->
         <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體</p>
         </a>        
-        <!-- <a 
-          class="hidden-mobile"
-          v-on:click.prevent="anchorCall(multimediaAnchor)"><p>多媒體報導</p>
-        </a> -->
         <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall('multimediaSection')"><p>多媒體報導</p>
         </a>
       </li>
       <li>
-        <!-- <a 
-          class="hidden-pc"
-          v-on:click.prevent="anchorCall(dataAnchor)"><p>數據</p>
-        </a> -->
         <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall('dataSection')"><p>數據</p>
         </a>
-        <!-- <a 
-          class="hidden-mobile"
-          v-on:click.prevent="anchorCall(dataAnchor)"><p>數據報導</p>
-        </a> -->
         <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall('dataSection')"><p>數據報導</p>
         </a>
       </li>
       <li>
-        <!-- <a 
-          class="hidden-pc"
-          v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動</p>
-        </a> -->
         <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall('interactiveSection')"><p>互動</p>
         </a>
-        <!-- <a 
-          class="hidden-mobile"
-          v-on:click.prevent="anchorCall(interactiveAnchor)"><p>互動新聞</p>
-        </a> -->
         <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall('interactiveSection')"><p>互動新聞</p>
         </a>
       </li>
       <li>
-        <!-- <a 
-          class="hidden-pc"
-          v-on:click.prevent="anchorCall(explanAnchor)"><p>影音</p>
-        </a> -->
         <a 
           class="hidden-pc"
           v-on:click.prevent="anchorCall('explanSection')"><p>影音</p>
         </a>
-        <!-- <a 
-          class="hidden-mobile"
-          v-on:click.prevent="anchorCall(explanAnchor)"><p>解釋影音</p>
-        </a> -->
         <a 
           class="hidden-mobile"
           v-on:click.prevent="anchorCall('explanSection')"><p>解釋影音</p>
         </a>
       </li>
       <li>
-        <!-- <a 
-          href="." 
-          class="hidden-pc"
-          v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-        </a> -->
         <a 
           href="." 
           class="hidden-pc"
           v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
         </a>
-        <!-- <a 
-          href="." 
-          class="hidden-mobile"
-          v-on:click.prevent="anchorCall(nativeAnchor)"><p>原生廣告</p>
-        </a> -->
         <a 
           href="." 
           class="hidden-mobile"
@@ -508,12 +422,12 @@
             <p><br></p>
             <div class="fbLink">
               <a href="https://www.facebook.com/udnNewMediaLab/" target="_blank" class="fb">
-                <img :src="fbLogo">
-                <p class="fbgroup">UDN 新媒體</p>
+                <img :src="fbLogo1">
+                <!-- <p class="fbgroup">UDN 新媒體</p> -->
               </a>
               <a href="https://www.facebook.com/groups/UDNNEWMEDIA/" target="_blank" class="fb">
-                <img :src="fbLogo">
-                <p class="fbgroup salon">聯 沙龍</p>
+                <img :src="fbLogo2">
+                <!-- <p class="fbgroup salon">聯 沙龍</p> -->
               </a>
             </div>
           </div>
@@ -579,8 +493,9 @@ import PicContact from '~/assets/logo_contact.svg'
 import PicHome from '~/assets/logo_home.svg'
 import introVideo from '~/assets/Ubrandstudio.mp4'
 import introVideoBG from '~/assets/Ubrandstudio_bg.jpg'
-// import coverSrc from '~/assets/pc/bg-1.jpg'
-import fbLogo from '~/assets/logo_fb.svg'
+// import fbLogo from '~/assets/logo_fb.svg'
+import fbLogo1 from '~/assets/fb_1.svg'
+import fbLogo2 from '~/assets/fb_2.svg'
 
 import Utils from 'udn-newmedia-utils'
 import axios from 'axios'
@@ -622,101 +537,119 @@ export default {
         let coverLink = pccover[0].gsx$link.$t
         let coverSliders = []
         let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
-        let coverRnd = []
-        while (coverRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * cover.length)
-          coverRnd = coverRnd.filter(function (num) {
-            return num !== rnd
-          })
-          coverRnd.push(rnd)
-        }
         while (coverSliders.length < 4) {
-          coverSliders.push(cover[coverRnd[coverSliders.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * cover.length)
+            coverSliders.push(cover[rnd])
+            cover = _.difference(cover, [cover[rnd]])
+          } else {
+            coverSliders.push(item[0])
+            cover = _.difference(cover, [item[0]])
+          }
         }
         // multimedia
         let contentSliders1 = []
         let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
-        let multiRnd = []
-        while (multiRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * multi.length)
-          multiRnd = multiRnd.filter(function (num) {
-            return num !== rnd
-          })
-          multiRnd.push(rnd)
-        }
         while (contentSliders1.length < 4) {
-          contentSliders1.push(multi[multiRnd[contentSliders1.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * multi.length)
+            contentSliders1.push(multi[rnd])
+            multi = _.difference(multi, [multi[rnd]])
+          } else {
+            contentSliders1.push(item[0])
+            multi = _.difference(multi, [item[0]])
+          }
         }
+        // let multiRnd = []
+        // while (multiRnd.length < 4) {
+        //   let rnd = Math.floor(Math.random() * multi.length)
+        //   multiRnd = multiRnd.filter(function (num) {
+        //     return num !== rnd
+        //   })
+        //   multiRnd.push(rnd)
+        // }
+        // while (contentSliders1.length < 4) {
+        //   contentSliders1.push(multi[multiRnd[contentSliders1.length]])
+        // }
+
         // data
         let contentSliders2 = []
         let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-        let dataRnd = []
-        while (dataRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * dataprojects.length)
-          dataRnd = dataRnd.filter(function (num) {
-            return num !== rnd
-          })
-          dataRnd.push(rnd)
-        }
         while (contentSliders2.length < 4) {
-          contentSliders2.push(dataprojects[dataRnd[contentSliders2.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * dataprojects.length)
+            contentSliders2.push(dataprojects[rnd])
+            dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
+          } else {
+            contentSliders2.push(item[0])
+            dataprojects = _.difference(dataprojects, [item[0]])
+          }
         }
         // interactive
         let contentSliders3 = []
         let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
-        let interRnd = []
-        while (interRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * interactive.length)
-          interRnd = interRnd.filter(function (num) {
-            return num !== rnd
-          })
-          interRnd.push(rnd)
-        }
         while (contentSliders3.length < 4) {
-          contentSliders3.push(interactive[interRnd[contentSliders3.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * interactive.length)
+            contentSliders3.push(interactive[rnd])
+            interactive = _.difference(interactive, [interactive[rnd]])
+          } else {
+            contentSliders3.push(item[0])
+            interactive = _.difference(interactive, [item[0]])
+          }
         }
         // explan
         let contentSliders4 = []
         let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
-        let explanRnd = []
-        while (explanRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * explan.length)
-          explanRnd = explanRnd.filter(function (num) {
-            return num !== rnd
-          })
-          explanRnd.push(rnd)
-        }
         while (contentSliders4.length < 4) {
-          contentSliders4.push(explan[explanRnd[contentSliders4.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * explan.length)
+            contentSliders4.push(explan[rnd])
+            explan = _.difference(explan, [explan[rnd]])
+          } else {
+            contentSliders4.push(item[0])
+            explan = _.difference(explan, [item[0]])
+          }
         }
         // native
         let contentSliders5 = []
         let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
-        let nativeRnd = []
-        while (nativeRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * native.length)
-          nativeRnd = nativeRnd.filter(function (num) {
-            return num !== rnd
-          })
-          nativeRnd.push(rnd)
-        }
         while (contentSliders5.length < 4) {
-          contentSliders5.push(native[nativeRnd[contentSliders5.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * native.length)
+            contentSliders5.push(native[rnd])
+            native = _.difference(native, [native[rnd]])
+          } else {
+            contentSliders5.push(item[0])
+            native = _.difference(native, [item[0]])
+          }
         }
-
         // research
         let contentSliders6 = []
         let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
-        let researchRnd = []
-        while (researchRnd.length < 4) {
-          let rnd = Math.floor(Math.random() * research.length)
-          researchRnd = researchRnd.filter(function (num) {
-            return num !== rnd
-          })
-          researchRnd.push(rnd)
-        }
         while (contentSliders6.length < 4) {
-          contentSliders6.push(research[researchRnd[contentSliders6.length]])
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * research.length)
+            contentSliders6.push(research[rnd])
+            research = _.difference(research, [research[rnd]])
+          } else {
+            contentSliders6.push(item[0])
+            research = _.difference(research, [item[0]])
+          }
         }
         return {
           projectslist: datalist,
@@ -742,7 +675,8 @@ export default {
   data: function () {
     return {
       stickyAnchors: false,
-      fbLogo: fbLogo,
+      fbLogo1: fbLogo1,
+      fbLogo2: fbLogo2,
       about: PicAbout,
       contact: PicContact,
       home: PicHome,
@@ -877,32 +811,6 @@ export default {
         eventLabel: '[' + platform + '] [' + document.title + '] [' + anchor + ']'
       })
       $('html, body').animate({scrollTop: $('#' + anchor).offset().top}, 1000, function () {})
-    },
-    anchorCallDoesNotWorkOnMobile: function (link) {
-      let scrollDuration = 1000
-      let distance = document.getElementById(link).getBoundingClientRect().top
-      let scrollStep = distance / (scrollDuration / 15)
-      if (distance > 0) {
-        let scrollInterval = setInterval(function () {
-          if (distance > 0) {
-            window.scrollBy(0, scrollStep)
-            distance = document.getElementById(link).getBoundingClientRect().top
-            document.getElementById('distance').innerHTML = distance
-          } else {
-            clearInterval(scrollInterval)
-          }
-        }, 15)
-      } else if (distance < 0) {
-        let scrollInterval = setInterval(function () {
-          if (distance < 0) {
-            window.scrollBy(0, scrollStep)
-            distance = document.getElementById(link).getBoundingClientRect().top
-            document.getElementById('distance').innerHTML = distance
-          } else {
-            clearInterval(scrollInterval)
-          }
-        }, 15)
-      }
     }
   }
 }
@@ -1175,6 +1083,11 @@ button, .button{
   transition: box-shadow 0.3s ease-in-out;
 }
 
+a.fb img{
+  box-shadow: 5px 5px 0 0 #e73828;
+  transition: box-shadow 0.3s ease-in-out;  
+}
+
 @media screen and (max-width: 1023px){
   button, .button{
     width: 80px;
@@ -1183,7 +1096,7 @@ button, .button{
   }
 }
 
-button:hover, .button:hover{
+button:hover, .button:hover, a.fb img:hover{
   box-shadow: 1px 1px 0 0 #e73828;
 }
 

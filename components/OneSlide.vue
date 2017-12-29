@@ -19,20 +19,21 @@ export default {
   props: ['interval', 'position', 'slide'],
   computed: {
     imgSrc: function () {
-      return 'projects/' + this.slide[0].gsx$pcpic.$t
+      return 'projects/' + this.slide[this.rnd].gsx$pcpic.$t
     },
     maintitle: function () {
-      return this.slide[0].gsx$title.$t.split(' ')[0]
+      return this.slide[this.rnd].gsx$title.$t.split(' ')[0]
     },
     subtitle: function () {
-      return this.slide[0].gsx$title.$t.split(' ')[1]
+      return this.slide[this.rnd].gsx$title.$t.split(' ')[1]
     },
     link: function () {
-      return this.slide[0].gsx$link.$t
+      return this.slide[this.rnd].gsx$link.$t
     }
   },
   data: function () {
     return {
+      rnd: Math.floor(Math.random() * this.slide.length)
     }
   }
 }

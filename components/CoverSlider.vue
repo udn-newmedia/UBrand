@@ -269,10 +269,17 @@ p.date{
     border-radius: 100px;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 413px){
   .circlesAnim{
     top: 283px; 
     right: 30px;
+  }  
+}
+
+@media screen and (min-width: 414px) and (max-width: 767px){
+  .circlesAnim{
+    top: 283px; 
+    right: 70px;
   }  
 }
 
