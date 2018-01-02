@@ -821,14 +821,15 @@ export default {
           let coverLabel = pccover[0].gsx$class.$t
           let coverLink = pccover[0].gsx$link.$t
 
-          if (that.coverImageSrc !== coverImageSrc) {
-            that.coverImageSrc = coverImageSrc
+          if (that.coverImage !== coverImageSrc) {
+            that.coverImage = coverImageSrc
             that.coverTitle = coverTitle
             that.coverDescription = coverDescription
             that.coverDate = coverDate
             that.coverLabel = coverLabel
             that.coverLink = coverLink
           }
+
           let coverSliders = []
           let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
           while (coverSliders.length < 4) {

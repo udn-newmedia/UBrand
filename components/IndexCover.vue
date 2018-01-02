@@ -32,6 +32,9 @@ export default {
         return this.description
       }
     },
+    title: function () {
+      return this.coverTitle.split(' ')[0]
+    },
     subtitle: function () {
       if (this.coverTitle.split(' ').length > 2) {
         let subtitle = this.coverTitle.split(' ')[1]
@@ -45,11 +48,6 @@ export default {
       } else {
         return ' '
       }
-    }
-  },
-  data: function () {
-    return {
-      title: this.coverTitle.split(' ')[0]
     }
   }
 }
