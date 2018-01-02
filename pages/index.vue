@@ -192,7 +192,7 @@
         </IndexSection>
       </ContentWrapper>
       <ContentSlider 
-        class="hidden-pc" 
+        class="hidden-pc"
         background-color="#fff"
         :sliders="contentSliders1"/>
     </section>
@@ -520,7 +520,7 @@ export default {
   components: {
     Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
   },
-  asyncData ({isServer, error}) {
+  asyncData ({isServer, store, error}) {
     let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
     if (isServer) {
       return axios.get(json)
@@ -697,6 +697,9 @@ export default {
       isMob: false
     }
   },
+  created: function () {
+    this.dataUpdate()
+  },
   beforeMount: function () {
     window.addEventListener('scroll', this.onScroll)
   },
@@ -799,6 +802,82 @@ export default {
         eventLabel: '[' + platform + '] [' + document.title + '] [' + anchor + ']'
       })
       $('html, body').animate({scrollTop: $('#' + anchor).offset().top}, 1000, function () {})
+    },
+    dataUpdate: function () {
+      let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
+      let that = this
+      axios.get(json)
+        .then((res) => {
+          let datalist = res.data.feed.entry
+
+          let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
+          if (pccover[0] == null) {
+            pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
+          }
+          let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
+          let coverTitle = pccover[0].gsx$title.$t
+          let coverDescription = pccover[0].gsx$description.$t
+          let coverDate = pccover[0].gsx$date.$t
+          let coverLabel = pccover[0].gsx$class.$t
+          let coverLink = pccover[0].gsx$link.$t
+
+          if (that.coverImageSrc !== coverImageSrc) {
+            that.coverImageSrc = coverImageSrc
+            that.coverTitle = coverTitle
+            that.coverDescription = coverDescription
+            that.coverDate = coverDate
+            that.coverLabel = coverLabel
+            that.coverLink = coverLink
+          }
+          let coverSliders = []
+          let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
+          while (coverSliders.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * cover.length)
+              coverSliders.push(cover[rnd])
+              cover = _.difference(cover, [cover[rnd]])
+            } else {
+              coverSliders.push(item[0])
+              cover = _.difference(cover, [item[0]])
+            }
+          }
+          coverSliders.unshift(pccover[0])
+          that.coverSliders = coverSliders
+
+          let contentSliders1 = []
+          let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
+          while (contentSliders1.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * multi.length)
+              contentSliders1.push(multi[rnd])
+              multi = _.difference(multi, [multi[rnd]])
+            } else {
+              contentSliders1.push(item[0])
+              multi = _.difference(multi, [item[0]])
+            }
+          }
+          that.contentSliders1 = contentSliders1
+
+          let contentSliders2 = []
+          let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+          while (contentSliders2.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * dataprojects.length)
+              contentSliders2.push(dataprojects[rnd])
+              dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
+            } else {
+              contentSliders2.push(item[0])
+              dataprojects = _.difference(dataprojects, [item[0]])
+            }
+          }
+          that.contentSliders2 = contentSliders2
+        })
     }
   }
 }

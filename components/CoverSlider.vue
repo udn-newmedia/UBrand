@@ -72,6 +72,13 @@ export default {
       fillinblank: 'blank'
     }
   },
+  beforeUpdate: function () {
+    if (this.list.length < 7) {
+      this.list.push(this.list[0])
+      this.list.push(this.list[1])
+      this.list.unshift(this.list[this.list.length - 3])
+    }
+  },
   mounted: function () {
     this.list.push(this.list[0])
     this.list.push(this.list[1])

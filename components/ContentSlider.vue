@@ -51,13 +51,6 @@ export default {
       })
       return this.sliders
     }
-    // list: function () {
-    //   this.sliders.forEach(ele => {
-    //     ele.maintitle = ele.gsx$title.$t.split(' ')[0]
-    //     ele.subtitle = ele.gsx$title.$t.split(' ')[1]
-    //   })
-    //   return this.sliders
-    // }
   },
   data: function () {
     return {
@@ -70,11 +63,17 @@ export default {
   },
   components: {
   },
+  beforeUpdate: function () {
+    if (this.list.length < 7) {
+      this.list.push(this.list[0])
+      this.list.push(this.list[1])
+      this.list.unshift(this.list[this.list.length - 3])
+    }
+  },
   mounted: function () {
     this.list.push(this.list[0])
     this.list.push(this.list[1])
     this.list.unshift(this.list[this.list.length - 3])
-
     let $sliders = this.$refs.sliders
     $sliders.style.width = (this.list.length * 100) + '%'
     $sliders.style.transform = 'translateX(-' + this.current * (this.transitionWidth) + 'px)'
