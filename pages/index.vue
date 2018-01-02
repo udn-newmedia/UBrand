@@ -520,158 +520,148 @@ export default {
   components: {
     Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
   },
-  asyncData ({param, error}) {
+  asyncData ({isServer, error}) {
     let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
-    return axios.get(json)
-      .then((res) => {
-        let datalist = res.data.feed.entry
-        let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
-        if (pccover[0] == null) {
-          pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
-        }
-        let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
-        let coverTitle = pccover[0].gsx$title.$t
-        let coverDescription = pccover[0].gsx$description.$t
-        let coverDate = pccover[0].gsx$date.$t
-        let coverLabel = pccover[0].gsx$class.$t
-        let coverLink = pccover[0].gsx$link.$t
-        let coverSliders = []
-        let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
-        while (coverSliders.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * cover.length)
-            coverSliders.push(cover[rnd])
-            cover = _.difference(cover, [cover[rnd]])
-          } else {
-            coverSliders.push(item[0])
-            cover = _.difference(cover, [item[0]])
+    if (isServer) {
+      return axios.get(json)
+        .then((res) => {
+          let datalist = res.data.feed.entry
+          let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
+          if (pccover[0] == null) {
+            pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
           }
-        }
-        coverSliders.unshift(pccover[0])
-        // multimedia
-        let contentSliders1 = []
-        let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
-        while (contentSliders1.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * multi.length)
-            contentSliders1.push(multi[rnd])
-            multi = _.difference(multi, [multi[rnd]])
-          } else {
-            contentSliders1.push(item[0])
-            multi = _.difference(multi, [item[0]])
+          let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
+          let coverTitle = pccover[0].gsx$title.$t
+          let coverDescription = pccover[0].gsx$description.$t
+          let coverDate = pccover[0].gsx$date.$t
+          let coverLabel = pccover[0].gsx$class.$t
+          let coverLink = pccover[0].gsx$link.$t
+          let coverSliders = []
+          let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
+          while (coverSliders.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * cover.length)
+              coverSliders.push(cover[rnd])
+              cover = _.difference(cover, [cover[rnd]])
+            } else {
+              coverSliders.push(item[0])
+              cover = _.difference(cover, [item[0]])
+            }
           }
-        }
-        // let multiRnd = []
-        // while (multiRnd.length < 4) {
-        //   let rnd = Math.floor(Math.random() * multi.length)
-        //   multiRnd = multiRnd.filter(function (num) {
-        //     return num !== rnd
-        //   })
-        //   multiRnd.push(rnd)
-        // }
-        // while (contentSliders1.length < 4) {
-        //   contentSliders1.push(multi[multiRnd[contentSliders1.length]])
-        // }
-
-        // data
-        let contentSliders2 = []
-        let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-        while (contentSliders2.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * dataprojects.length)
-            contentSliders2.push(dataprojects[rnd])
-            dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
-          } else {
-            contentSliders2.push(item[0])
-            dataprojects = _.difference(dataprojects, [item[0]])
+          coverSliders.unshift(pccover[0])
+          // multimedia
+          let contentSliders1 = []
+          let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
+          while (contentSliders1.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * multi.length)
+              contentSliders1.push(multi[rnd])
+              multi = _.difference(multi, [multi[rnd]])
+            } else {
+              contentSliders1.push(item[0])
+              multi = _.difference(multi, [item[0]])
+            }
           }
-        }
-        // interactive
-        let contentSliders3 = []
-        let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
-        while (contentSliders3.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * interactive.length)
-            contentSliders3.push(interactive[rnd])
-            interactive = _.difference(interactive, [interactive[rnd]])
-          } else {
-            contentSliders3.push(item[0])
-            interactive = _.difference(interactive, [item[0]])
+          // data
+          let contentSliders2 = []
+          let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+          while (contentSliders2.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * dataprojects.length)
+              contentSliders2.push(dataprojects[rnd])
+              dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
+            } else {
+              contentSliders2.push(item[0])
+              dataprojects = _.difference(dataprojects, [item[0]])
+            }
           }
-        }
-        // explan
-        let contentSliders4 = []
-        let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
-        while (contentSliders4.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * explan.length)
-            contentSliders4.push(explan[rnd])
-            explan = _.difference(explan, [explan[rnd]])
-          } else {
-            contentSliders4.push(item[0])
-            explan = _.difference(explan, [item[0]])
+          // interactive
+          let contentSliders3 = []
+          let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
+          while (contentSliders3.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * interactive.length)
+              contentSliders3.push(interactive[rnd])
+              interactive = _.difference(interactive, [interactive[rnd]])
+            } else {
+              contentSliders3.push(item[0])
+              interactive = _.difference(interactive, [item[0]])
+            }
           }
-        }
-        // native
-        let contentSliders5 = []
-        let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
-        while (contentSliders5.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * native.length)
-            contentSliders5.push(native[rnd])
-            native = _.difference(native, [native[rnd]])
-          } else {
-            contentSliders5.push(item[0])
-            native = _.difference(native, [item[0]])
+          // explan
+          let contentSliders4 = []
+          let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
+          while (contentSliders4.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * explan.length)
+              contentSliders4.push(explan[rnd])
+              explan = _.difference(explan, [explan[rnd]])
+            } else {
+              contentSliders4.push(item[0])
+              explan = _.difference(explan, [item[0]])
+            }
           }
-        }
-        // research
-        let contentSliders6 = []
-        let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
-        while (contentSliders6.length < 4) {
-          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-          let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
-          if (item.length === 0) {
-            let rnd = Math.floor(Math.random() * research.length)
-            contentSliders6.push(research[rnd])
-            research = _.difference(research, [research[rnd]])
-          } else {
-            contentSliders6.push(item[0])
-            research = _.difference(research, [item[0]])
+          // native
+          let contentSliders5 = []
+          let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
+          while (contentSliders5.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * native.length)
+              contentSliders5.push(native[rnd])
+              native = _.difference(native, [native[rnd]])
+            } else {
+              contentSliders5.push(item[0])
+              native = _.difference(native, [item[0]])
+            }
           }
-        }
-        return {
-          projectslist: datalist,
-          coverImage: coverImageSrc,
-          coverTitle: coverTitle,
-          coverDescription: coverDescription,
-          coverDate: coverDate,
-          coverLabel: coverLabel,
-          coverLink: coverLink,
-          coverSliders: coverSliders,
-          contentSliders1: contentSliders1,
-          contentSliders2: contentSliders2,
-          contentSliders3: contentSliders3,
-          contentSliders4: contentSliders4,
-          contentSliders5: contentSliders5,
-          contentSliders6: contentSliders6
-        }
-      })
-      .catch((e) => {
-        error({statusCode: 404, message: 'File not found'})
-      })
+          // research
+          let contentSliders6 = []
+          let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+          while (contentSliders6.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * research.length)
+              contentSliders6.push(research[rnd])
+              research = _.difference(research, [research[rnd]])
+            } else {
+              contentSliders6.push(item[0])
+              research = _.difference(research, [item[0]])
+            }
+          }
+          return {
+            projectslist: datalist,
+            coverImage: coverImageSrc,
+            coverTitle: coverTitle,
+            coverDescription: coverDescription,
+            coverDate: coverDate,
+            coverLabel: coverLabel,
+            coverLink: coverLink,
+            coverSliders: coverSliders,
+            contentSliders1: contentSliders1,
+            contentSliders2: contentSliders2,
+            contentSliders3: contentSliders3,
+            contentSliders4: contentSliders4,
+            contentSliders5: contentSliders5,
+            contentSliders6: contentSliders6
+          }
+        })
+        .catch((e) => {
+          error({statusCode: 404, message: 'File not found'})
+        })
+    }
   },
   data: function () {
     return {
@@ -706,9 +696,6 @@ export default {
       scroll_now: 0,
       isMob: false
     }
-  },
-  computed: {
-
   },
   beforeMount: function () {
     window.addEventListener('scroll', this.onScroll)

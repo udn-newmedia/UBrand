@@ -1,6 +1,7 @@
 module.exports = {
   router: {
-    base: '/upf/newmedia/ubrandstudio/'
+    // base: '/upf/newmedia/ubrandstudio/'
+    base: '/ubrand/'
   },
 
   /*
