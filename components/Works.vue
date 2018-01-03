@@ -87,8 +87,6 @@ export default {
       hasmore: true
     }
   },
-  mounted: function () {
-  },
   methods: {
     seeMore: function () {
       this.part++

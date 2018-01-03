@@ -526,6 +526,15 @@ export default {
       return axios.get(json)
         .then((res) => {
           let datalist = res.data.feed.entry
+          // empty field detection
+          _.pullAllBy(datalist, [{ 'gsx$class.$t': '' }], 'gsx$class.$t')
+          _.pullAllBy(datalist, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
+          _.pullAllBy(datalist, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
+          _.pullAllBy(datalist, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
+          _.pullAllBy(datalist, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
+          _.pullAllBy(datalist, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
+          _.pullAllBy(datalist, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
+          _.pullAllBy(datalist, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
           let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
           if (pccover[0] == null) {
             pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
@@ -809,7 +818,15 @@ export default {
       axios.get(json)
         .then((res) => {
           let datalist = res.data.feed.entry
-
+          // empty fields detection
+          _.pullAllBy(datalist, [{ 'gsx$class.$t': '' }], 'gsx$class.$t')
+          _.pullAllBy(datalist, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
+          _.pullAllBy(datalist, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
+          _.pullAllBy(datalist, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
+          _.pullAllBy(datalist, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
+          _.pullAllBy(datalist, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
+          _.pullAllBy(datalist, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
+          _.pullAllBy(datalist, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
           let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
           if (pccover[0] == null) {
             pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
@@ -846,7 +863,7 @@ export default {
           }
           coverSliders.unshift(pccover[0])
           that.coverSliders = coverSliders
-
+          // multi
           let contentSliders1 = []
           let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
           while (contentSliders1.length < 4) {
@@ -862,7 +879,7 @@ export default {
             }
           }
           that.contentSliders1 = contentSliders1
-
+          // data
           let contentSliders2 = []
           let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
           while (contentSliders2.length < 4) {
@@ -878,6 +895,70 @@ export default {
             }
           }
           that.contentSliders2 = contentSliders2
+          // interactive
+          let contentSliders3 = []
+          let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
+          while (contentSliders3.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * interactive.length)
+              contentSliders3.push(interactive[rnd])
+              interactive = _.difference(interactive, [interactive[rnd]])
+            } else {
+              contentSliders3.push(item[0])
+              interactive = _.difference(interactive, [item[0]])
+            }
+          }
+          that.contentSliders3 = contentSliders3
+          // explan
+          let contentSliders4 = []
+          let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
+          while (contentSliders4.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * explan.length)
+              contentSliders4.push(explan[rnd])
+              explan = _.difference(explan, [explan[rnd]])
+            } else {
+              contentSliders4.push(item[0])
+              explan = _.difference(explan, [item[0]])
+            }
+          }
+          that.contentSliders4 = contentSliders4
+          // native
+          let contentSliders5 = []
+          let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
+          while (contentSliders5.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * native.length)
+              contentSliders5.push(native[rnd])
+              native = _.difference(native, [native[rnd]])
+            } else {
+              contentSliders5.push(item[0])
+              native = _.difference(native, [item[0]])
+            }
+          }
+          that.contentSliders5 = contentSliders5
+          // research
+          let contentSliders6 = []
+          let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+          while (contentSliders6.length < 4) {
+            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+            let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
+            if (item.length === 0) {
+              let rnd = Math.floor(Math.random() * research.length)
+              contentSliders6.push(research[rnd])
+              research = _.difference(research, [research[rnd]])
+            } else {
+              contentSliders6.push(item[0])
+              research = _.difference(research, [item[0]])
+            }
+          }
+          that.contentSliders6 = contentSliders6
         })
     }
   }
@@ -996,7 +1077,7 @@ ul {
 
   section {
     position: relative;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;

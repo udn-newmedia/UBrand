@@ -162,6 +162,13 @@ export default {
       .then((res) => {
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+        _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
         let cover = _.filter(allprojects, ['gsx$pagecover.$t', 'TRUE'])
         if (cover[0] == null) {
           cover[0] = allprojects[0]
@@ -196,6 +203,9 @@ export default {
       ball: ball,
       covericon: 'bodymovin/data/data.jpg'
     }
+  },
+  created: function () {
+    this.dataUpdate()
   },
   mounted: function () {
     this.isMob = Utils.detectMob()
@@ -233,6 +243,48 @@ export default {
       title: document.title,
       location: window.location.href
     })
+  },
+  methods: {
+    dataUpdate: function () {
+      let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
+      let that = this
+      axios.get(json)
+        .then((res) => {
+          let datalist = res.data.feed.entry
+          let allprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+          _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
+          _.pullAllBy(allprojects, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
+          let cover = _.filter(allprojects, ['gsx$pagecover.$t', 'TRUE'])
+          if (cover[0] == null) {
+            cover[0] = allprojects[0]
+          }
+          // let projects = _.difference(allprojects, cover)
+          let coverImageSrc = 'projects/' + cover[0].gsx$pcpic.$t
+          let coverTitle = cover[0].gsx$title.$t
+          let coverDescription = cover[0].gsx$description.$t
+          let coverDate = cover[0].gsx$date.$t
+          let coverLink = cover[0].gsx$link.$t
+          let coverReportTitle = cover[0].gsx$reporttitle.$t
+          let coverReportLink = cover[0].gsx$reportlink.$t
+          if (that.coverImage !== coverImageSrc) {
+            that.coverElement = cover[0]
+            that.coverImage = coverImageSrc
+            that.coverTitle = coverTitle
+            that.coverDescription = coverDescription
+            that.coverDate = coverDate
+            that.coverLink = coverLink
+            that.coverReportTitle = coverReportTitle
+            that.coverReportLink = coverReportLink
+          }
+          // that.allprojects = allprojects
+          // that.projectslist = projects
+        })
+    }
   }
 }
 </script>

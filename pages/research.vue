@@ -160,6 +160,13 @@ export default {
       .then((res) => {
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+        _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
+        _.pullAllBy(allprojects, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
         let cover = _.filter(allprojects, ['gsx$pagecover.$t', 'TRUE'])
         if (cover[0] == null) {
           cover[0] = allprojects[0]
