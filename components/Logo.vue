@@ -7,7 +7,8 @@
             <a href="https://udn.com/news/index" target="_blank"><img :src="udnLogo"></a>
         </div>
         <div class="logo">
-            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img :src="nmdLogo"></a>
+            <!-- <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img :src="nmdLogo"></a> -->
+            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img src="https://udn.com/upf/newmedia/image/nmd_logo_2018.png"></a>
         </div>
     </div>
 </template>
@@ -33,6 +34,9 @@ export default {
   .logo{
       width: 140px;
       display: inline-block;
+  }
+  .logo img{
+      width: 140px;
   }
   @media screen and (max-width: 1024px){
       .logo-block{
