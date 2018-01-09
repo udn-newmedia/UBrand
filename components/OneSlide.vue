@@ -16,10 +16,10 @@
 <script>
 export default {
   name: 'OneSlide',
-  props: ['interval', 'position', 'slide'],
+  props: ['interval', 'position', 'slide', 'folder'],
   computed: {
     imgSrc: function () {
-      return 'projects/' + this.slide[this.rnd].gsx$pcpic.$t
+      return this.folder + this.slide[this.rnd].gsx$pcpic.$t
     },
     maintitle: function () {
       return this.slide[this.rnd].gsx$title.$t.split(' ')[0]

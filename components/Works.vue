@@ -6,8 +6,8 @@
                     <a :href="work.gsx$link.$t" target="_blank">
                         <div class="imgwrapper">
                             <picture>
-                                <source media="(max-width: 1199px)" :srcset="'projects/' + work.gsx$mobpic.$t">
-                                <img :src="'projects/' + work.gsx$pcpic.$t" alt="">
+                                <source media="(max-width: 1199px)" :srcset="folder + work.gsx$mobpic.$t">
+                                <img :src="folder + work.gsx$pcpic.$t" alt="">
                             </picture>
                         </div>
                         <div class="work-label">
@@ -47,7 +47,7 @@ import bullet2 from '~/assets/a-8.svg'
 
 export default {
   name: 'Work',
-  props: ['projects'],
+  props: ['projects', 'folder'],
   components: {ContentWrapper, Description},
   computed: {
     projectlist: function () {

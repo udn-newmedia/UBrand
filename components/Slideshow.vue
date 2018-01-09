@@ -22,12 +22,10 @@
 </template>
 
 <script>
-import pic1 from '~/assets/pc/a1-web.jpg'
-import pic2 from '~/assets/pc/a2-web.jpg'
 
 export default {
   name: 'Slideshow',
-  props: ['interval', 'position'],
+  props: ['interval', 'position', 'folder'],
   data: function () {
     return {
       show: true,

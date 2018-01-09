@@ -67,38 +67,38 @@
 
 export default {
   name: 'Carousel',
-  props: ['interval', 'projects'],
+  props: ['interval', 'projects', 'folder'],
   computed: {
     imgSrc1: {
       get: function () {
-        return 'projects/' + this.projects[this.pick1].gsx$pcpic.$t
+        return this.folder + this.projects[this.pick1].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return 'projects/' + newValue
+        return this.folder + newValue
       }
     },
     imgSrc2: {
       get: function () {
-        return 'projects/' + this.projects[this.pick2].gsx$pcpic.$t
+        return this.folder + this.projects[this.pick2].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return 'projects/' + newValue
+        return this.folder + newValue
       }
     },
     imgSrc3: {
       get: function () {
-        return 'projects/' + this.projects[this.pick3].gsx$pcpic.$t
+        return this.folder + this.projects[this.pick3].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return 'projects/' + newValue
+        return this.folder + newValue
       }
     },
     imgSrc4: {
       get: function () {
-        return 'projects/' + this.projects[this.pick4].gsx$pcpic.$t
+        return this.folder + this.projects[this.pick4].gsx$pcpic.$t
       },
       set: function (newValue) {
-        return 'projects/' + newValue
+        return this.folder + newValue
       }
     },
     title1: {

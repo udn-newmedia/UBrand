@@ -8,7 +8,7 @@
             <div v-for="work in list" :key="work.gsx$title.$t" class="slider">
                 <a :href="work.gsx$link.$t" target="_blank">
                   <div class="projects" :style="{width: projectWidth}">
-                    <img :src="'projects/' + work.gsx$mobpic.$t">
+                    <img :src="folder + work.gsx$mobpic.$t">
                     <div class="texts">
                       <p>{{work.maintitle}}</p>
                       <p>{{work.subtitle}}</p>
@@ -33,7 +33,7 @@ if (process.browser) {
 
 export default {
   name: 'Slider',
-  props: ['interval', 'background-color', 'sliders'],
+  props: ['interval', 'background-color', 'sliders', 'folder'],
   computed: {
     list: function () {
       this.sliders.forEach(ele => {

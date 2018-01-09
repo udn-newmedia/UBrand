@@ -85,8 +85,14 @@
       class="worksContentWrapper fluid"
       style="position: relative; overflow: hidden;">
       <p class="hidden-mobile"><br></p>
-      <Works class="hidden-mobile" :projects="projectslist"/>
-      <Works class="hidden-pc" :projects="allprojects"/>
+      <Works 
+        class="hidden-mobile" 
+        :projects="projectslist"
+        :folder="picturefolder"/>
+      <Works 
+        class="hidden-pc" 
+        :projects="allprojects"
+        :folder="picturefolder"/>
       <p><br></p>
       <p><br></p>
       <p><br></p>
@@ -159,6 +165,8 @@ export default {
     let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
     return axios.get(json)
       .then((res) => {
+        // let picturefolder = 'projects/' // picture data path for localhost
+        let picturefolder = '../projects/' // picture data path for production
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
         _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
@@ -173,7 +181,7 @@ export default {
           cover[0] = allprojects[0]
         }
         let projects = _.difference(allprojects, cover)
-        let coverImageSrc = 'projects/' + cover[0].gsx$pcpic.$t
+        let coverImageSrc = picturefolder + cover[0].gsx$pcpic.$t
         let coverTitle = cover[0].gsx$title.$t
         let coverDescription = cover[0].gsx$description.$t
         let coverDate = cover[0].gsx$date.$t
@@ -199,13 +207,15 @@ export default {
   },
   data: function () {
     return {
+      // picturefolder: 'projects/', // picture data path for localhost
+      picturefolder: '../projects/', // picture data path for production
       ball: ball,
       covericon: 'bodymovin/multimedia/data.jpg',
       isMob: false
     }
   },
   created: function () {
-    this.dataUpdate()
+    // this.dataUpdate()
   },
   mounted: function () {
     this.isMob = Utils.detectMob()
@@ -263,8 +273,8 @@ export default {
           if (cover[0] == null) {
             cover[0] = allprojects[0]
           }
-          // let projects = _.difference(allprojects, cover)
-          let coverImageSrc = 'projects/' + cover[0].gsx$pcpic.$t
+          let projects = _.difference(allprojects, cover)
+          let coverImageSrc = this.picturefolder + cover[0].gsx$pcpic.$t
           let coverTitle = cover[0].gsx$title.$t
           let coverDescription = cover[0].gsx$description.$t
           let coverDate = cover[0].gsx$date.$t
@@ -281,8 +291,8 @@ export default {
             that.coverReportTitle = coverReportTitle
             that.coverReportLink = coverReportLink
           }
-          // that.allprojects = allprojects
-          // that.projectslist = projects
+          that.allprojects = allprojects
+          that.projectslist = projects
         })
     }
   }

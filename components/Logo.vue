@@ -8,7 +8,7 @@
         </div>
         <div class="logo">
             <!-- <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img :src="nmdLogo"></a> -->
-            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img src="https://udn.com/upf/newmedia/image/nmd_logo_2018.png"></a>
+            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img src="https://udn.com/upf/newmedia/image/nmd_logo_black_2018.svg"></a>
         </div>
     </div>
 </template>

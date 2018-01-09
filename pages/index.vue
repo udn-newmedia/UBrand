@@ -85,7 +85,8 @@
       <Carousel 
         class="hidden-mobile" 
         :interval="5000"
-        :projects="projectslist"/>
+        :projects="projectslist"
+        :folder="picturefolder"/>
       <RectAnim 
         class="hidden-mobile"
         :trigger-point="0"
@@ -98,7 +99,8 @@
     <CoverSlider 
       class="hidden-pc" 
       background-color="#f7f7f7"
-      :sliders="coverSliders"/>
+      :sliders="coverSliders"
+      :folder="picturefolder"/>
     
     <Bookmarks 
       id="floatingAnchor" 
@@ -162,7 +164,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"
-        :slide="contentSliders1"/>
+        :slide="contentSliders1"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -194,7 +197,8 @@
       <ContentSlider 
         class="hidden-pc"
         background-color="#fff"
-        :sliders="contentSliders1"/>
+        :sliders="contentSliders1"
+        :folder="picturefolder"/>
     </section>
 
     <section id="dataSection">
@@ -202,7 +206,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"
-        :slide="contentSliders2"/>
+        :slide="contentSliders2"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -234,7 +239,8 @@
       <ContentSlider 
         class="hidden-pc" 
         background-color="#fff"
-        :sliders="contentSliders2"/>
+        :sliders="contentSliders2"
+        :folder="picturefolder"/>
     </section>
 
     <section id="interactiveSection">
@@ -242,7 +248,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"
-        :slide="contentSliders3"/>
+        :slide="contentSliders3"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -274,7 +281,8 @@
       <ContentSlider 
         class="hidden-pc" 
         background-color="#fff"
-        :sliders="contentSliders3"/>
+        :sliders="contentSliders3"
+        :folder="picturefolder"/>
     </section>
 
     <section id="explanSection">
@@ -282,7 +290,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"
-        :slide="contentSliders4"/>
+        :slide="contentSliders4"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -314,7 +323,8 @@
       <ContentSlider 
         class="hidden-pc" 
         background-color="#fff"
-        :sliders="contentSliders4"/>
+        :sliders="contentSliders4"
+        :folder="picturefolder"/>
     </section>
 
     <section id="nativeSection">
@@ -322,7 +332,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="right"
-        :slide="contentSliders5"/>
+        :slide="contentSliders5"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -354,7 +365,8 @@
       <ContentSlider 
         class="hidden-pc" 
         background-color="#fff"
-        :sliders="contentSliders5"/>
+        :sliders="contentSliders5"
+        :folder="picturefolder"/>
     </section>
 
     <section>
@@ -362,7 +374,8 @@
         class="hidden-mobile slideshow hideAtStart" 
         :interval="5000" 
         position="left"
-        :slide="contentSliders6"/>
+        :slide="contentSliders6"
+        :folder="picturefolder"/>
       <ContentWrapper background-color="#fff">
         <IndexSection 
           background-color="#fff" 
@@ -394,7 +407,8 @@
       <ContentSlider 
         class="hidden-pc" 
         background-color="#fff"
-        :sliders="contentSliders6"/>
+        :sliders="contentSliders6"
+        :folder="picturefolder"/>
       <div class="hidden-pc onetenth"/>
     </section>
     
@@ -525,6 +539,8 @@ export default {
     if (isServer) {
       return axios.get(json)
         .then((res) => {
+          // let picturefolder = 'projects/' // picture data path for localhost
+          let picturefolder = '../projects/' // picture data path for production
           let datalist = res.data.feed.entry
           // empty field detection
           _.pullAllBy(datalist, [{ 'gsx$class.$t': '' }], 'gsx$class.$t')
@@ -539,7 +555,7 @@ export default {
           if (pccover[0] == null) {
             pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
           }
-          let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
+          let coverImageSrc = picturefolder + pccover[0].gsx$pcpic.$t
           let coverTitle = pccover[0].gsx$title.$t
           let coverDescription = pccover[0].gsx$description.$t
           let coverDate = pccover[0].gsx$date.$t
@@ -674,6 +690,8 @@ export default {
   },
   data: function () {
     return {
+      // picturefolder: 'projects/', // picture data path for localhost
+      picturefolder: '../projects/', // picture data path for production
       stickyAnchors: false,
       fbLogo1: fbLogo1,
       fbLogo2: fbLogo2,
@@ -831,7 +849,7 @@ export default {
           if (pccover[0] == null) {
             pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
           }
-          let coverImageSrc = 'projects/' + pccover[0].gsx$pcpic.$t
+          let coverImageSrc = that.picturefolder + pccover[0].gsx$pcpic.$t
           let coverTitle = pccover[0].gsx$title.$t
           let coverDescription = pccover[0].gsx$description.$t
           let coverDate = pccover[0].gsx$date.$t

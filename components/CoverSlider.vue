@@ -8,7 +8,7 @@
             <div v-for="work in list" :key="work.gsx$title.$t" class="slider">
                 <a :href="work.gsx$link.$t" target="_blank">
                     <div class="projects">
-                      <img :src="'projects/' + work.gsx$mobcoverpic.$t">
+                      <img :src="folder + work.gsx$mobcoverpic.$t">
                       <div class="texts">
                         <div class="coverlabel">{{work.gsx$class.$t}}</div>
                         <h2>{{work.maintitle}}</h2>
@@ -38,7 +38,7 @@ if (process.browser) {
 
 export default {
   name: 'Slider',
-  props: ['interval', 'background-color', 'sliders'],
+  props: ['interval', 'background-color', 'sliders', 'folder'],
   components: {
     CircleAnim
   },
