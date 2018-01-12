@@ -149,12 +149,12 @@ import $ from 'jquery'
 export default {
   head () {
     return {
-      title: 'U Brand Studio 融媒體 數據報導 - UDN聯合報',
+      title: ' U Brand Studio 聯合報融媒體 數據報導 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: 'U Brand Studio 融媒體 數據報導 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 數據報導 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/data/' },
-        { property: 'og:description', content: 'U Brand Studio 融媒體，運用數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相，進行共同倡議新聞議題。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
-        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，運用數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
+        { property: 'og:description', content: ' U Brand Studio 聯合報融媒體，運用數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相，進行共同倡議新聞議題。 U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，運用數據分析加上圖表、動畫及專家採訪等，揭露社會現象下的真相。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
         { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、數據、專題' }
       ]
     }

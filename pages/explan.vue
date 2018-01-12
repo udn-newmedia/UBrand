@@ -149,12 +149,12 @@ import $ from 'jquery'
 export default {
   head () {
     return {
-      title: 'U Brand Studio 融媒體 解釋影音 - UDN聯合報',
+      title: ' U Brand Studio 聯合報融媒體 解釋影音 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: 'U Brand Studio 融媒體 解釋影音 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 解釋影音 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/explan/' },
-        { property: 'og:description', content: 'U Brand Studio 融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
-        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
+        { property: 'og:description', content: ' U Brand Studio 聯合報融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。 U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，運用解釋影音進行，以動畫、影音形式描繪新聞事件或生活短影音。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
         { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、解釋、影音' }
       ]
     }

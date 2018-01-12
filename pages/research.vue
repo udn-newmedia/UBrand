@@ -147,12 +147,12 @@ import $ from 'jquery'
 export default {
   head () {
     return {
-      title: 'U Brand Studio 融媒體 研究報告 - UDN聯合報',
+      title: ' U Brand Studio 聯合報融媒體 研究報告 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: 'U Brand Studio 融媒體 研究報告 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 研究報告 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/research/' },
-        { property: 'og:description', content: 'U Brand Studio 融媒體，定期分享科技與媒體新趨勢的研究報告。說明如何說好故事，讓品牌更有影響力。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
-        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，定期分享科技與媒體新趨勢的研究報告。說明如何說好故事，讓品牌更有影響力。' },
+        { property: 'og:description', content: ' U Brand Studio 聯合報融媒體，定期分享科技與媒體新趨勢的研究報告。說明如何說好故事，讓品牌更有影響力。 U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，定期分享科技與媒體新趨勢的研究報告。說明如何說好故事，讓品牌更有影響力。' },
         { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、研究、報告、聯沙龍' }
       ]
     }

@@ -8,7 +8,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'U Brand Studio 融媒體 用創新說故事 - UDN聯合報',
+    title: ' U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報',
     meta: [
       { charset: 'utf-8' },
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },     
@@ -16,9 +16,9 @@ module.exports = {
       { property: 'article:author', content: 'https://www.facebook.com/udnplus' },
       { property: 'article:publisher', content: 'https://www.facebook.com/udnplus' },
       { name: 'copyright', content: '聯合報' },
-      { name: 'application-name', content: 'U Brand Studio 融媒體 - UDN聯合報' },
-      { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。' },
-      { property: 'og:site_name', content: 'U Brand Studio 融媒體 - UDN聯合報' },
+      { name: 'application-name', content: ' U Brand Studio 聯合報融媒體 - UDN聯合報' },
+      { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。' },
+      { property: 'og:site_name', content: ' U Brand Studio 聯合報融媒體 - UDN聯合報' },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: 'https://udn.com/upf/newmedia/ubrandstudio/FB.jpg' },
     ],

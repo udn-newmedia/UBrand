@@ -149,12 +149,12 @@ import $ from 'jquery'
 export default {
   head () {
     return {
-      title: 'U Brand Studio 融媒體 互動新聞 - UDN聯合報',
+      title: ' U Brand Studio 聯合報融媒體 互動新聞 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: 'U Brand Studio 融媒體 互動新聞 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 互動新聞 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/interactive/' },
-        { property: 'og:description', content: 'U Brand Studio 融媒體，運用互動新聞報導手法進行，文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角。U Brand Studio 融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
-        { hid: 'description', name: 'description', content: 'U Brand Studio 融媒體，運用互動新聞報導手法進行，文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
+        { property: 'og:description', content: ' U Brand Studio 聯合報融媒體，運用互動新聞報導手法進行，文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角。 U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
+        { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，運用互動新聞報導手法進行，文字、圖片、影音搭配互動式圖表，在網站上報導國內外重大新聞360度攝影機拍攝特殊事件或活動，呈現多元視角。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
         { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、互動、新聞' }
       ]
     }
