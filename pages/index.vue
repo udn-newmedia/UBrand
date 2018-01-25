@@ -523,7 +523,7 @@ export default {
     return {
       title: ' U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 創新說故事 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/' },
         { property: 'og:description', content: ' U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，由新聞、資訊工程、視覺設計與行銷人才組成的團隊，探索創新的內容閱讀體驗，結合新科技，製作多媒體報導、數據專題、互動新聞等，讓讀者更淺顯易懂的看懂新聞議題。推出多檔叫好叫座專題，包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，引起讀者廣泛討論。' },
         { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。' },
