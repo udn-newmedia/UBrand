@@ -26,6 +26,14 @@ if (process.browser) {
 }
 
 export default {
+  /* 本元件用途：
+    * 實作常用功能之HTML原生影片播放器
+    * [傳入參數]：
+    *  - src: mobile 影片位置
+    *  - srcWeb: pc版 影片位置
+    *  - poster: mobile 版影片預覽圖
+    *  - posterWeb: pc版 影片位置
+    * */
   name: 'embededvideo',
   props: ['src', 'srcWeb', 'srcPad', 'poster', 'posterWeb', 'posterPad', 'dataTarget', 'background-color'],
   components: {

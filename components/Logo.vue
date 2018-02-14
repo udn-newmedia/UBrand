@@ -7,18 +7,24 @@
             <a href="https://udn.com/news/index" target="_blank"><img :src="udnLogo"></a>
         </div>
         <div class="logo">
-            <!-- <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img :src="nmdLogo"></a> -->
-            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img src="https://udn.com/upf/newmedia/image/nmd_logo_black_2018.svg"></a>
+            <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img :src="nmdLogo"></a>
+            <!-- <a href="https://udn.com/upf/newmedia/udn_newmedia/" target="_blank"><img src="https://udn.com/upf/newmedia/image/nmd_logo_black_2018.svg"></a> -->
         </div>
     </div>
 </template>
 
 <script>
-import nmdLogo from '~/assets/logo_newmedia.svg'
+import nmdLogo from '~/assets/nmd_logo.svg'
 import u2Logo from '~/assets/logo_U2.svg'
 import udnLogo from '~/assets/logo_udn.svg'
 
 export default {
+  /* 本元件用途：
+    *   顯示各logo
+    * nmdLogo: 新媒體中心logo
+    * u2Logo: ubrandstudio logo
+    * udnLogo: 聯合新聞網 logo
+    * */
   name: 'Logo',
   data: function () {
     return {

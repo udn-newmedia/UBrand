@@ -5,6 +5,11 @@
 <script>
 
 export default {
+  /* 本元件用途：
+    *  首頁各section之影片
+    * [傳入參數]：
+    *  - jsonfile: video 之 source
+    * */
   name: 'BodymovinUsingVideo',
   props: ['jsonfile'],
   mounted: function () {

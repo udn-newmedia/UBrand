@@ -166,6 +166,13 @@ export default {
     let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
     return axios.get(json)
       .then((res) => {
+        /* 各變數用途：
+          *    - picturefolder: 圖片資料夾路徑 ('../projects'為 production 之路徑)
+          *    - datalist: 從google spreadsheet 抓下來的資料 list
+          *    - allprojects: 抓出本類別之專題
+          *    - cover: 封面專題
+          *    - coverTitle(標題), coverDescription(描述), coverDate(上線日期), coverLink(專題連結), coverReportTitle(研究報告標題), coverReportLink(研究報告連結): 封面各資訊
+          * */
         // let picturefolder = 'projects/' // picture data path for localhost
         let picturefolder = '../projects/' // picture data path for production
         let datalist = res.data.feed.entry

@@ -35,6 +35,13 @@ import PicHome from '~/assets/logo_home.svg'
 import ContentWrapper from './Content'
 
 export default {
+  /* 本元件用途：
+    * 首頁之headbar。
+    * [傳入參數]：
+    *  - bookmarkDisplay: 是否顯示內連連結 (boolean)
+    * [註]:
+    *  - 因首頁之bookmark為内連連結 (點按滑動至指定位置)，和其餘分頁之bookmark為外連連結不同，因此另製作此元件
+    * */
   name: 'Headbar',
   props: ['color', 'buttonColor', 'bookmarkDisplay'],
   components: {ContentWrapper},

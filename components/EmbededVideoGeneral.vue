@@ -26,6 +26,9 @@ if (process.browser) {
 }
 
 export default {
+  /* 本元件用途：
+    * 同 EmbededVideo 用途，此為上傳至 npm package版本
+    * */  
   name: 'embededvideo',
   props: ['src', 'srcWeb', 'srcPad', 'poster', 'posterWeb', 'posterPad', 'dataTarget', 'background-color'],
   components: {

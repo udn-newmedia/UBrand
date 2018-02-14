@@ -32,6 +32,11 @@ import PicHome from '~/assets/logo_home.svg'
 import ContentWrapper from './Content'
 
 export default {
+  /* 本元件用途：
+    * 網頁之headbar。
+    * [傳入參數]：
+    *  - bookmarkDisplay: 是否顯示連至其他分頁之外連連結 (boolean)
+    * */
   name: 'Headbar',
   props: ['color', 'buttonColor', 'bookmarkDisplay'],
   components: {ContentWrapper},

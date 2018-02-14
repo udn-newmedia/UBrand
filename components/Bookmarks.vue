@@ -14,6 +14,11 @@
 import ContentWrapper from './Content'
 
 export default {
+  /* 本元件用途：
+    *  head上之內連連結
+    * [傳入參數]：
+    *  - backgroundColor: 標籤區塊之背景色
+    * */
   name: 'Bookmarks',
   props: ['color', 'buttonColor', 'backgroundColor'],
   components: {ContentWrapper},

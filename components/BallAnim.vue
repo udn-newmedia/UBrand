@@ -11,6 +11,9 @@
 import ball from '~/assets/a-6.svg'
 
 export default {
+  /* 本元件用途：
+    *  首頁紅色大球動畫
+    * */
   name: 'BallAnim',
   props: ['triggerPoint', 'position'],
   data: function () {

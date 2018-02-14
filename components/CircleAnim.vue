@@ -12,6 +12,11 @@ import circle1 from '~/assets/a-1.svg'
 import circle2 from '~/assets/a-2.svg'
 
 export default {
+  /* 本元件用途：
+    *  首頁封面兩個圓圈互動之動畫
+    * [傳入參數]：
+    *  - triggerPoint: 觸發動畫之觸發點 (某section之位置)
+    * */
   name: 'CircleAnim',
   props: ['triggerPoint'],
   data: function () {

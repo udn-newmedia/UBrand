@@ -46,6 +46,13 @@ import bullet1 from '~/assets/a-7.svg'
 import bullet2 from '~/assets/a-8.svg'
 
 export default {
+  /* 本元件用途：
+    * 在分頁裡列出該類別之所有專題
+    * [傳入參數]：
+    *  - projects: 該類別之所有專題資料陣列
+    *  - folder: 專題圖片所放置資料夾之路徑 
+    * [註]:
+    * */    
   name: 'Work',
   props: ['projects', 'folder'],
   components: {ContentWrapper, Description},
@@ -83,7 +90,7 @@ export default {
       works: [],
       bullet1: bullet1,
       bullet2: bullet2,
-      fillinblank: '把3D模型擺進新聞 學到的3件事',
+      fillinblank: '把3D模型擺進新聞 學到的3件事',//為了保持空行因而塞入之字串
       hasmore: true
     }
   },

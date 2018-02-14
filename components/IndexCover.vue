@@ -20,6 +20,16 @@ import ContentWrapper from './Content'
 import CircleAnim from './CircleAnim'
 
 export default {
+  /* 本元件用途：
+    * 首頁之封面
+    * [傳入參數]：
+    *  - srcCover: 封面專題圖片
+    *  - srcTitle: 封面大標
+    *  - description: 封面描述
+    *  - date: 封面上線時間
+    *  - label: 封面專題類別 (ex. 多媒體)
+    *  - link: 封面專題超連結
+    * */
   name: 'IndexCover',
   props: ['srcCover', 'coverTitle', 'description', 'date', 'label', 'link'],
   components: {ContentWrapper, CircleAnim},

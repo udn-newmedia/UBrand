@@ -66,6 +66,13 @@
 <script>
 
 export default {
+  /* 本元件用途：
+    *  PC版封面下方之左右並排圖片輪播圖
+    * [傳入參數]：
+    *  - interval: 輪播區間
+    *  - projects: 傳入之所有 project list
+    *  - folder: 所置放之folder路徑
+    * */
   name: 'Carousel',
   props: ['interval', 'projects', 'folder'],
   computed: {
@@ -102,6 +109,7 @@ export default {
       }
     },
     title1: {
+      // 用空白來分割title為大標與小標
       get: function () {
         return this.projects[this.pick1].gsx$title.$t.split(' ')[0]
       },
@@ -111,6 +119,7 @@ export default {
     },
     subtitle1: {
       get: function () {
+        // 用空白來分割title為大標與小標
         if (this.projects[this.pick1].gsx$title.$t.split(' ').length > 2) {
           let subtitle = this.projects[this.pick1].gsx$title.$t.split(' ')[1]
           for (let i = 2; i < this.projects[this.pick1].gsx$title.$t.split(' ').length; i++) {
@@ -293,7 +302,7 @@ export default {
   },
   methods: {
     changeProjects: function () {
-      // 撈兩個
+      // 一次亂撈兩個
       if (this.show) {
         this.pick3 = Math.floor(Math.random() * this.projects.length)
         this.pick4 = Math.floor(Math.random() * this.projects.length)

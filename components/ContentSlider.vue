@@ -32,6 +32,14 @@ if (process.browser) {
 }
 
 export default {
+  /* 本元件用途：
+    * mobile版內文滑動 slider
+    * [傳入參數]：
+    *  - interval: 自動輪播之時間區間
+    *  - background-color: slider 背景色
+    *  - sliders: 所有該類別之專題陣列
+    *  - folder: 專題圖片之路徑
+    * */
   name: 'Slider',
   props: ['interval', 'background-color', 'sliders', 'folder'],
   computed: {
@@ -119,7 +127,7 @@ export default {
       } else {
         that.current = parseInt(index)
       }
-
+      // 處理雙向無限滑動的方法
       that.current = (that.current) % that.list.length
       if (that.current === that.list.length - 2) {
         $sliders.style.transition = 'all ' + this.transitionDuration / 1000 + 's'

@@ -21,6 +21,12 @@
 import ContentWrapper from './Content'
 
 export default {
+  /* 本元件用途：
+    * 顯示首頁每一個section (e.g. 多媒體、數據專題、互動新聞...etc)
+    * [傳入參數]：
+    *  - background-Color: 背景色
+    *  - position: 'left' 或 'right'，因 section 有圖片在左及圖片在右兩種，故以兩種參數註明
+    * */
   name: 'IndexSection',
   props: ['background-color', 'position'],
   components: {ContentWrapper}

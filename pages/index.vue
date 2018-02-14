@@ -519,6 +519,7 @@ import $ from 'jquery'
 var AboutSectionOffset
 
 export default {
+  // 以下用以複寫在nuxt.config.js內之meta
   head () {
     return {
       title: ' U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報',
@@ -539,7 +540,24 @@ export default {
     if (isServer) {
       return axios.get(json)
         .then((res) => {
-          // let picturefolder = 'projects/' // picture data path for localhost
+          /* 各變數用途：
+           *    - picturefolder: 圖片資料夾路徑 ('../projects'為 production 之路徑)
+           *    - datalist: 從google spreadsheet 抓下來的資料 list
+           *    - pccover: pc上的封面專題圖
+           *    - coverTitle: 封面專題大標
+           *    - coverDescription: 封面專題之文字描述
+           *    - coverDate: 封面專題之上線日期
+           *    - coverLabel: 封面專題之類別 (多媒體、資料... 等等)
+           *    - coverLink: 封面專題之連結
+           *    - coverSliders: 手機封面輪播slides (共4則)
+           *      - cover 為指定或任選四則，再指定 coverSliders 第一則為 pc版 之封面專題
+           *    - contentSliders1: 第一類別 (多媒體) 輪播slides (共4則)
+           *      - multi 為指定或任選四則，再指定 contentSlider2 之第一則為pc版 之封面專題
+           *    - contentSliders2: 第二類別 (多媒體) 輪播slides (共4則)
+           *      - data 為指定或任選四則，再指定 contentSlider3 之第一則為 pc版 之封面專題
+           *    - 其餘 contentSliders 如上類推
+           * */
+          // let picturefolder = 'projects/' // picture data path only for localhost
           let picturefolder = '../projects/' // picture data path for production
           let datalist = res.data.feed.entry
           // empty field detection
@@ -689,6 +707,16 @@ export default {
     }
   },
   data: function () {
+  /* 各變數用途：
+    *    - picturefolder: 圖片資料夾路徑 ('../projects'為 production 之路徑)
+    *    - stickyAnchors: 決定 headbar 是否黏在top=0的位置
+    *    - fbLogo1, fbLogo2: FB社團的兩個連結圖片
+    *    - about, contact, home: headbar 上之圖片
+    *    - aboutSectionOffset: 決定動畫觸發的時機
+    *    - link1, link2, multimediaAnchor, dataAnchor, interactiveAnchor, explanAnchor, nativeAnchor: 各個section的id名
+    *    - animMultimedia, animData, animResearch, animInteractive, animExplan, animNative: 各個section之動畫
+    *    - posterMultimedia, posterData, posterResearch, posterInteractive, posterExplan, posterNative: 影片預覽圖
+    * */
     return {
       // picturefolder: 'projects/', // picture data path for localhost
       picturefolder: '../projects/', // picture data path for production
@@ -780,6 +808,7 @@ export default {
     onScroll: function () {
       this.scroll_now = window.pageYOffset
       // floating or sticky anchors
+      // 當headbar滑到頂的時候才黏在top=0的位置
       let anchors = document.getElementById('floatingAnchor')
       let anchorOffsetY = anchors.getBoundingClientRect().top
 
@@ -796,6 +825,7 @@ export default {
       }
 
       // section animation
+      // 每個section 一開始都不顯示，滑到時才一一顯示出來
       let section = document.getElementsByTagName('section')
       for (let i = 0; i < section.length; i++) {
         let sectionOffsetY = section[i].getBoundingClientRect().top

@@ -33,7 +33,18 @@ import bullet1 from '~/assets/a-7.svg'
 import bullet2 from '~/assets/a-8.svg'
 
 export default {
-  name: 'IndexCover',
+  /* 本元件用途：
+    * PC版各分頁之封面
+    * [傳入參數]：
+    *  - srcCover: 封面專題照
+    *  - coverTitle: 封面標題
+    *  - description: 封面描述
+    *  - data: 封面專題上線時間
+    *  - report: 研究報告標題
+    *  - reportlink: 研究報告超連結
+    * [註]:
+    * */
+  name: 'PageCover',
   props: ['srcCover', 'coverTitle', 'description', 'date', 'label', 'report', 'link', 'reportlink'],
   components: {ContentWrapper},
   computed: {

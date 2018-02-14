@@ -15,6 +15,13 @@
 
 <script>
 export default {
+  /* 本元件用途：
+    * 首頁下各section之專題單張顯示圖與圖標
+    * [傳入參數]：
+    *  - position: ('left' or 'right') 圖片在section之左或在右
+    *  - slide: 單張要秀出來的專題
+    * [註]:
+    * */
   name: 'OneSlide',
   props: ['interval', 'position', 'slide', 'folder'],
   computed: {

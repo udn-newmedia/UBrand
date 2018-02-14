@@ -61,6 +61,13 @@ var emptyfields = []
 var formaterrorfields = []
 
 export default {
+  /* 本元件用途：
+    * 給使用者填入表單送出，隨即發信給官方信箱
+    * [傳入參數]：
+    *  - backgroundColor: 背景色
+    * [註]：
+    *  - mail server 位置 : https://nmdap.udn.com.tw/ubrand/php/sendmail.php
+    * */
   name: 'Contact',
   props: ['backgroundColor'],
   components: {ContentWrapper, RealBodymovin},

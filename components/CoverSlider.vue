@@ -37,6 +37,14 @@ if (process.browser) {
 }
 
 export default {
+  /* 本元件用途：
+    * mobile 版封面滑動 slider
+    * [傳入參數]：
+    *  - interval: 自動輪播之時間區間
+    *  - background-color: slider 背景色
+    *  - sliders: 所有該類別之專題陣列
+    *  - folder: 專題圖片之路徑
+    * */
   name: 'Slider',
   props: ['interval', 'background-color', 'sliders', 'folder'],
   components: {
