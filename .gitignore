@@ -10,9 +10,6 @@ npm-debug.log
 # Nuxt generate
 dist
 
-# Assets
-assets
-
 # Projects pictures
 projects
 
