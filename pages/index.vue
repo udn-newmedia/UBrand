@@ -484,62 +484,96 @@
 
 <script>
 // import Container from 'udn-newmedia-vue-components/components/Content.vue'
-import ContentWrapper from '~/Components/Content.vue'
-import Carousel from '~/Components/Carousel.vue'
-import CoverSlider from '~/Components/CoverSlider.vue'
-import ContentSlider from '~/Components/ContentSlider.vue'
-import HeadBar from '~/Components/IndexHeadBar.vue'
-import Bookmarks from '~/Components/Bookmarks.vue'
-import IndexSection from '~/Components/IndexSection.vue'
-import Slideshow from '~/Components/OneSlide.vue'
-import IndexCover from '~/Components/IndexCover.vue'
-import EmbededVideo from '~/Components/EmbededVideo.vue'
-import Contact from '~/Components/Contact.vue'
-import Logo from '~/Components/Logo.vue'
-import Bodymovin from '~/Components/Bodymovin.vue'
-import CircleAnim from '~/Components/CircleAnim.vue'
-import RectAnim from '~/Components/RectAnim.vue'
-import BallAnim from '~/Components/BallAnim.vue'
+import ContentWrapper from "~/Components/Content.vue";
+import Carousel from "~/Components/Carousel.vue";
+import CoverSlider from "~/Components/CoverSlider.vue";
+import ContentSlider from "~/Components/ContentSlider.vue";
+import HeadBar from "~/Components/IndexHeadBar.vue";
+import Bookmarks from "~/Components/Bookmarks.vue";
+import IndexSection from "~/Components/IndexSection.vue";
+import Slideshow from "~/Components/OneSlide.vue";
+import IndexCover from "~/Components/IndexCover.vue";
+import EmbededVideo from "~/Components/EmbededVideo.vue";
+import Contact from "~/Components/Contact.vue";
+import Logo from "~/Components/Logo.vue";
+import Bodymovin from "~/Components/Bodymovin.vue";
+import CircleAnim from "~/Components/CircleAnim.vue";
+import RectAnim from "~/Components/RectAnim.vue";
+import BallAnim from "~/Components/BallAnim.vue";
 
 // Assets
-import PicAbout from '~/assets/logo_about.svg'
-import PicContact from '~/assets/logo_contact.svg'
-import PicHome from '~/assets/logo_home.svg'
-import introVideo from '~/assets/Ubrandstudio.mp4'
-import introVideoBG from '~/assets/Ubrandstudio_bg.jpg'
+import PicAbout from "~/assets/logo_about.svg";
+import PicContact from "~/assets/logo_contact.svg";
+import PicHome from "~/assets/logo_home.svg";
+import introVideo from "~/assets/Ubrandstudio.mp4";
+import introVideoBG from "~/assets/Ubrandstudio_bg.jpg";
 // import fbLogo from '~/assets/logo_fb.svg'
-import fbLogo1 from '~/assets/fb_1.svg'
-import fbLogo2 from '~/assets/fb_2.svg'
+import fbLogo1 from "~/assets/fb_1.svg";
+import fbLogo2 from "~/assets/fb_2.svg";
 
-import Utils from 'udn-newmedia-utils'
-import axios from 'axios'
-import _ from 'lodash'
-import $ from 'jquery'
+import Utils from "udn-newmedia-utils";
+import axios from "axios";
+import _ from "lodash";
+import $ from "jquery";
 
-var AboutSectionOffset
+var AboutSectionOffset;
 
 export default {
   // 以下用以複寫在nuxt.config.js內之meta
-  head () {
+  head() {
     return {
-      title: ' U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報',
+      title: " U Brand Studio 聯合報融媒體 用創新說故事 - UDN聯合報",
       meta: [
-        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 創新說故事 - UDN聯合報' },
-        { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/' },
-        { property: 'og:description', content: ' U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，由新聞、資訊工程、視覺設計與行銷人才組成的團隊，探索創新的內容閱讀體驗，結合新科技，製作多媒體報導、數據專題、互動新聞等，讓讀者更淺顯易懂的看懂新聞議題。推出多檔叫好叫座專題，包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，引起讀者廣泛討論。' },
-        { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。' },
-        { name: 'keywords', content: 'UDN、新媒體、融媒體、聯合報、倡議、故事、行銷' }
+        {
+          property: "og:title",
+          content: " U Brand Studio 聯合報融媒體 創新說故事 - UDN聯合報"
+        },
+        {
+          property: "og:url",
+          content: "https://udn.com/upf/newmedia/ubrandstudio/"
+        },
+        {
+          property: "og:description",
+          content:
+            " U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，由新聞、資訊工程、視覺設計與行銷人才組成的團隊，探索創新的內容閱讀體驗，結合新科技，製作多媒體報導、數據專題、互動新聞等，讓讀者更淺顯易懂的看懂新聞議題。推出多檔叫好叫座專題，包括流沙中年、5個少年染毒的故事、致照顧者、中橫走過一甲子等，引起讀者廣泛討論。"
+        },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            " U Brand Studio 聯合報融媒體，探索創新的內容閱讀體驗，讓讀者更淺顯易懂的看懂新聞議題。最擅長:品牌故事行銷、共同倡議專題。為您說好故事，讓品牌更有影響力。"
+        },
+        {
+          name: "keywords",
+          content: "UDN、新媒體、融媒體、聯合報、倡議、故事、行銷"
+        }
       ]
-    }
+    };
   },
   components: {
-    Carousel, CoverSlider, ContentSlider, ContentWrapper, HeadBar, Bookmarks, IndexSection, Slideshow, IndexCover, EmbededVideo, Contact, Logo, Bodymovin, CircleAnim, RectAnim, BallAnim
+    Carousel,
+    CoverSlider,
+    ContentSlider,
+    ContentWrapper,
+    HeadBar,
+    Bookmarks,
+    IndexSection,
+    Slideshow,
+    IndexCover,
+    EmbededVideo,
+    Contact,
+    Logo,
+    Bodymovin,
+    CircleAnim,
+    RectAnim,
+    BallAnim
   },
-  asyncData ({isServer, store, error}) {
-    let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
+  asyncData({ isServer, store, error }) {
+    let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`;
     if (isServer) {
-      return axios.get(json)
-        .then((res) => {
+      return axios
+        .get(json)
+        .then(res => {
           /* 各變數用途：
            *    - picturefolder: 圖片資料夾路徑 ('../projects'為 production 之路徑)
            *    - datalist: 從google spreadsheet 抓下來的資料 list
@@ -557,131 +591,160 @@ export default {
            *      - data 為指定或任選四則，再指定 contentSlider3 之第一則為 pc版 之封面專題
            *    - 其餘 contentSliders 如上類推
            * */
-          // let picturefolder = 'projects/' // picture data path only for localhost
-          let picturefolder = '../projects/' // picture data path for production
-          let datalist = res.data.feed.entry
+          let picturefolder = "http://udn.com/upf/newmedia/projects/"; // picture data path only for localhost
+          // let picturefolder = '../projects/' // picture data path for production
+          let datalist = res.data.feed.entry;
           // empty field detection
-          _.pullAllBy(datalist, [{ 'gsx$class.$t': '' }], 'gsx$class.$t')
-          _.pullAllBy(datalist, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
-          _.pullAllBy(datalist, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
-          _.pullAllBy(datalist, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
-          _.pullAllBy(datalist, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
-          _.pullAllBy(datalist, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
-          _.pullAllBy(datalist, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
-          _.pullAllBy(datalist, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
-          let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
+          _.pullAllBy(datalist, [{ "gsx$class.$t": "" }], "gsx$class.$t");
+          _.pullAllBy(datalist, [{ "gsx$title.$t": "" }], "gsx$title.$t");
+          _.pullAllBy(datalist, [{ "gsx$link.$t": "" }], "gsx$link.$t");
+          _.pullAllBy(
+            datalist,
+            [{ "gsx$description.$t": "" }],
+            "gsx$description.$t"
+          );
+          _.pullAllBy(datalist, [{ "gsx$date.$t": "" }], "gsx$date.$t");
+          _.pullAllBy(datalist, [{ "gsx$pcpic.$t": "" }], "gsx$pcpic.$t");
+          _.pullAllBy(
+            datalist,
+            [{ "gsx$mobcoverpic.$t": "" }],
+            "gsx$mobcoverpic.$t"
+          );
+          _.pullAllBy(datalist, [{ "gsx$mobpic.$t": "" }], "gsx$mobpic.$t");
+          let pccover = _.filter(datalist, ["gsx$indexcover.$t", "TRUE"]);
           if (pccover[0] == null) {
-            pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
+            pccover[0] = datalist[Math.floor(Math.random() * datalist.length)];
           }
-          let coverImageSrc = picturefolder + pccover[0].gsx$pcpic.$t
-          let coverTitle = pccover[0].gsx$title.$t
-          let coverDescription = pccover[0].gsx$description.$t
-          let coverDate = pccover[0].gsx$date.$t
-          let coverLabel = pccover[0].gsx$class.$t
-          let coverLink = pccover[0].gsx$link.$t
-          let coverSliders = []
-          let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
+          let coverImageSrc = picturefolder + pccover[0].gsx$pcpic.$t;
+          let coverTitle = pccover[0].gsx$title.$t;
+          let coverDescription = pccover[0].gsx$description.$t;
+          let coverDate = pccover[0].gsx$date.$t;
+          let coverLabel = pccover[0].gsx$class.$t;
+          let coverLink = pccover[0].gsx$link.$t;
+          let coverSliders = [];
+          let cover = _.filter(datalist, ["gsx$indexslide.$t", "TRUE"]);
           while (coverSliders.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
+            let item = _.filter(cover, [
+              "gsx$coverslide.$t",
+              (coverSliders.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * cover.length)
-              coverSliders.push(cover[rnd])
-              cover = _.difference(cover, [cover[rnd]])
+              let rnd = Math.floor(Math.random() * cover.length);
+              coverSliders.push(cover[rnd]);
+              cover = _.difference(cover, [cover[rnd]]);
             } else {
-              coverSliders.push(item[0])
-              cover = _.difference(cover, [item[0]])
+              coverSliders.push(item[0]);
+              cover = _.difference(cover, [item[0]]);
             }
           }
-          coverSliders.unshift(pccover[0])
+          coverSliders.unshift(pccover[0]);
           // multimedia
-          let contentSliders1 = []
-          let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
+          let contentSliders1 = [];
+          let multi = _.filter(datalist, ["gsx$class.$t", "多媒體報導"]);
           while (contentSliders1.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
+            let item = _.filter(multi, [
+              "gsx$contentslide1.$t",
+              (contentSliders1.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * multi.length)
-              contentSliders1.push(multi[rnd])
-              multi = _.difference(multi, [multi[rnd]])
+              let rnd = Math.floor(Math.random() * multi.length);
+              contentSliders1.push(multi[rnd]);
+              multi = _.difference(multi, [multi[rnd]]);
             } else {
-              contentSliders1.push(item[0])
-              multi = _.difference(multi, [item[0]])
+              contentSliders1.push(item[0]);
+              multi = _.difference(multi, [item[0]]);
             }
           }
           // data
-          let contentSliders2 = []
-          let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
+          let contentSliders2 = [];
+          let dataprojects = _.filter(datalist, ["gsx$class.$t", "數據專題"]);
           while (contentSliders2.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
+            let item = _.filter(dataprojects, [
+              "gsx$contentslide2.$t",
+              (contentSliders2.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * dataprojects.length)
-              contentSliders2.push(dataprojects[rnd])
-              dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
+              let rnd = Math.floor(Math.random() * dataprojects.length);
+              contentSliders2.push(dataprojects[rnd]);
+              dataprojects = _.difference(dataprojects, [dataprojects[rnd]]);
             } else {
-              contentSliders2.push(item[0])
-              dataprojects = _.difference(dataprojects, [item[0]])
+              contentSliders2.push(item[0]);
+              dataprojects = _.difference(dataprojects, [item[0]]);
             }
           }
           // interactive
-          let contentSliders3 = []
-          let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
+          let contentSliders3 = [];
+          let interactive = _.filter(datalist, ["gsx$class.$t", "互動新聞"]);
           while (contentSliders3.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
+            let item = _.filter(interactive, [
+              "gsx$contentslide3.$t",
+              (contentSliders3.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * interactive.length)
-              contentSliders3.push(interactive[rnd])
-              interactive = _.difference(interactive, [interactive[rnd]])
+              let rnd = Math.floor(Math.random() * interactive.length);
+              contentSliders3.push(interactive[rnd]);
+              interactive = _.difference(interactive, [interactive[rnd]]);
             } else {
-              contentSliders3.push(item[0])
-              interactive = _.difference(interactive, [item[0]])
+              contentSliders3.push(item[0]);
+              interactive = _.difference(interactive, [item[0]]);
             }
           }
           // explan
-          let contentSliders4 = []
-          let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
+          let contentSliders4 = [];
+          let explan = _.filter(datalist, ["gsx$class.$t", "解釋影音"]);
           while (contentSliders4.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
+            let item = _.filter(explan, [
+              "gsx$contentslide4.$t",
+              (contentSliders4.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * explan.length)
-              contentSliders4.push(explan[rnd])
-              explan = _.difference(explan, [explan[rnd]])
+              let rnd = Math.floor(Math.random() * explan.length);
+              contentSliders4.push(explan[rnd]);
+              explan = _.difference(explan, [explan[rnd]]);
             } else {
-              contentSliders4.push(item[0])
-              explan = _.difference(explan, [item[0]])
+              contentSliders4.push(item[0]);
+              explan = _.difference(explan, [item[0]]);
             }
           }
           // native
-          let contentSliders5 = []
-          let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
+          let contentSliders5 = [];
+          let native = _.filter(datalist, ["gsx$class.$t", "原生廣告"]);
           while (contentSliders5.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
+            let item = _.filter(native, [
+              "gsx$contentslide5.$t",
+              (contentSliders5.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * native.length)
-              contentSliders5.push(native[rnd])
-              native = _.difference(native, [native[rnd]])
+              let rnd = Math.floor(Math.random() * native.length);
+              contentSliders5.push(native[rnd]);
+              native = _.difference(native, [native[rnd]]);
             } else {
-              contentSliders5.push(item[0])
-              native = _.difference(native, [item[0]])
+              contentSliders5.push(item[0]);
+              native = _.difference(native, [item[0]]);
             }
           }
           // research
-          let contentSliders6 = []
-          let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
+          let contentSliders6 = [];
+          let research = _.filter(datalist, ["gsx$class.$t", "研究報告"]);
           while (contentSliders6.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
+            let item = _.filter(research, [
+              "gsx$contentslide6.$t",
+              (contentSliders6.length + 1).toString()
+            ]);
             if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * research.length)
-              contentSliders6.push(research[rnd])
-              research = _.difference(research, [research[rnd]])
+              let rnd = Math.floor(Math.random() * research.length);
+              contentSliders6.push(research[rnd]);
+              research = _.difference(research, [research[rnd]]);
             } else {
-              contentSliders6.push(item[0])
-              research = _.difference(research, [item[0]])
+              contentSliders6.push(item[0]);
+              research = _.difference(research, [item[0]]);
             }
           }
           return {
@@ -699,15 +762,15 @@ export default {
             contentSliders4: contentSliders4,
             contentSliders5: contentSliders5,
             contentSliders6: contentSliders6
-          }
+          };
         })
-        .catch((e) => {
-          error({statusCode: 404, message: 'File not found'})
-        })
+        .catch(e => {
+          error({ statusCode: 404, message: "File not found" });
+        });
     }
   },
-  data: function () {
-  /* 各變數用途：
+  data: function() {
+    /* 各變數用途：
     *    - picturefolder: 圖片資料夾路徑 ('../projects'為 production 之路徑)
     *    - stickyAnchors: 決定 headbar 是否黏在top=0的位置
     *    - fbLogo1, fbLogo2: FB社團的兩個連結圖片
@@ -718,8 +781,8 @@ export default {
     *    - posterMultimedia, posterData, posterResearch, posterInteractive, posterExplan, posterNative: 影片預覽圖
     * */
     return {
-      // picturefolder: 'projects/', // picture data path for localhost
-      picturefolder: '../projects/', // picture data path for production
+      picturefolder: "http://udn.com/upf/newmedia/projects/", // picture data path for localhost
+      // picturefolder: '../projects/', // picture data path for production
       stickyAnchors: false,
       fbLogo1: fbLogo1,
       fbLogo2: fbLogo2,
@@ -727,313 +790,366 @@ export default {
       contact: PicContact,
       home: PicHome,
       aboutSectionOffset: AboutSectionOffset,
-      link1: 'aboutSection',
-      link2: 'contactUs',
-      multimediaAnchor: 'multimediaSection',
-      dataAnchor: 'dataSection',
-      interactiveAnchor: 'interactiveSection',
-      explanAnchor: 'explanSection',
-      nativeAnchor: 'nativeSection',
-      animMultimedia: 'bodymovin/multimedia/data.mp4',
-      animData: 'bodymovin/data/data.mp4',
-      animResearch: 'bodymovin/research/data.mp4',
-      animInteractive: 'bodymovin/interactive/data.mp4',
-      animExplan: 'bodymovin/explan/data.mp4',
-      animNative: 'bodymovin/native/data.mp4',
-      posterMultimedia: 'bodymovin/multimedia/video_bg.jpg',
-      posterData: 'bodymovin/data/video_bg.jpg',
-      posterResearch: 'bodymovin/research/video_bg.jpg',
-      posterInteractive: 'bodymovin/interactive/video_bg.jpg',
-      posterExplan: 'bodymovin/explan/video_bg.jpg',
-      posterNative: 'bodymovin/native/video_bg.jpg',
+      link1: "aboutSection",
+      link2: "contactUs",
+      multimediaAnchor: "multimediaSection",
+      dataAnchor: "dataSection",
+      interactiveAnchor: "interactiveSection",
+      explanAnchor: "explanSection",
+      nativeAnchor: "nativeSection",
+      animMultimedia: "bodymovin/multimedia/data.mp4",
+      animData: "bodymovin/data/data.mp4",
+      animResearch: "bodymovin/research/data.mp4",
+      animInteractive: "bodymovin/interactive/data.mp4",
+      animExplan: "bodymovin/explan/data.mp4",
+      animNative: "bodymovin/native/data.mp4",
+      posterMultimedia: "bodymovin/multimedia/video_bg.jpg",
+      posterData: "bodymovin/data/video_bg.jpg",
+      posterResearch: "bodymovin/research/video_bg.jpg",
+      posterInteractive: "bodymovin/interactive/video_bg.jpg",
+      posterExplan: "bodymovin/explan/video_bg.jpg",
+      posterNative: "bodymovin/native/video_bg.jpg",
       introVideo: introVideo,
       introVideoBG: introVideoBG,
       scroll_now: 0,
       isMob: false
-    }
+    };
   },
-  created: function () {
-    this.dataUpdate()
+  created: function() {
+    this.dataUpdate();
   },
-  beforeMount: function () {
-    window.addEventListener('scroll', this.onScroll)
+  beforeMount: function() {
+    window.addEventListener("scroll", this.onScroll);
   },
-  beforeDestroyed: function () {
-    window.removeEventListener('scroll', this.onScroll)
+  beforeDestroyed: function() {
+    window.removeEventListener("scroll", this.onScroll);
   },
-  destroyed: function () {
-    window.removeEventListener('scroll', this.onScroll)
+  destroyed: function() {
+    window.removeEventListener("scroll", this.onScroll);
   },
-  mounted: function () {
-    this.isMob = Utils.detectMob()
-    this.aboutSectionOffset = document.getElementById('aboutSection').getBoundingClientRect().top
+  mounted: function() {
+    this.isMob = Utils.detectMob();
+    this.aboutSectionOffset = document
+      .getElementById("aboutSection")
+      .getBoundingClientRect().top;
 
     $(document).ready(() => {
-      let that = this
-      let platform = (this.isMob === true) ? 'Mob' : 'PC'
-      $('a button').click(function () {
+      let that = this;
+      let platform = this.isMob === true ? "Mob" : "PC";
+      $("a button").click(function() {
         that.$ga.event({
-          hitType: 'event',
-          eventCategory: '超連結點擊',
-          eventAction: 'click',
-          eventLabel: '[' + platform + '] [' + document.title + '] [' + $(this).data('target') + ']'
-        })
-      })
-      $('button.sendout').click(function () {
+          hitType: "event",
+          eventCategory: "超連結點擊",
+          eventAction: "click",
+          eventLabel:
+            "[" +
+            platform +
+            "] [" +
+            document.title +
+            "] [" +
+            $(this).data("target") +
+            "]"
+        });
+      });
+      $("button.sendout").click(function() {
         that.$ga.event({
-          hitType: 'event',
-          eventCategory: '送出表單按鈕點擊',
-          eventAction: 'click',
-          eventLabel: '[' + platform + '] [' + document.title + '] [' + '送出表單' + ']'
-        })
-      })
-      $('a').click(function () {
+          hitType: "event",
+          eventCategory: "送出表單按鈕點擊",
+          eventAction: "click",
+          eventLabel:
+            "[" + platform + "] [" + document.title + "] [" + "送出表單" + "]"
+        });
+      });
+      $("a").click(function() {
         that.$ga.event({
-          hitType: 'event',
-          eventCategory: '超連結點擊',
-          eventAction: 'click',
-          eventLabel: '[' + platform + '] [' + document.title + '] [' + $(this).attr('href') + ']'
-        })
-      })
-    })
+          hitType: "event",
+          eventCategory: "超連結點擊",
+          eventAction: "click",
+          eventLabel:
+            "[" +
+            platform +
+            "] [" +
+            document.title +
+            "] [" +
+            $(this).attr("href") +
+            "]"
+        });
+      });
+    });
 
     // [ga] page view
     this.$ga.page({
-      page: '/',
+      page: "/",
       title: document.title,
       location: window.location.href
-    })
+    });
   },
   methods: {
-    onScroll: function () {
-      this.scroll_now = window.pageYOffset
+    onScroll: function() {
+      this.scroll_now = window.pageYOffset;
       // floating or sticky anchors
       // 當headbar滑到頂的時候才黏在top=0的位置
-      let anchors = document.getElementById('floatingAnchor')
-      let anchorOffsetY = anchors.getBoundingClientRect().top
+      let anchors = document.getElementById("floatingAnchor");
+      let anchorOffsetY = anchors.getBoundingClientRect().top;
 
       if (anchorOffsetY > 0) {
         if (this.stickyAnchors) {
-          this.stickyAnchors = false
-          anchors.style.opacity = '1'
+          this.stickyAnchors = false;
+          anchors.style.opacity = "1";
         }
       } else {
         if (!this.stickyAnchors) {
-          this.stickyAnchors = true
-          anchors.style.opacity = '0'
+          this.stickyAnchors = true;
+          anchors.style.opacity = "0";
         }
       }
 
       // section animation
       // 每個section 一開始都不顯示，滑到時才一一顯示出來
-      let section = document.getElementsByTagName('section')
+      let section = document.getElementsByTagName("section");
       for (let i = 0; i < section.length; i++) {
-        let sectionOffsetY = section[i].getBoundingClientRect().top
+        let sectionOffsetY = section[i].getBoundingClientRect().top;
         if (sectionOffsetY < 200) {
-          let sectionVideo = section[i].getElementsByTagName('video')[0]
+          let sectionVideo = section[i].getElementsByTagName("video")[0];
           if (sectionVideo) {
             if (!this.isPlaying(sectionVideo)) {
-              sectionVideo.play()
+              sectionVideo.play();
             }
           }
           if (window.innerWidth > 1023) {
-            if (section[i].querySelector('.hideAtStart')) {
-              Array.prototype.forEach.call(section[i].querySelectorAll('.hideAtStart'), function (el) {
-                el.classList.remove('hideAtStart')
-              })
+            if (section[i].querySelector(".hideAtStart")) {
+              Array.prototype.forEach.call(
+                section[i].querySelectorAll(".hideAtStart"),
+                function(el) {
+                  el.classList.remove("hideAtStart");
+                }
+              );
             }
           }
         }
       }
     },
-    isPlaying: function (video) {
-      return video.onplay
+    isPlaying: function(video) {
+      return video.onplay;
     },
-    anchorCall: function (anchor) {
-      let platform = (this.isMob === true) ? 'Mob' : 'PC'
+    anchorCall: function(anchor) {
+      let platform = this.isMob === true ? "Mob" : "PC";
       // [ga] send event
       this.$ga.event({
-        hitType: 'event',
-        eventCategory: '錨點點擊',
-        eventAction: 'click',
-        eventLabel: '[' + platform + '] [' + document.title + '] [' + anchor + ']'
-      })
-      $('html, body').animate({scrollTop: $('#' + anchor).offset().top}, 1000, function () {})
+        hitType: "event",
+        eventCategory: "錨點點擊",
+        eventAction: "click",
+        eventLabel:
+          "[" + platform + "] [" + document.title + "] [" + anchor + "]"
+      });
+      $("html, body").animate(
+        { scrollTop: $("#" + anchor).offset().top },
+        1000,
+        function() {}
+      );
     },
-    dataUpdate: function () {
-      let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`
-      let that = this
-      axios.get(json)
-        .then((res) => {
-          let datalist = res.data.feed.entry
-          // empty fields detection
-          _.pullAllBy(datalist, [{ 'gsx$class.$t': '' }], 'gsx$class.$t')
-          _.pullAllBy(datalist, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
-          _.pullAllBy(datalist, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
-          _.pullAllBy(datalist, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
-          _.pullAllBy(datalist, [{ 'gsx$date.$t': '' }], 'gsx$date.$t')
-          _.pullAllBy(datalist, [{ 'gsx$pcpic.$t': '' }], 'gsx$pcpic.$t')
-          _.pullAllBy(datalist, [{ 'gsx$mobcoverpic.$t': '' }], 'gsx$mobcoverpic.$t')
-          _.pullAllBy(datalist, [{ 'gsx$mobpic.$t': '' }], 'gsx$mobpic.$t')
-          let pccover = _.filter(datalist, ['gsx$indexcover.$t', 'TRUE'])
-          if (pccover[0] == null) {
-            pccover[0] = datalist[Math.floor(Math.random() * datalist.length)]
-          }
-          let coverImageSrc = that.picturefolder + pccover[0].gsx$pcpic.$t
-          let coverTitle = pccover[0].gsx$title.$t
-          let coverDescription = pccover[0].gsx$description.$t
-          let coverDate = pccover[0].gsx$date.$t
-          let coverLabel = pccover[0].gsx$class.$t
-          let coverLink = pccover[0].gsx$link.$t
+    dataUpdate: function() {
+      let json = `https://spreadsheets.google.com/feeds/list/1donN8lWBHY8c5MH3NXWArErqf_60gxKwPWhfJccUZ44/1/public/values?alt=json`;
+      let that = this;
+      axios.get(json).then(res => {
+        let datalist = res.data.feed.entry;
+        // empty fields detection
+        _.pullAllBy(datalist, [{ "gsx$class.$t": "" }], "gsx$class.$t");
+        _.pullAllBy(datalist, [{ "gsx$title.$t": "" }], "gsx$title.$t");
+        _.pullAllBy(datalist, [{ "gsx$link.$t": "" }], "gsx$link.$t");
+        _.pullAllBy(
+          datalist,
+          [{ "gsx$description.$t": "" }],
+          "gsx$description.$t"
+        );
+        _.pullAllBy(datalist, [{ "gsx$date.$t": "" }], "gsx$date.$t");
+        _.pullAllBy(datalist, [{ "gsx$pcpic.$t": "" }], "gsx$pcpic.$t");
+        _.pullAllBy(
+          datalist,
+          [{ "gsx$mobcoverpic.$t": "" }],
+          "gsx$mobcoverpic.$t"
+        );
+        _.pullAllBy(datalist, [{ "gsx$mobpic.$t": "" }], "gsx$mobpic.$t");
+        let pccover = _.filter(datalist, ["gsx$indexcover.$t", "TRUE"]);
+        if (pccover[0] == null) {
+          pccover[0] = datalist[Math.floor(Math.random() * datalist.length)];
+        }
+        let coverImageSrc = that.picturefolder + pccover[0].gsx$pcpic.$t;
+        let coverTitle = pccover[0].gsx$title.$t;
+        let coverDescription = pccover[0].gsx$description.$t;
+        let coverDate = pccover[0].gsx$date.$t;
+        let coverLabel = pccover[0].gsx$class.$t;
+        let coverLink = pccover[0].gsx$link.$t;
 
-          if (that.coverImage !== coverImageSrc) {
-            that.coverImage = coverImageSrc
-            that.coverTitle = coverTitle
-            that.coverDescription = coverDescription
-            that.coverDate = coverDate
-            that.coverLabel = coverLabel
-            that.coverLink = coverLink
-          }
+        if (that.coverImage !== coverImageSrc) {
+          that.coverImage = coverImageSrc;
+          that.coverTitle = coverTitle;
+          that.coverDescription = coverDescription;
+          that.coverDate = coverDate;
+          that.coverLabel = coverLabel;
+          that.coverLink = coverLink;
+        }
 
-          let coverSliders = []
-          let cover = _.filter(datalist, ['gsx$indexslide.$t', 'TRUE'])
-          while (coverSliders.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(cover, ['gsx$coverslide.$t', (coverSliders.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * cover.length)
-              coverSliders.push(cover[rnd])
-              cover = _.difference(cover, [cover[rnd]])
-            } else {
-              coverSliders.push(item[0])
-              cover = _.difference(cover, [item[0]])
-            }
+        let coverSliders = [];
+        let cover = _.filter(datalist, ["gsx$indexslide.$t", "TRUE"]);
+        while (coverSliders.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(cover, [
+            "gsx$coverslide.$t",
+            (coverSliders.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * cover.length);
+            coverSliders.push(cover[rnd]);
+            cover = _.difference(cover, [cover[rnd]]);
+          } else {
+            coverSliders.push(item[0]);
+            cover = _.difference(cover, [item[0]]);
           }
-          coverSliders.unshift(pccover[0])
-          that.coverSliders = coverSliders
-          // multi
-          let contentSliders1 = []
-          let multi = _.filter(datalist, ['gsx$class.$t', '多媒體報導'])
-          while (contentSliders1.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(multi, ['gsx$contentslide1.$t', (contentSliders1.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * multi.length)
-              contentSliders1.push(multi[rnd])
-              multi = _.difference(multi, [multi[rnd]])
-            } else {
-              contentSliders1.push(item[0])
-              multi = _.difference(multi, [item[0]])
-            }
+        }
+        coverSliders.unshift(pccover[0]);
+        that.coverSliders = coverSliders;
+        // multi
+        let contentSliders1 = [];
+        let multi = _.filter(datalist, ["gsx$class.$t", "多媒體報導"]);
+        while (contentSliders1.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(multi, [
+            "gsx$contentslide1.$t",
+            (contentSliders1.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * multi.length);
+            contentSliders1.push(multi[rnd]);
+            multi = _.difference(multi, [multi[rnd]]);
+          } else {
+            contentSliders1.push(item[0]);
+            multi = _.difference(multi, [item[0]]);
           }
-          that.contentSliders1 = contentSliders1
-          // data
-          let contentSliders2 = []
-          let dataprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
-          while (contentSliders2.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(dataprojects, ['gsx$contentslide2.$t', (contentSliders2.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * dataprojects.length)
-              contentSliders2.push(dataprojects[rnd])
-              dataprojects = _.difference(dataprojects, [dataprojects[rnd]])
-            } else {
-              contentSliders2.push(item[0])
-              dataprojects = _.difference(dataprojects, [item[0]])
-            }
+        }
+        that.contentSliders1 = contentSliders1;
+        // data
+        let contentSliders2 = [];
+        let dataprojects = _.filter(datalist, ["gsx$class.$t", "數據專題"]);
+        while (contentSliders2.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(dataprojects, [
+            "gsx$contentslide2.$t",
+            (contentSliders2.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * dataprojects.length);
+            contentSliders2.push(dataprojects[rnd]);
+            dataprojects = _.difference(dataprojects, [dataprojects[rnd]]);
+          } else {
+            contentSliders2.push(item[0]);
+            dataprojects = _.difference(dataprojects, [item[0]]);
           }
-          that.contentSliders2 = contentSliders2
-          // interactive
-          let contentSliders3 = []
-          let interactive = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
-          while (contentSliders3.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(interactive, ['gsx$contentslide3.$t', (contentSliders3.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * interactive.length)
-              contentSliders3.push(interactive[rnd])
-              interactive = _.difference(interactive, [interactive[rnd]])
-            } else {
-              contentSliders3.push(item[0])
-              interactive = _.difference(interactive, [item[0]])
-            }
+        }
+        that.contentSliders2 = contentSliders2;
+        // interactive
+        let contentSliders3 = [];
+        let interactive = _.filter(datalist, ["gsx$class.$t", "互動新聞"]);
+        while (contentSliders3.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(interactive, [
+            "gsx$contentslide3.$t",
+            (contentSliders3.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * interactive.length);
+            contentSliders3.push(interactive[rnd]);
+            interactive = _.difference(interactive, [interactive[rnd]]);
+          } else {
+            contentSliders3.push(item[0]);
+            interactive = _.difference(interactive, [item[0]]);
           }
-          that.contentSliders3 = contentSliders3
-          // explan
-          let contentSliders4 = []
-          let explan = _.filter(datalist, ['gsx$class.$t', '解釋影音'])
-          while (contentSliders4.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(explan, ['gsx$contentslide4.$t', (contentSliders4.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * explan.length)
-              contentSliders4.push(explan[rnd])
-              explan = _.difference(explan, [explan[rnd]])
-            } else {
-              contentSliders4.push(item[0])
-              explan = _.difference(explan, [item[0]])
-            }
+        }
+        that.contentSliders3 = contentSliders3;
+        // explan
+        let contentSliders4 = [];
+        let explan = _.filter(datalist, ["gsx$class.$t", "解釋影音"]);
+        while (contentSliders4.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(explan, [
+            "gsx$contentslide4.$t",
+            (contentSliders4.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * explan.length);
+            contentSliders4.push(explan[rnd]);
+            explan = _.difference(explan, [explan[rnd]]);
+          } else {
+            contentSliders4.push(item[0]);
+            explan = _.difference(explan, [item[0]]);
           }
-          that.contentSliders4 = contentSliders4
-          // native
-          let contentSliders5 = []
-          let native = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
-          while (contentSliders5.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(native, ['gsx$contentslide5.$t', (contentSliders5.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * native.length)
-              contentSliders5.push(native[rnd])
-              native = _.difference(native, [native[rnd]])
-            } else {
-              contentSliders5.push(item[0])
-              native = _.difference(native, [item[0]])
-            }
+        }
+        that.contentSliders4 = contentSliders4;
+        // native
+        let contentSliders5 = [];
+        let native = _.filter(datalist, ["gsx$class.$t", "原生廣告"]);
+        while (contentSliders5.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(native, [
+            "gsx$contentslide5.$t",
+            (contentSliders5.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * native.length);
+            contentSliders5.push(native[rnd]);
+            native = _.difference(native, [native[rnd]]);
+          } else {
+            contentSliders5.push(item[0]);
+            native = _.difference(native, [item[0]]);
           }
-          that.contentSliders5 = contentSliders5
-          // research
-          let contentSliders6 = []
-          let research = _.filter(datalist, ['gsx$class.$t', '研究報告'])
-          while (contentSliders6.length < 4) {
-            // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
-            let item = _.filter(research, ['gsx$contentslide6.$t', (contentSliders6.length + 1).toString()])
-            if (item.length === 0) {
-              let rnd = Math.floor(Math.random() * research.length)
-              contentSliders6.push(research[rnd])
-              research = _.difference(research, [research[rnd]])
-            } else {
-              contentSliders6.push(item[0])
-              research = _.difference(research, [item[0]])
-            }
+        }
+        that.contentSliders5 = contentSliders5;
+        // research
+        let contentSliders6 = [];
+        let research = _.filter(datalist, ["gsx$class.$t", "研究報告"]);
+        while (contentSliders6.length < 4) {
+          // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
+          let item = _.filter(research, [
+            "gsx$contentslide6.$t",
+            (contentSliders6.length + 1).toString()
+          ]);
+          if (item.length === 0) {
+            let rnd = Math.floor(Math.random() * research.length);
+            contentSliders6.push(research[rnd]);
+            research = _.difference(research, [research[rnd]]);
+          } else {
+            contentSliders6.push(item[0]);
+            research = _.difference(research, [item[0]]);
           }
-          that.contentSliders6 = contentSliders6
-        })
+        }
+        that.contentSliders6 = contentSliders6;
+      });
     }
   }
-}
+};
 </script>
 
 <style>
 #index {
   line-height: 1.5;
-  font-family: Arial, "微軟正黑體","Microsoft JhengHei", sans-serif;
+  font-family: Arial, "微軟正黑體", "Microsoft JhengHei", sans-serif;
   word-wrap: break-word;
-  text-align: justify;  
+  text-align: justify;
 }
 
-@media screen and (max-width: 1023px){
-  .hidden-mobile{
-    display: none!important;
-  } 
-  .onetenth{
+@media screen and (max-width: 1023px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .onetenth {
     height: 10vh;
   }
 }
 
-@media screen and (min-width: 1024px){
-  .hidden-pc{
-    display: none!important;
-  } 
+@media screen and (min-width: 1024px) {
+  .hidden-pc {
+    display: none !important;
+  }
 }
 
 .links {
@@ -1072,7 +1188,7 @@ ul {
   align-items: center;
 }
 
-.fbLink .fb{
+.fbLink .fb {
   position: relative;
   display: flex;
   justify-content: center;
@@ -1080,7 +1196,7 @@ ul {
   margin-right: 20px;
 }
 
-.fb img{
+.fb img {
   width: 160px;
 }
 
@@ -1093,7 +1209,7 @@ ul {
   background-color: #fff;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   .fb .fbgroup {
     font-size: 15px;
   }
@@ -1109,12 +1225,11 @@ ul {
 }
 
 .about .anim {
-  position: relative;  
+  position: relative;
   width: 20%;
 }
 
-@media screen and (min-width: 1024px){
-
+@media screen and (min-width: 1024px) {
   .about .anim {
     transform: translateX(-60%);
   }
@@ -1140,15 +1255,15 @@ ul {
     width: 90%;
   }
 
-  .about .info p>br {
+  .about .info p > br {
     line-height: 1.62;
   }
 
-  .fbLink .fb{
+  .fbLink .fb {
     margin-right: 30px;
   }
 
-  .fb img{
+  .fb img {
     width: 200px;
   }
 
@@ -1170,8 +1285,7 @@ ul {
   }
 }
 
-@media all and (-ms-high-contrast:none)
-{
+@media all and (-ms-high-contrast: none) {
   .fb .fbgroup {
     transform: translateX(15%);
     left: 25%;
@@ -1181,123 +1295,142 @@ ul {
     transform: translateX(15%);
     left: 35%;
     top: 25%;
-  }  
-}  
+  }
+}
 
 .nmd p {
   color: #fff;
 }
 
-a{
+a {
   color: #717071;
   margin: 0;
   border-bottom: 4px solid transparent;
   cursor: pointer;
 }
 
-.anchors p{
+.anchors p {
   border-bottom: 4px solid transparent;
 }
 
-.anchors a:active, .anchors a:hover, .anchors a:link, .anchors a:visited{
+.anchors a:active,
+.anchors a:hover,
+.anchors a:link,
+.anchors a:visited {
   color: #717071;
   text-decoration: none;
 }
 
-.anchors a:active, .anchors a:hover p{
+.anchors a:active,
+.anchors a:hover p {
   border-bottom: 4px solid #e73828;
 }
 
-.anchors.anchors p{
+.anchors.anchors p {
   font-size: 15px;
 }
 
-@media screen and (min-width: 1024px){
-  .anchors.anchors p{
+@media screen and (min-width: 1024px) {
+  .anchors.anchors p {
     font-size: 17px;
   }
 }
 
-.intro h1{
+.intro h1 {
   font-weight: bold;
   font-size: 26px;
   margin: 0;
-} 
-.intro h3{
+}
+.intro h3 {
   font-size: 18px;
   line-height: 1.78;
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 1024px){
-  .intro h1{
+@media screen and (min-width: 1024px) {
+  .intro h1 {
     font-size: 45px;
-  } 
-  .intro h3{
+  }
+  .intro h3 {
     font-size: 21px;
     line-height: 1.52;
   }
 }
 
-@media screen and (min-width: 1024px){
-  section .hideAtStart{
+@media screen and (min-width: 1024px) {
+  section .hideAtStart {
     opacity: 0;
     transform: translateY(50px);
   }
-  .slideshow.hideAtStart.hideAtStart{
+  .slideshow.hideAtStart.hideAtStart {
     transform: translateY(0);
   }
 }
 
-video.anim{
+video.anim {
   width: 100%;
 }
 
-@media screen and (max-width: 767px){
-  video.anim{
+@media screen and (max-width: 767px) {
+  video.anim {
     width: 334px;
     height: 300.59px;
     border: none;
-  }    
+  }
 }
 
-@media all and (-ms-high-contrast:none)
-{
-  video.anim { width: auto } /* IE10 */
-  *::-ms-backdrop, video.anim { width: auto } /* IE11 */
-}  
+@media all and (-ms-high-contrast: none) {
+  video.anim {
+    width: auto;
+  } /* IE10 */
+  *::-ms-backdrop,
+  video.anim {
+    width: auto;
+  } /* IE11 */
+}
 
-button, .button{
+button,
+.button {
   width: 102px;
   height: 41px;
   border-radius: 20.1px;
   background-color: #ffffff;
   border: solid 1px #0b0305;
-  padding: 10px 15px;  
-  color: #717071; 
+  padding: 10px 15px;
+  color: #717071;
   /* box-shadow: 5px 5px 0#e73828; */
   box-shadow: 5px 5px 0 0 #e73828;
   transition: box-shadow 0.3s ease-in-out;
 }
 
-a.fb img{
+a.fb img {
   box-shadow: 5px 5px 0 0 #e73828;
-  transition: box-shadow 0.3s ease-in-out;  
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 1023px){
-  button, .button{
+@media screen and (max-width: 1023px) {
+  button,
+  .button {
     width: 80px;
     height: 33px;
-    padding: 7px 10px;  
+    padding: 7px 10px;
   }
 }
 
-button:hover, .button:hover, a.fb img:hover{
+button:hover,
+.button:hover,
+a.fb img:hover {
   box-shadow: 1px 1px 0 0 #e73828;
 }
 
-button:focus, button:hover, button:active, button:visited, a.button:focus, a.button:hover, a.button:active, a.button:visited{
+button:focus,
+button:hover,
+button:active,
+button:visited,
+a.button:focus,
+a.button:hover,
+a.button:active,
+a.button:visited {
   color: #717071;
   text-decoration: none;
 }
@@ -1313,5 +1446,4 @@ button:focus, button:hover, button:active, button:visited, a.button:focus, a.but
 .anchors.fixed {
   box-shadow: 0 7px 5px -5px rgba(4, 0, 0, 0.05);
 }
-
 </style>

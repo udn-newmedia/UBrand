@@ -90,7 +90,7 @@ export default {
       works: [],
       bullet1: bullet1,
       bullet2: bullet2,
-      fillinblank: '把3D模型擺進新聞 學到的3件事',// 為了保持空行因而塞入之字串
+      fillinblank: '把3D模型擺進新聞 學到的3件事', // 為了保持空行因而塞入之字串
       hasmore: true
     }
   },

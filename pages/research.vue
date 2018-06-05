@@ -171,8 +171,8 @@ export default {
           *    - cover: 封面專題
           *    - coverTitle(標題), coverDescription(描述), coverDate(上線日期), coverLink(專題連結), coverReportTitle(研究報告標題), coverReportLink(研究報告連結): 封面各資訊
           * */
-        // let picturefolder = 'projects/' // picture data path for localhost
-        let picturefolder = '../projects/' // picture data path for production
+        let picturefolder = 'http://udn.com/upf/newmedia/projects/' // picture data path for localhost
+        // let picturefolder = '../projects/' // picture data path for production
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '研究報告'])
         _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
@@ -214,7 +214,7 @@ export default {
   data: function () {
     return {
       // picturefolder: 'projects/', // picture data path for localhost
-      picturefolder: '../projects/', // picture data path for production
+      picturefolder: 'http://udn.com/upf/newmedia/projects/', // picture data path for production
       ball: ball,
       covericon: 'bodymovin/research/data.jpg'
     }

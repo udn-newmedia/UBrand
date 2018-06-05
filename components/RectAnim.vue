@@ -21,7 +21,7 @@ export default {
     *  - triggerPoint: 觸發點 (滑動到哪一個位置觸發)
     *  - position: ('left' or 'right') 在左邊或右邊
     * [註]:
-    * */  
+  * */
   name: 'RectAnim',
   props: ['triggerPoint', 'position'],
   data: function () {
