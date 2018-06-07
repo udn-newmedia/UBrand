@@ -34,8 +34,8 @@
         </li>
         <li>
           <nuxt-link to="/native">
-            <p class="hidden-mobile">原生廣告</p>
-            <p class="hidden-pc">原生廣告</p>
+            <p class="hidden-mobile">品牌創意</p>
+            <p class="hidden-pc">品牌創意</p>
           </nuxt-link>
         </li>
       <!-- <li>
@@ -167,7 +167,7 @@ export default {
     return axios.get(json)
       .then((res) => {
         // let picturefolder = 'projects/' // picture data path for localhost
-        let picturefolder = 'http://udn.com/upf/newmedia/projects/' // picture data path for production
+        let picturefolder = 'https://udn.com/upf/newmedia/projects/' // picture data path for production
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '數據專題'])
         _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
@@ -215,7 +215,7 @@ export default {
     *    - coverTitle(標題), coverDescription(描述), coverDate(上線日期), coverLink(專題連結), coverReportTitle(研究報告標題), coverReportLink(研究報告連結): 封面各資訊
     * */
     return {
-      picturefolder: 'http://udn.com/upf/newmedia/projects/', // picture data path for localhost
+      picturefolder: 'https://udn.com/upf/newmedia/projects/', // picture data path for localhost
       // picturefolder: '../projects/', // picture data path for production
       ball: ball,
       covericon: 'bodymovin/data/data.jpg'
@@ -281,7 +281,7 @@ export default {
             cover[0] = allprojects[0]
           }
           let projects = _.difference(allprojects, cover)
-          let coverImageSrc = 'http://udn.com/upf/newmedia/projects/' + cover[0].gsx$pcpic.$t
+          let coverImageSrc = 'https://udn.com/upf/newmedia/projects/' + cover[0].gsx$pcpic.$t
           let coverTitle = cover[0].gsx$title.$t
           let coverDescription = cover[0].gsx$description.$t
           let coverDate = cover[0].gsx$date.$t

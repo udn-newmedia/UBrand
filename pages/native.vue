@@ -34,8 +34,8 @@
           <nuxt-link 
             to="/native"
             class="now">
-            <p class="hidden-mobile">原生廣告</p>
-            <p class="hidden-pc">原生廣告</p>
+            <p class="hidden-mobile">品牌創意</p>
+            <p class="hidden-pc">品牌創意</p>
           </nuxt-link>
         </li>
       <!-- <li>
@@ -57,10 +57,10 @@
           :src="covericon">
         <div class="title-wrapper">
           <h1 class="title hidden-mobile">
-            原生廣告
+            品牌創意
           </h1>
           <h3 class="title hidden-pc">
-            原生廣告
+            品牌創意
           </h3>
           <p class="subtitle">
             有腳本、有情節的影音內容，提供消費者有用的生活資訊
@@ -149,9 +149,9 @@ import $ from 'jquery'
 export default {
   head () {
     return {
-      title: ' U Brand Studio 聯合報融媒體 原生廣告 - UDN聯合報',
+      title: ' U Brand Studio 聯合報融媒體 品牌創意 - UDN聯合報',
       meta: [
-        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 原生廣告 - UDN聯合報' },
+        { property: 'og:title', content: ' U Brand Studio 聯合報融媒體 品牌創意 - UDN聯合報' },
         { property: 'og:url', content: 'https://udn.com/upf/newmedia/ubrandstudio/native/' },
         { property: 'og:description', content: ' U Brand Studio 聯合報融媒體，運用原生廣告手法進行，有腳本、有情節的影音內容，提供消費者有用的生活資訊。 U Brand Studio 聯合報融媒體發展部是聯合報的數位心臟，擅長進行共同倡議新聞議題，期待為您說好故事，讓品牌更有影響力。' },
         { hid: 'description', name: 'description', content: ' U Brand Studio 聯合報融媒體，運用原生廣告手法進行，有腳本、有情節的影音內容，提供消費者有用的生活資訊。進行共同倡議新聞議題，為您說好故事，讓品牌更有影響力。' },
@@ -174,9 +174,9 @@ export default {
           *    - coverTitle(標題), coverDescription(描述), coverDate(上線日期), coverLink(專題連結), coverReportTitle(研究報告標題), coverReportLink(研究報告連結): 封面各資訊
           * */
         // let picturefolder = 'projects/' // picture data path for localhost
-        let picturefolder = 'http://udn.com/upf/newmedia/projects/' // picture data path for production
+        let picturefolder = 'https://udn.com/upf/newmedia/projects/' // picture data path for production
         let datalist = res.data.feed.entry
-        let allprojects = _.filter(datalist, ['gsx$class.$t', '原生廣告'])
+        let allprojects = _.filter(datalist, ['gsx$class.$t', '品牌創意'])
         _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
         _.pullAllBy(allprojects, [{ 'gsx$link.$t': '' }], 'gsx$link.$t')
         _.pullAllBy(allprojects, [{ 'gsx$description.$t': '' }], 'gsx$description.$t')
@@ -215,7 +215,7 @@ export default {
   },
   data: function () {
     return {
-      picturefolder: 'http://udn.com/upf/newmedia/projects/', // picture data path for localhost
+      picturefolder: 'https://udn.com/upf/newmedia/projects/', // picture data path for localhost
       // picturefolder: '../projects/', // picture data path for production
       ball: ball,
       covericon: 'bodymovin/native/data.jpg'

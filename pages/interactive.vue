@@ -34,8 +34,8 @@
         </li>
         <li>
           <nuxt-link to="/native">
-            <p class="hidden-mobile">原生廣告</p>
-            <p class="hidden-pc">原生廣告</p>
+            <p class="hidden-mobile">品牌創意</p>
+            <p class="hidden-pc">品牌創意</p>
           </nuxt-link>
         </li>
       <!-- <li>
@@ -174,7 +174,7 @@ export default {
           *    - coverTitle(標題), coverDescription(描述), coverDate(上線日期), coverLink(專題連結), coverReportTitle(研究報告標題), coverReportLink(研究報告連結): 封面各資訊
           * */
         // let picturefolder = 'projects/' // picture data path for localhost
-        let picturefolder = 'http://udn.com/upf/newmedia/projects/' // picture data path for production
+        let picturefolder = 'https://udn.com/upf/newmedia/projects/' // picture data path for production
         let datalist = res.data.feed.entry
         let allprojects = _.filter(datalist, ['gsx$class.$t', '互動新聞'])
         _.pullAllBy(allprojects, [{ 'gsx$title.$t': '' }], 'gsx$title.$t')
@@ -215,7 +215,7 @@ export default {
   },
   data: function () {
     return {
-      picturefolder: 'http://udn.com/upf/newmedia/projects/', // picture data path for localhost
+      picturefolder: 'https://udn.com/upf/newmedia/projects/', // picture data path for localhost
       // picturefolder: '../projects/', // picture data path for production
       ball: ball,
       covericon: 'bodymovin/interactive/data.jpg'

@@ -47,12 +47,12 @@
           <a 
             href="." 
             class="hidden-pc"
-            v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+            v-on:click.prevent="anchorCall('nativeSection')"><p>品牌創意</p>
           </a>
           <a 
             href="." 
             class="hidden-mobile"
-            v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+            v-on:click.prevent="anchorCall('nativeSection')"><p>品牌創意</p>
           </a>
         </li>
       </Bookmarks>
@@ -150,12 +150,12 @@
         <a 
           href="." 
           class="hidden-pc"
-          v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+          v-on:click.prevent="anchorCall('nativeSection')"><p>品牌創意</p>
         </a>
         <a 
           href="." 
           class="hidden-mobile"
-          v-on:click.prevent="anchorCall('nativeSection')"><p>原生廣告</p>
+          v-on:click.prevent="anchorCall('nativeSection')"><p>品牌創意</p>
         </a>
       </li>
     </Bookmarks>
@@ -352,7 +352,7 @@
           <div 
             slot="intro" 
             class="intro hideAtStart">
-            <h1>原生廣告</h1>
+            <h1>品牌創意</h1>
             <h3>有腳本、有情節的影音內容，提供消費者有用的生活資訊</h3>
           </div>
           <div class="hideAtStart">
@@ -591,7 +591,7 @@ export default {
            *      - data 為指定或任選四則，再指定 contentSlider3 之第一則為 pc版 之封面專題
            *    - 其餘 contentSliders 如上類推
            * */
-          let picturefolder = "http://udn.com/upf/newmedia/projects/"; // picture data path only for localhost
+          let picturefolder = "https://udn.com/upf/newmedia/projects/"; // picture data path only for localhost
           // let picturefolder = '../projects/' // picture data path for production
           let datalist = res.data.feed.entry;
           // empty field detection
@@ -713,7 +713,7 @@ export default {
           }
           // native
           let contentSliders5 = [];
-          let native = _.filter(datalist, ["gsx$class.$t", "原生廣告"]);
+          let native = _.filter(datalist, ["gsx$class.$t", "品牌創意"]);
           while (contentSliders5.length < 4) {
             // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
             let item = _.filter(native, [
@@ -781,7 +781,7 @@ export default {
     *    - posterMultimedia, posterData, posterResearch, posterInteractive, posterExplan, posterNative: 影片預覽圖
     * */
     return {
-      picturefolder: "http://udn.com/upf/newmedia/projects/", // picture data path for localhost
+      picturefolder: "https://udn.com/upf/newmedia/projects/", // picture data path for localhost
       // picturefolder: '../projects/', // picture data path for production
       stickyAnchors: false,
       fbLogo1: fbLogo1,
@@ -1087,7 +1087,7 @@ export default {
         that.contentSliders4 = contentSliders4;
         // native
         let contentSliders5 = [];
-        let native = _.filter(datalist, ["gsx$class.$t", "原生廣告"]);
+        let native = _.filter(datalist, ["gsx$class.$t", "品牌創意"]);
         while (contentSliders5.length < 4) {
           // 從表單已標示的序列去找，若不足4則或格式不符則亂選不重複的一則
           let item = _.filter(native, [
